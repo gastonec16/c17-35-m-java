@@ -14,6 +14,10 @@
     margin: 0;
 }
 
+body {
+    background-color: var(--green-3);
+}
+
 form {
     background-color: var(--white);
     color: var(--green-5);
@@ -86,5 +90,17 @@ textarea {
     &:focus {
         outline: 2px var(--green-3) solid;
         background-color: #eff29e;
+    }
+}
+
+button {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+a {
+    &:hover {
+        cursor: pointer;
     }
 }
