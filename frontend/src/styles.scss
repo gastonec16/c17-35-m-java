@@ -96,11 +96,19 @@ textarea {
 button {
     &:hover {
         cursor: pointer;
+        filter: brightness(1.2);
+    }
+    &:active {
+        opacity: 0.8;
     }
 }
 
 a {
     &:hover {
         cursor: pointer;
+        filter: brightness(1.2);
+    }
+    &:active {
+        opacity: 0.8;
     }
 }
