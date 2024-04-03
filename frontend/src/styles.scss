@@ -6,21 +6,28 @@
     --green-5: #224d17;
     --black: #1e1e1e;
     --white: #ffffff;
+    --yellow: #fcd535;
 }
 
 * {
     font-family: 'Roboto Mono', monospace;
+    margin: 0;
+}
+
+body {
+    background-color: var(--green-3);
 }
 
 form {
     background-color: var(--white);
+    color: var(--green-5);
     border-radius: 24px;
     padding: 32px;
     width: 80%;
     max-width: 32rem;
     margin-top: 64px;
 
-    & h1 {
+    & h2 {
         margin-top: 40px;
         text-align: center;
     }
@@ -52,6 +59,7 @@ form {
     p {
         font-size: small;
         text-align: center;
+        margin: 8px 0;
     }
 
     a {
@@ -81,6 +89,18 @@ textarea {
 
     &:focus {
         outline: 2px var(--green-3) solid;
-        background-color: rgb(234, 252, 252);
+        background-color: #eff29e;
+    }
+}
+
+button {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+a {
+    &:hover {
+        cursor: pointer;
     }
 }
