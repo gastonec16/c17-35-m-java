@@ -6,7 +6,7 @@
     criptomonedas de manera segura y transparente.
 ## Authors
 
-- [@Gustavo](https://github.com/gastonec16)
+- [@Gaston](https://github.com/gastonec16)
 - [@Franco](https://github.com/FrancoNordinelli)
 - [@Alan](https://github.com/Alankke)
 - [@Lucas](https://github.com/https://github.com/VillalbaLucas)
