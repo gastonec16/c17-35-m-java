@@ -1,31 +1,52 @@
 .page-container {
     display: flex;
+    height: 100vh;
+    width: 100%;
 
     & div {
         flex-direction: column;
     }
 }
 
-.background-image {
-    width: 50%;
+.image-side {
+    width: 100%;
+    background-image: url('/assets/img/btc-2.jpg');
+    background-size: auto 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    & p {
-        color: var(--green-1);
+    & h3 {
+        margin: 24px;
+        color: var(--yellow);
         font-size: 5rem;
         display: flex;
+
+        -webkit-text-stroke: 2px var(--black);
+
+        & span {
+            display: block;
+        }
     }
+}
+
+.logo-container {
+    background-color: var(--white);
+    border-radius: 16px;
+    margin-bottom: 16px;
 }
 
 .patrick-logo {
     position: absolute;
 }
 
-.form-container {
+.form-side {
     padding: 16px;
     background-color: var(--green-3);
     display: flex;
     align-items: center;
     width: 100%;
+    max-width: 34rem;
 }
 
 .log-button {
