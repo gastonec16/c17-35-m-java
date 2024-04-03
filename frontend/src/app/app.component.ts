@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +9,17 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  //TEST DE INTEGRACIóN SPRING ANGULAR
+export class AppComponent implements OnInit {
   title = 'frontend';
-  constructor(private http: HttpClient) { }
+  messageFromBackend :string
+  constructor(private http: HttpClient) {
+    this.messageFromBackend = ''
+   }
 
-    ngOnInit() {
-        this.http.get<any>('/api/test').subscribe(response => {
-            this.title = response;
-        });
-    }
+  ngOnInit() {
+      this.http.get<any>('http://localhost:8080/api/test').subscribe( (response : any )=> {
+          this.messageFromBackend = response;
+      });
+  }
+
 }
-
-
-
