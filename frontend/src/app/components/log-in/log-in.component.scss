@@ -1,0 +1,55 @@
+.page-container {
+    display: flex;
+
+    & div {
+        flex-direction: column;
+    }
+}
+
+.background-image {
+    width: 50%;
+
+    & p {
+        color: var(--green-1);
+        font-size: 5rem;
+        display: flex;
+    }
+}
+
+.patrick-logo {
+    position: absolute;
+}
+
+.form-container {
+    padding: 16px;
+    background-color: var(--green-3);
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.log-button {
+    height: 2rem;
+    border-radius: 1rem;
+    width: 100%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin: 12px 0;
+
+    & svg {
+        margin: 0 0.5rem;
+    }
+}
+
+#facebook-button {
+    background-color: #4063b3;
+}
+#google-button {
+    background-color: #2a6ff2;
+}
+#apple-button {
+    background-color: #000;
+}
