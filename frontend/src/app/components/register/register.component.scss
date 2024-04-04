@@ -11,16 +11,17 @@
 
 .image-side {
     width: 100%;
-    height: 100vh;
-    background-image: url('/assets/img/btc-2.jpg');
+    height: 100%;
+    background-image: url('/assets/img/btc-1.jpg');
     background-size: auto 100%;
     display: flex;
     justify-content: space-between;
     position: relative;
+    overflow-y: hidden;
 
     & .elements {
         display: flex;
-        height: 100%;
+        height: 100vh;
         margin-top: 40px;
         align-items: center;
     }
@@ -28,7 +29,7 @@
     & h3 {
         margin: 24px;
         color: var(--yellow);
-        font-size: 5rem;
+        font-size: 4rem;
         display: flex;
 
         -webkit-text-stroke: 2px var(--black);
@@ -55,10 +56,6 @@
     margin-bottom: 16px;
 }
 
-.patrick-logo {
-    position: absolute;
-}
-
 .form-side {
     padding: 16px;
     background-color: var(--green-3);
@@ -66,6 +63,24 @@
     align-items: center;
     width: 100%;
     max-width: 34rem;
+    overflow-y: scroll;
+}
+
+.patrick-logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: red;
+
+    & div {
+        position: relative;
+        background-color: blue;
+    }
+
+    & img {
+        position: absolute;
+        right: calc(50% - 64px);
+    }
 }
 
 .log-button {

@@ -9,4 +9,14 @@ import { RouterModule } from '@angular/router'
     templateUrl: './log-in.component.html',
     styleUrl: './log-in.component.scss'
 })
-export class LogInComponent {}
+export class LogInComponent {
+    continueWithFacebook() {
+        window.open('https://www.facebook.com', '_blank')
+    }
+    continueWithGoogle() {
+        window.open('https://www.google.com', '_blank')
+    }
+    continueWithApple() {
+        window.open('https://www.apple.com', '_blank')
+    }
+}

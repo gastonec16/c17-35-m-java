@@ -1,12 +1,16 @@
 <div class="page-container">
     <div class="form-side">
-        <img class="patrick-logo" src="assets/img/patrick-logo.png" alt="logo" />
+        <div class="patrick-logo">
+            <div>
+                <img src="assets/img/patrick-logo.png" alt="logo" />
+            </div>
+        </div>
 
         <form #form="ngForm" (submit)="registerUser($event)">
             <h2>Registrarse</h2>
 
             <!-- botones facebook, google y apple -->
-            <button class="log-button" id="facebook-button">
+            <button type="button" class="log-button" id="facebook-button" (click)="continueWithFacebook()">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"
@@ -23,7 +27,7 @@
                 </svg>
                 Continuar con Facebook
             </button>
-            <button class="log-button" id="google-button">
+            <button type="button" class="log-button" id="google-button" (click)="continueWithGoogle()">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"
@@ -51,7 +55,7 @@
                 </svg>
                 Continuar con Google
             </button>
-            <button class="log-button" id="apple-button">
+            <button type="button" class="log-button" id="apple-button" (click)="continueWithApple()">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"
@@ -125,7 +129,7 @@
                 <button class="submit-button">Registrarse</button>
             </div>
 
-            <p>¿Ya tienes una cuenta? <a>¡Inicia sesión!</a></p>
+            <p>¿Ya tienes una cuenta? <a routerLink="/log-in">¡Inicia sesión!</a></p>
         </form>
     </div>
 

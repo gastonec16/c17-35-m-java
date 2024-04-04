@@ -16,6 +16,16 @@ export class RegisterComponent {
     userService = inject(UserService)
     router = inject(Router)
 
+    continueWithFacebook() {
+        window.open('https://www.facebook.com', '_blank')
+    }
+    continueWithGoogle() {
+        window.open('https://www.google.com', '_blank')
+    }
+    continueWithApple() {
+        window.open('https://www.apple.com', '_blank')
+    }
+
     user = {
         name: '',
         lastName: '',
