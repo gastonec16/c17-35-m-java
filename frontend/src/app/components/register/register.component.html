@@ -2,7 +2,7 @@
     <div class="form-side">
         <img class="patrick-logo" src="assets/img/patrick-logo.png" alt="logo" />
 
-        <form action="">
+        <form #form="ngForm" (submit)="registerUser($event)">
             <h2>Registrarse</h2>
 
             <!-- botones facebook, google y apple -->

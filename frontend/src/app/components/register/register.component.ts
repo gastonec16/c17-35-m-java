@@ -72,6 +72,12 @@ export class RegisterComponent {
                     })
                 }
             })
+        } else if (!/[^ ]@[^ ]/.test(email)) {
+            Swal.fire({
+                title: 'Error',
+                text: 'El email no es válido',
+                icon: 'error'
+            })
         } else {
             Swal.fire({
                 title: 'Error',
