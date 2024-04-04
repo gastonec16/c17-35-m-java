@@ -7,6 +7,7 @@
     --black: #1e1e1e;
     --white: #ffffff;
     --yellow: #fcd535;
+    --red: #b91919;
 }
 
 * {
@@ -16,6 +17,14 @@
 
 body {
     background-color: var(--green-3);
+}
+
+.ng-valid:not(form).ng-touched {
+    border-left: 5px solid var(--green-4);
+}
+
+.ng-invalid:not(form).ng-touched {
+    border-left: 5px solid var(--red);
 }
 
 form {

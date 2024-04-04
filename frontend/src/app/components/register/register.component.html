@@ -72,19 +72,53 @@
 
             <!-- ------------------ -->
 
-            <label for="name">Nombre * <input name="name" id="name" type="text" required /> </label>
-            <label for="lastname"
-                >Apellido * <input name="lastname" id="lastname" type="text" required />
+            <label for="name"
+                >Nombre *
+                <input name="name" id="name" type="text" required [(ngModel)]="user.name" #name="ngModel" />
+            </label>
+            <label for="last-name"
+                >Apellido *
+                <input
+                    name="last-name"
+                    id="last-name"
+                    type="text"
+                    required
+                    [(ngModel)]="user.lastName"
+                    #lastName="ngModel"
+                />
             </label>
             <label for="email"
-                >Correo electrónico * <input name="email" id="email" type="email" required />
+                >Correo electrónico *
+                <input
+                    name="email"
+                    id="email"
+                    type="email"
+                    required
+                    [(ngModel)]="user.email"
+                    #email="ngModel"
+                />
             </label>
             <label for="password"
-                >Contraseña * <input name="password" id="password" type="password" required />
+                >Contraseña *
+                <input
+                    name="password"
+                    id="password"
+                    type="password"
+                    required
+                    [(ngModel)]="user.password"
+                    #password="ngModel"
+                />
             </label>
             <label for="confirm-password"
                 >Repetir contraseña *
-                <input name="confirm-password" id="confirm-password" type="password" required />
+                <input
+                    name="confirm-password"
+                    id="confirm-password"
+                    type="password"
+                    required
+                    [(ngModel)]="user.confirmPassword"
+                    #confirmPassword="ngModel"
+                />
             </label>
 
             <div class="button-container">
