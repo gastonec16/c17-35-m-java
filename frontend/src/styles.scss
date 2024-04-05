@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Germania+One&family=Gowun+Batang:wght@400;700&family=Rum+Raisin&display=swap');
+
 :root {
     --green-1: #d9df1d;
     --green-2: #9fda40;
@@ -11,7 +13,8 @@
 }
 
 * {
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Gowun Batang', sans-serif;
+    font-weight: 700;
 }
 
 body {
@@ -34,6 +37,9 @@ form {
     margin-bottom: 8px;
 
     & h2 {
+        font-family: 'Germania One', sans-serif;
+        color: var(--black);
+        font-size: 30pt;
         margin-top: 40px;
         text-align: center;
     }
@@ -100,6 +106,9 @@ textarea {
 }
 
 button {
+    font-family: Germania One, sans-serif;
+    letter-spacing: 1pt;
+
     &:hover {
         cursor: pointer;
         filter: brightness(1.2);
