@@ -54,10 +54,10 @@
 }
 
 .logo-container {
-    background-color: var(--black);
+    background-color: var(--white);
     border-radius: 16px;
     margin-bottom: 16px;
-    cursor: pointer;
+    transition: filter 0.2s;
 
     &:hover {
         cursor: pointer;
@@ -68,7 +68,7 @@
     }
 
     & img {
-        filter: drop-shadow(0 0 3px #fff);
+        filter: drop-shadow(0 0 3px #000);
     }
 }
 
