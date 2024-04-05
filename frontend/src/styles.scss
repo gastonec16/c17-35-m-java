@@ -10,6 +10,7 @@
     --white: #ffffff;
     --yellow: #fcd535;
     --red: #b91919;
+    --shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -18,7 +19,7 @@
 }
 
 body {
-    background-color: var(--green-3);
+    background-color: var(--white);
     margin: 0;
 }
 
@@ -82,10 +83,27 @@ button {
     color: var(--white);
     background: linear-gradient(to right, var(--green-5), var(--green-3));
     white-space: nowrap;
-    border: 2px var(--green-5) solid;
+    border: 2px var(--white) solid;
     display: flex;
     align-items: center;
     font-size: large;
+    transition: filter 0.2s;
+    box-shadow: var(--shadow);
+    font-family: Germania One, sans-serif;
+    letter-spacing: 1pt;
+
+    &:hover {
+        cursor: pointer;
+        filter: brightness(1.2);
+    }
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 input,
@@ -101,23 +119,11 @@ textarea {
     display: flex;
     align-items: center;
     overflow-x: hidden;
+    box-shadow: var(--shadow);
 
     &:focus {
         outline: 2px var(--green-3) solid;
         background-color: #eff29e;
-    }
-}
-
-button {
-    font-family: Germania One, sans-serif;
-    letter-spacing: 1pt;
-
-    &:hover {
-        cursor: pointer;
-        filter: brightness(1.2);
-    }
-    &:active {
-        opacity: 0.8;
     }
 }
 

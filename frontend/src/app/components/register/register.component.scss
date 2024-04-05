@@ -32,6 +32,7 @@
         font-family: 'Germania One', sans-serif;
         font-size: 9vh;
         display: flex;
+        filter: drop-shadow(0 0 3px #fff);
 
         -webkit-text-stroke: 1.5px var(--black);
 
@@ -56,6 +57,19 @@
     background-color: var(--white);
     border-radius: 16px;
     margin-bottom: 16px;
+    cursor: pointer;
+
+    &:hover {
+        cursor: pointer;
+        filter: brightness(1.2);
+    }
+    &:active {
+        opacity: 0.8;
+    }
+
+    & img {
+        filter: drop-shadow(0 0 3px #fff);
+    }
 }
 
 .form-side {
@@ -84,8 +98,8 @@
 }
 
 .log-button {
+    all: unset;
     font-family: 'Gowun Batang', sans-serif;
-    letter-spacing: unset;
     height: 2rem;
     border-radius: 1rem;
     width: 100%;
@@ -95,6 +109,15 @@
     justify-content: center;
     color: #fff;
     margin: 12px 0;
+    box-shadow: var(--shadow);
+
+    &:hover {
+        cursor: pointer;
+        filter: brightness(1.2);
+    }
+    &:active {
+        opacity: 0.8;
+    }
 
     & svg {
         margin: 0 0.5rem;
