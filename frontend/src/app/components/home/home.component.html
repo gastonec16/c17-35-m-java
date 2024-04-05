@@ -6,33 +6,66 @@
 
 <h2>Te damos la bienvenida a</h2>
 
-<img class="img-1" src="assets/img/home-1.jpg" alt="home-1" />
-<img class="patrick-coins-logo" src="assets/img/logo.png" alt="logo" />
-<div class="text-1">
-    <p>
-        Somos una plataforma dedicada a brindarte las herramientas y el apoyo necesario para que puedas
-        adentrarte en el emocionante mundo de las inversiones en criptomonedas.
-    </p>
+<div class="container-1">
+    <img class="img-1" src="assets/img/home-1.jpg" alt="home-1" />
+    <img class="patrick-coins-logo" src="assets/img/logo.png" alt="logo" />
+    <div class="text-1">
+        <p>
+            Somos una plataforma dedicada a brindarte las herramientas y el apoyo necesario para que puedas
+            adentrarte en el emocionante mundo de las inversiones en criptomonedas.
+        </p>
+    </div>
 </div>
 
-<img class="img-2" src="assets/img/home-2.jpg" alt="home-1" />
-<div class="container">
-    <div>
+<div class="container-2">
+    <img class="img-2" src="assets/img/home-2.jpg" alt="home-1" />
+    <div class="title-2">
         <h2>Transparencia y Fiabilidad</h2>
+    </div>
+    <div class="text-2">
         <p>
             Conoce nuestra política de transparencia y cómo mantenemos a nuestros usuarios informados en todo
             momento sobre los cambios en el mercado y en nuestra plataforma.
         </p>
     </div>
 </div>
-<button>Comienza a invertir ahora</button>
+
+<div class="start-button-container">
+    <button type="button" (click)="start()">Comienza a invertir ahora</button>
+</div>
+
 <footer>
-    <div>
-        <div>
-            <p><span>Patrick </span><span>Coins</span></p>
-            <p>Simplificando el mundo de las criptomonedas para vos.</p>
+    <div class="columns-container">
+        <div class="left-column">
+            <p><span class="patrick">Patrick </span><span class="coins">Coins</span></p>
+            <p class="phrase">
+                Simplificando el mundo de<br />
+                las criptomonedas para vos.
+            </p>
         </div>
-        <div>Redes Sociales</div>
+        <div class="right-column">
+            <p class="title-text">Redes Sociales</p>
+            <div class="social-media">
+                <img
+                    class="img-2s"
+                    src="assets/img/facebook.png"
+                    alt="facebook"
+                    (click)="redirectToFacebook()"
+                />
+                <img
+                    class="img-2s"
+                    src="assets/img/youtube.png"
+                    alt="youtube"
+                    (click)="redirectToYoutube()"
+                />
+                <img
+                    class="img-2s"
+                    src="assets/img/instagram.png"
+                    alt="instagram"
+                    (click)="redirectToInstagram()"
+                />
+            </div>
+        </div>
     </div>
-    <p>PatrickCoins 2024 - Todos los derechos reservados</p>
+    <p class="rights">Patrick Coins 2024 - Todos los derechos reservados</p>
 </footer>
