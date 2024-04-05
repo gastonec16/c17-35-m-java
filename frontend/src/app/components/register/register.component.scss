@@ -60,7 +60,7 @@
 
 .form-side {
     padding: 16px;
-    background-color: var(--green-3);
+    background-color: var(--black);
     display: flex;
     align-items: center;
     width: 100%;
@@ -108,5 +108,5 @@
     background-color: #2a6ff2;
 }
 #apple-button {
-    background-color: #000;
+    background-color: var(--black);
 }

@@ -64,7 +64,7 @@
 
 .form-side {
     padding: 16px;
-    background-color: var(--green-3);
+    background-color: var(--black);
     display: flex;
     align-items: center;
     width: 100%;
@@ -88,8 +88,8 @@
 }
 
 .log-button {
+    all: unset;
     font-family: 'Gowun Batang', sans-serif;
-    letter-spacing: unset;
     height: 2rem;
     border-radius: 1rem;
     width: 100%;
@@ -112,5 +112,5 @@
     background-color: #2a6ff2;
 }
 #apple-button {
-    background-color: #000;
+    background-color: var(--black);
 }
