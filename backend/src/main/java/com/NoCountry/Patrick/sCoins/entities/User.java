@@ -1,7 +1,11 @@
 package com.NoCountry.Patrick.sCoins.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-//TO DO: AGREGAR ANOTACION PARA TABLA
+@Entity
 public class User {
 
+    @Id
+    private Long id;
 }
