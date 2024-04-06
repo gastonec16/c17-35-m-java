@@ -1,4 +1,4 @@
-package com.NoCountry.Patrick.sCoins.entities;
+package com.NoCountry.Patrickscoin.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

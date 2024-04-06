@@ -1,7 +1,7 @@
-package com.NoCountry.Patrick.sCoins.services;
+package com.NoCountry.Patrickscoin.services;
 
-import com.NoCountry.Patrick.sCoins.entities.User;
-import com.NoCountry.Patrick.sCoins.repositories.UserRepository;
+import com.NoCountry.Patrickscoin.entities.User;
+import com.NoCountry.Patrickscoin.repositories.UserRepository;
 
 public class RegisterService {
 

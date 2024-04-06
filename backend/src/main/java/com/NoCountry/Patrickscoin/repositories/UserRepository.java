@@ -1,8 +1,8 @@
-package com.NoCountry.Patrick.sCoins.repositories;
+package com.NoCountry.Patrickscoin.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.NoCountry.Patrick.sCoins.entities.User;
+import com.NoCountry.Patrickscoin.entities.User;
 
 
 
