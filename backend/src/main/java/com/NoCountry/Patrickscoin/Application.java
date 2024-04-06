@@ -1,4 +1,4 @@
-package com.NoCountry.Patrick.sCoins;
+package com.NoCountry.Patrickscoin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

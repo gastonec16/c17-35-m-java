@@ -1,4 +1,4 @@
-package com.NoCountry.Patrick.sCoins;
+package com.NoCountry.Patrickscoin;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
