@@ -22,7 +22,7 @@ public class User {
 
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
+    @Column
     private String lastname;
     @Column(nullable = false)
     private String email;

@@ -9,7 +9,11 @@ import { environment } from '../environment'
 export class UserService {
     http = inject(HttpClient)
 
+
     registerUser(user: RegisterUser) {
-        return this.http.post<any>(`${environment.apiBaseUrl}/users`, user)
+
+        console.log("test en servicio")
+
+        return this.http.post<any>(`${environment.apiBaseUrl}api/users`, user)
     }
 }
