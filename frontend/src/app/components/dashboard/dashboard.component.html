@@ -1,0 +1,39 @@
+<img class="patrick-logo" src="assets/img/patrick-logo.png" alt="logo" />
+<div class="header">
+    <button type="button" (click)="logOut()">Cerrar Sesión</button>
+</div>
+<div class="gradient-line"></div>
+
+<div class="account-container">
+    <div class="profile-container">
+        <img class="profile-picture" src="assets/img/user-icon.png" alt="profile-picture" />
+        <div class="user-name">{{ user.name + ' ' + user.lastName }}</div>
+        <div class="user-email">{{ user.email }}</div>
+    </div>
+
+    <div class="balance-container">
+        <h2>Monedas adquiridas</h2>
+
+        <div class="money-container">
+            <div class="ars">{{ user.ars + 'ARS' }}</div>
+            <div class="usd">{{ user.usd + 'USD' }}</div>
+        </div>
+
+        <div class="button-container">
+            <button type="button">Depositar</button>
+            <button type="button">Retirar</button>
+        </div>
+
+        <div class="crypto-container">
+            @for (item of user.crypto; track $index) {
+            <div class="crypto-element">
+                <img src="" />
+                <p class="crypto-name">{{ item.shortName + ' - ' + item.name }}</p>
+                <p class="crypto-quantity">{{ item.quantity }}</p>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
