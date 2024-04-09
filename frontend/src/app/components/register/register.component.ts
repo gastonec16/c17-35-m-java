@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core'
+import { Component, OnInit, inject } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { Router, RouterModule } from '@angular/router'
 import Swal from 'sweetalert2'
@@ -6,16 +6,28 @@ import { RegisterUser } from '../../interfaces/user'
 import { UserService } from '../../services/user.service'
 
 @Component({
+    
     selector: 'app-register',
     standalone: true,
     imports: [FormsModule, RouterModule],
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+
+
+//TODO PARA CONFIGURAR ENDPOINT Y SOLUCIONAR CORS
+
+
+export class RegisterComponent implements OnInit{
+    ngOnInit(): void {
+       
+    }
     userService = inject(UserService)
     router = inject(Router)
 
+    
+
+    
     continueWithFacebook() {
         window.open('https://www.facebook.com', '_blank')
     }
@@ -34,7 +46,9 @@ export class RegisterComponent {
         confirmPassword: ''
     }
 
+    
     registerUser(event: SubmitEvent) {
+        console.log("test")
         event.preventDefault()
         const form = event.target as HTMLFormElement
 
@@ -57,6 +71,8 @@ export class RegisterComponent {
                 email,
                 password
             }
+
+
             this.userService.registerUser(newUser).subscribe({
                 next: (data) => {
                     if (data.email) {
@@ -96,4 +112,5 @@ export class RegisterComponent {
             })
         }
     }
+    
 }
