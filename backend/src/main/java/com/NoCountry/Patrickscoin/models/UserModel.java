@@ -12,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 
 public class UserModel {
     private String name;
-    private String lastname;
+    private String lastName;
     private String email;
     private String password;
 

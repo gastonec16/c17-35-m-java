@@ -1,0 +1,159 @@
+.patrick-logo {
+    position: absolute;
+    top: 16px;
+    left: 32px;
+    transition: filter 0.2s;
+
+    &:hover {
+        cursor: pointer;
+        filter: brightness(1.2);
+    }
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    height: 96px;
+    background-color: var(--black);
+    justify-content: end;
+    align-items: center;
+
+    & button {
+        margin: 0 32px;
+    }
+}
+
+.gradient-line {
+    display: flex;
+    width: 100%;
+    height: 8px;
+    margin-top: 4px;
+    background: linear-gradient(to right, var(--green-1), var(--green-5));
+}
+
+.account-container {
+    margin: 24px 32px;
+    border-radius: 16px;
+    background-color: var(--green-2);
+    box-shadow: var(--shadow);
+    border: 2px var(--black) solid;
+    display: flex;
+
+    & .profile-container {
+        margin: 16px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        & .user-name,
+        .user-email {
+            border-radius: 1rem;
+            background-color: var(--green-5);
+            color: var(--white);
+            padding: 4px 12px;
+            text-align: center;
+            max-width: 10rem;
+            overflow-x: hidden;
+            margin: 16px 0;
+        }
+
+        .user-email {
+            font-size: smaller;
+        }
+
+        & .profile-picture {
+            border-radius: 64px;
+            height: 128px;
+            width: 128px;
+        }
+    }
+
+    & .balance-container {
+        margin: 16px;
+        display: flex;
+        width: 100%;
+
+        & .money-container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            & h2 {
+                text-align: center;
+                font-family: Germania One, sans-serif;
+                font-size: 28pt;
+                color: var(--black);
+                margin: 16px 0;
+                white-space: nowrap;
+            }
+
+            .money {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: 32px;
+
+                & .ars,
+                & .usd {
+                    font-family: Germania One, sans-serif;
+                    font-size: 20pt;
+                    border-radius: 1rem;
+                    border: 2px var(--black) solid;
+                    background-image: linear-gradient(to bottom, var(--green-1), var(--green-4));
+                    color: var(--black);
+                    padding: 4px 12px;
+                    text-align: center;
+                    max-width: 10rem;
+                    overflow-x: hidden;
+                    margin: 8px;
+                    white-space: nowrap;
+                }
+            }
+
+            & button {
+                margin-bottom: 16px;
+            }
+        }
+
+        & .crypto-container {
+            max-height: 17rem;
+            overflow-y: scroll;
+            margin: 8px 32px;
+            width: 100%;
+        }
+
+        & .crypto-table {
+            width: 100%;
+
+            & th {
+                font-family: Germania One, sans-serif;
+                font-size: 20pt;
+            }
+
+            & .crypto-element {
+                height: 40px;
+                background-color: var(--white);
+                color: var(--black);
+                vertical-align: middle;
+
+                & .crypto-name {
+                    display: flex;
+                    height: 40px;
+                    align-items: center;
+
+                    & img {
+                        height: 32px;
+                        width: 32px;
+                    }
+                }
+
+                & img {
+                    margin: 0 8px;
+                }
+            }
+        }
+    }
+}
