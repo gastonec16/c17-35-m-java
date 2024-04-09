@@ -16,11 +16,11 @@ Una vez que tenemos la base de datos corriendo ejecutamos el siguiente comando e
 
 ``` java
 cd c17-35-m-java/backend
-# mvn spring-boot:run
+mvn spring-boot:run
 ```
 
 O ejecutamos en el directorio de carpetas de vscode con click derecho `run java` en el `Application.java`.
-![run spring](backend\src\main\resources\readme\run-spring.webp "run spring")       
+![run spring](src/main/resources/readme/run-spring.webp "run spring")       
 
 Outpu por consola esperado, por defecto se levantara en el puerto `8080`.
 ``` java
