@@ -17,7 +17,7 @@ public class UserMapper {
             .build();
     }
 
-    public static UserDto entityToUser(User user){
+    public static UserDto entityToDto(User user){
         return UserDto.builder()
             .name(user.getName())
             .lastname(user.getEmail())
