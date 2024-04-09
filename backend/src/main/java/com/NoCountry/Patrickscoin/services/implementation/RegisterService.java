@@ -20,7 +20,7 @@ public class RegisterService  implements IRegisterService{
         User userEntitie = new User();
         
         userEntitie.setName(user.getName());
-        userEntitie.setLastname(user.getLastname());
+        userEntitie.setLastname(user.getLastName());
         userEntitie.setPassword(user.getPassword());
         userEntitie.setEmail(user.getEmail());
 
