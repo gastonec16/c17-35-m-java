@@ -1,18 +1,22 @@
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { FooterComponent } from '../footer/footer.component'
+import { Router, RouterModule } from '@angular/router'
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [FooterComponent],
+    imports: [FooterComponent, RouterModule],
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+    router = inject(Router)
+
     user = {
+        id: 34,
         name: 'David',
         lastName: 'Reyes',
-        email: 'davidreyes@hotmail.com',
+        email: 'davidreyes@hotmail.comaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
         ars: 95123,
         usd: 215,
         crypto: [
@@ -23,8 +27,11 @@ export class DashboardComponent {
             { id: 5, name: 'Solana', shortName: 'SOL', quantity: 2.6 },
             { id: 6, name: 'Ripple', shortName: 'XRP', quantity: 3.6 },
             { id: 7, name: 'Dogecoin', shortName: 'DOGE', quantity: 666 }
-        ]
+        ],
+        avatar: 0
     }
 
-    logOut() {}
+    logOut() {
+        this.router.navigate(['/'])
+    }
 }

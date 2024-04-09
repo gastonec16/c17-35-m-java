@@ -1,4 +1,4 @@
-<img class="patrick-logo" src="assets/img/patrick-logo.png" alt="logo" />
+<img class="patrick-logo" src="assets/img/patrick-logo.png" alt="logo" routerLink="/" />
 <div class="header">
     <button type="button" (click)="logOut()">Cerrar Sesión</button>
 </div>
@@ -6,32 +6,51 @@
 
 <div class="account-container">
     <div class="profile-container">
-        <img class="profile-picture" src="assets/img/user-icon.png" alt="profile-picture" />
         <div class="user-name">{{ user.name + ' ' + user.lastName }}</div>
+        <img class="profile-picture" src="assets/img/user-icon.png" alt="profile-picture" />
         <div class="user-email">{{ user.email }}</div>
     </div>
 
     <div class="balance-container">
-        <h2>Monedas adquiridas</h2>
-
         <div class="money-container">
-            <div class="ars">{{ user.ars + 'ARS' }}</div>
-            <div class="usd">{{ user.usd + 'USD' }}</div>
-        </div>
+            <h2>Monedas adquiridas</h2>
 
-        <div class="button-container">
+            <div class="money">
+                <div class="ars">{{ user.ars + ' ARS' }}</div>
+                <div class="usd">{{ user.usd + ' USD' }}</div>
+            </div>
+
             <button type="button">Depositar</button>
             <button type="button">Retirar</button>
         </div>
 
         <div class="crypto-container">
-            @for (item of user.crypto; track $index) {
-            <div class="crypto-element">
-                <img src="" />
-                <p class="crypto-name">{{ item.shortName + ' - ' + item.name }}</p>
-                <p class="crypto-quantity">{{ item.quantity }}</p>
-            </div>
-            }
+            <table class="crypto-table">
+                <thead>
+                    <tr>
+                        <th>Criptomoneda</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of user.crypto; track $index) {
+                    <tr class="crypto-element">
+                        <td>
+                            <div class="crypto-name">
+                                <img
+                                    src="{{
+                                        'assets/img/crypto-icons/' + item.shortName.toLowerCase() + '.png'
+                                    }}"
+                                />
+                                <p>{{ item.shortName + ' - ' + item.name }}</p>
+                            </div>
+                        </td>
+                        <td>{{ item.quantity }}</td>
+                    </tr>
+
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
