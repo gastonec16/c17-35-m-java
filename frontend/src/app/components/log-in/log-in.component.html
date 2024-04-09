@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <form action="">
+        <form #form="ngForm" (submit)="logIn($event)">
             <h2>Iniciar Sesión</h2>
 
             <!-- botones facebook, google y apple -->

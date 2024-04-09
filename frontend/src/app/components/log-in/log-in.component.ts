@@ -1,6 +1,6 @@
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { RouterModule } from '@angular/router'
+import { Router, RouterModule } from '@angular/router'
 
 @Component({
     selector: 'app-log-in',
@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router'
     styleUrl: './log-in.component.scss'
 })
 export class LogInComponent {
+    router = inject(Router)
+
     continueWithFacebook() {
         window.open('https://www.facebook.com', '_blank')
     }
@@ -18,5 +20,9 @@ export class LogInComponent {
     }
     continueWithApple() {
         window.open('https://www.apple.com', '_blank')
+    }
+
+    logIn(event: SubmitEvent) {
+        this.router.navigate(['/dashboard'])
     }
 }
