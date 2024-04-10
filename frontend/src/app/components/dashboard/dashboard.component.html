@@ -33,7 +33,40 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (item of user.crypto; track $index) { @if (item.quantity>0) {
+                    @for (item of user.crypto; track $index) { @if (item.quantity > 0) {
+                    <tr class="crypto-element">
+                        <td>
+                            <div class="crypto-name">
+                                <img
+                                    src="{{
+                                        'assets/img/crypto-icons/' +
+                                            item.coin.shortName.toLowerCase() +
+                                            '.png'
+                                    }}"
+                                />
+                                <p>{{ item.coin.shortName + ' - ' + item.coin.name }}</p>
+                            </div>
+                        </td>
+                        <td>{{ item.quantity }}</td>
+                    </tr>
+                    } }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="bottom-container">
+        <div class="all-crypto-container">
+            <table class="all-crypto-table">
+                <thead>
+                    <tr>
+                        <th>Criptomoneda</th>
+                        <th>USD</th>
+                        <th>ARS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of coinList; track $index) {
                     <tr class="crypto-element">
                         <td>
                             <div class="crypto-name">
@@ -45,13 +78,13 @@
                                 <p>{{ item.shortName + ' - ' + item.name }}</p>
                             </div>
                         </td>
-                        <td>{{ item.quantity }}</td>
+                        <td>1234</td>
+                        <td>5678</td>
                     </tr>
-                    } }
+                    }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
 <app-footer></app-footer>
