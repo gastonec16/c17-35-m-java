@@ -28,4 +28,10 @@ public class UserService  implements IUserService{
         User user = userRepository.findById(id).orElseThrow(()->{ throw new UserException("Usuario no encontrado");});
         return UserMapper.entityToDto(user);
     }
+
+    @Override
+    public User loginUser(UserDto userDto) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'loginUser'");
+    }
 }

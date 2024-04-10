@@ -31,4 +31,9 @@ public class UserController {
     public ResponseEntity<?> getUserById(@PathVariable Long id) throws Exception{
         return ResponseEntity.ok().body(userService.findById(id));
     }
+
+    @GetMapping("/login/{password}")
+    public ResponseEntity<User> getUserByPassword(){
+        return null;
+    }
 }
