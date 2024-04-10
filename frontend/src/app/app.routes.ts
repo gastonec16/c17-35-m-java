@@ -18,5 +18,14 @@ export const routes: Routes = [
         path: 'dashboard',
         loadComponent: () =>
             import('./components/dashboard/dashboard.component').then((c) => c.DashboardComponent)
+    },
+    {
+        path: 'deposit',
+        loadComponent: () => import('./components/deposit/deposit.component').then((c) => c.DepositComponent)
+    },
+    {
+        path: 'withdraw',
+        loadComponent: () =>
+            import('./components/withdraw/withdraw.component').then((c) => c.WithdrawComponent)
     }
 ]
