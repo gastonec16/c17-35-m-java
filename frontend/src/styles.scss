@@ -25,8 +25,9 @@ body {
 
 .content {
     display: flex;
-    justify-content: center;
-    margin: 0 32px;
+    align-items: center;
+    margin-top: 32px;
+    flex-direction: column;
 }
 
 .ng-invalid:not(form).ng-touched {

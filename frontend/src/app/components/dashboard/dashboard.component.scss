@@ -35,9 +35,7 @@
 }
 
 .account-container {
-    margin: 24px 0;
-    padding: 24px 32px;
-    gap: 24px;
+    margin-top: 24px;
     border-radius: 16px;
     background-color: var(--green-2);
     box-shadow: var(--shadow);
@@ -52,6 +50,7 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+        margin: 24px;
 
         & .user-name,
         .user-email {
@@ -80,6 +79,7 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+        margin: 24px;
 
         & h2 {
             text-align: center;
@@ -123,6 +123,8 @@
         overflow-y: auto;
         width: 100%;
         min-width: 20rem;
+        color: var(--black);
+        margin: 24px;
     }
 
     & .crypto-table {
@@ -131,6 +133,7 @@
         & th {
             font-family: Germania One, sans-serif;
             font-size: 20pt;
+            color: var(--black);
         }
 
         & .crypto-element {
@@ -138,6 +141,60 @@
             background-color: var(--white);
             color: var(--black);
             vertical-align: middle;
+
+            & .crypto-name {
+                display: flex;
+                height: 40px;
+                align-items: center;
+
+                & img {
+                    height: 32px;
+                    width: 32px;
+                }
+            }
+
+            & img {
+                margin: 0 8px;
+            }
+        }
+    }
+}
+
+.bottom-container {
+    width: 100%;
+    max-width: 1280px;
+}
+
+.all-crypto-container {
+    max-height: 17rem;
+    overflow-y: auto;
+    width: 100%;
+    min-width: 20rem;
+    background-color: var(--black);
+    margin-top: 32px;
+
+    color: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 2px var(--black) solid;
+    display: flex;
+
+    & .all-crypto-table {
+        width: 100%;
+
+        & th {
+            font-family: Germania One, sans-serif;
+            font-size: 20pt;
+            color: var(--white);
+            border: 1px solid var(--white);
+        }
+
+        & td {
+            height: 40px;
+            background-color: var(--black);
+            color: var(--white);
+            vertical-align: middle;
+            border: 1px solid var(--white);
 
             & .crypto-name {
                 display: flex;
