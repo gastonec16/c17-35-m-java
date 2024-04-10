@@ -4,14 +4,14 @@
 </div>
 <div class="gradient-line"></div>
 
-<div class="account-container">
-    <div class="profile-container">
-        <div class="user-name">{{ user.name + ' ' + user.lastName }}</div>
-        <img class="profile-picture" src="assets/img/user-icon.png" alt="profile-picture" />
-        <div class="user-email">{{ user.email }}</div>
-    </div>
+<div class="content">
+    <div class="account-container">
+        <div class="profile-container">
+            <div class="user-name">{{ user.name + ' ' + user.lastName }}</div>
+            <img class="profile-picture" src="assets/img/user-icon.png" alt="profile-picture" />
+            <div class="user-email">{{ user.email }}</div>
+        </div>
 
-    <div class="balance-container">
         <div class="money-container">
             <h2>Monedas adquiridas</h2>
 
@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (item of user.crypto; track $index) {
+                    @for (item of user.crypto; track $index) { @if (item.quantity>0) {
                     <tr class="crypto-element">
                         <td>
                             <div class="crypto-name">
@@ -47,8 +47,7 @@
                         </td>
                         <td>{{ item.quantity }}</td>
                     </tr>
-
-                    }
+                    } }
                 </tbody>
             </table>
         </div>

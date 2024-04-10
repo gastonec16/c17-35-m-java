@@ -23,6 +23,12 @@ body {
     margin: 0;
 }
 
+.content {
+    display: flex;
+    justify-content: center;
+    margin: 0 32px;
+}
+
 .ng-invalid:not(form).ng-touched {
     border: 2px solid var(--red);
 }

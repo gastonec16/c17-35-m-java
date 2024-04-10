@@ -35,15 +35,20 @@
 }
 
 .account-container {
-    margin: 24px 32px;
+    margin: 24px 0;
+    padding: 24px 32px;
+    gap: 24px;
     border-radius: 16px;
     background-color: var(--green-2);
     box-shadow: var(--shadow);
     border: 2px var(--black) solid;
     display: flex;
+    align-items: center;
+    max-width: 1280px;
+    width: 100%;
+    overflow-x: auto;
 
     & .profile-container {
-        margin: 16px;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -71,88 +76,82 @@
         }
     }
 
-    & .balance-container {
-        margin: 16px;
+    & .money-container {
         display: flex;
-        width: 100%;
+        align-items: center;
+        flex-direction: column;
 
-        & .money-container {
+        & h2 {
+            text-align: center;
+            font-family: Germania One, sans-serif;
+            font-size: 24pt;
+            color: var(--black);
+            margin: 16px 0;
+            white-space: nowrap;
+        }
+
+        .money {
             display: flex;
-            align-items: center;
-            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 32px;
 
-            & h2 {
-                text-align: center;
+            & .ars,
+            & .usd {
                 font-family: Germania One, sans-serif;
-                font-size: 28pt;
+                font-size: 18pt;
+                border-radius: 1rem;
+                border: 2px var(--black) solid;
+                background-image: linear-gradient(to bottom, var(--green-1), var(--green-4));
                 color: var(--black);
-                margin: 16px 0;
+                padding: 4px 12px;
+                text-align: center;
+                max-width: 10rem;
+                overflow-x: hidden;
+                margin: 8px;
                 white-space: nowrap;
             }
+        }
 
-            .money {
+        & button {
+            margin-bottom: 16px;
+        }
+    }
+
+    & .crypto-container {
+        max-height: 17rem;
+        overflow-y: scroll;
+        width: 100%;
+        min-width: 20rem;
+    }
+
+    & .crypto-table {
+        width: 100%;
+
+        & th {
+            font-family: Germania One, sans-serif;
+            font-size: 20pt;
+        }
+
+        & .crypto-element {
+            height: 40px;
+            background-color: var(--white);
+            color: var(--black);
+            vertical-align: middle;
+
+            & .crypto-name {
                 display: flex;
-                justify-content: space-between;
-                width: 100%;
-                margin-bottom: 32px;
-
-                & .ars,
-                & .usd {
-                    font-family: Germania One, sans-serif;
-                    font-size: 20pt;
-                    border-radius: 1rem;
-                    border: 2px var(--black) solid;
-                    background-image: linear-gradient(to bottom, var(--green-1), var(--green-4));
-                    color: var(--black);
-                    padding: 4px 12px;
-                    text-align: center;
-                    max-width: 10rem;
-                    overflow-x: hidden;
-                    margin: 8px;
-                    white-space: nowrap;
-                }
-            }
-
-            & button {
-                margin-bottom: 16px;
-            }
-        }
-
-        & .crypto-container {
-            max-height: 17rem;
-            overflow-y: scroll;
-            margin: 8px 32px;
-            width: 100%;
-        }
-
-        & .crypto-table {
-            width: 100%;
-
-            & th {
-                font-family: Germania One, sans-serif;
-                font-size: 20pt;
-            }
-
-            & .crypto-element {
                 height: 40px;
-                background-color: var(--white);
-                color: var(--black);
-                vertical-align: middle;
-
-                & .crypto-name {
-                    display: flex;
-                    height: 40px;
-                    align-items: center;
-
-                    & img {
-                        height: 32px;
-                        width: 32px;
-                    }
-                }
+                align-items: center;
 
                 & img {
-                    margin: 0 8px;
+                    height: 32px;
+                    width: 32px;
                 }
+            }
+
+            & img {
+                margin: 0 8px;
             }
         }
     }
