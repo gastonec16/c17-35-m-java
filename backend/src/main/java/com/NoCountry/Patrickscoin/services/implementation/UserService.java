@@ -38,4 +38,8 @@ public class UserService  implements IUserService{
     public List<String> findAllEmail(){
         return findAll().stream().map(User::getEmail).toList();
     }
+    public User loginUser(UserDto userDto) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'loginUser'");
+    }
 }
