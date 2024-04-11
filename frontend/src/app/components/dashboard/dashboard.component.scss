@@ -136,7 +136,7 @@
             color: var(--black);
         }
 
-        & .crypto-element {
+        & td {
             height: 40px;
             background-color: var(--white);
             color: var(--black);
@@ -172,12 +172,44 @@
     min-width: 20rem;
     background-color: var(--black);
     margin-top: 32px;
-
     color: var(--white);
     border-radius: 16px;
     box-shadow: var(--shadow);
     border: 2px var(--black) solid;
     display: flex;
+    flex-direction: column;
+
+    & .all-crypto-title {
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        margin: 0 24px;
+        justify-content: space-between;
+
+        & h2 {
+            font-family: Germania One, sans-serif;
+            font-size: 24pt;
+            white-space: nowrap;
+        }
+
+        & svg {
+            height: 32px;
+            width: 32px;
+
+            &:hover {
+                cursor: pointer;
+                filter: brightness(1.2);
+            }
+            &:active {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    & .table-container {
+        margin: 0 24px;
+        overflow-y: auto;
+    }
 
     & .all-crypto-table {
         width: 100%;
