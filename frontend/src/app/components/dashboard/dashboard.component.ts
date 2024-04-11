@@ -105,9 +105,7 @@ export class DashboardComponent {
                                 next: (data) => {
                                     if (data.ask) {
                                         this.coinList[item.coin.id - 1].ars = data['bid']
-                                        this.coinList[item.coin.id - 1].usd = parseFloat(
-                                            (data['bid'] / this.usdArsPrice).toFixed(2)
-                                        )
+                                        this.coinList[item.coin.id - 1].usd = data['bid'] / this.usdArsPrice
                                     }
                                 }
                             })
