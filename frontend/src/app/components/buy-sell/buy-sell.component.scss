@@ -1,0 +1,24 @@
+.logo {
+    margin-top: 32px;
+    margin-left: 32px;
+    width: 268px;
+    height: 96;
+}
+
+.buy-sell-container {
+    width: 100%;
+    background-color: var(--black);
+    margin-left: 32px;
+    color: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 2px var(--black) solid;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
