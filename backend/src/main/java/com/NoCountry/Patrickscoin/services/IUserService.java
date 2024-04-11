@@ -10,8 +10,6 @@ public interface IUserService {
     public UserDto findById(Long id) throws Exception;
     public List<User> findAll();
     public List<String> findAllEmail();
-
-    
     //TODO INGRESO
     // public User loginUser(UserDto userDto);
     public UserDto findByEmail(String email) throws Exception;

@@ -41,11 +41,6 @@ public class UserService implements IUserService {
         return findAll().stream().map(User::getEmail).toList();
     }
 
-    public User loginUser(UserDto userDto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'loginUser'");
-    }
-    
     public UserDto findByEmail(String email) throws Exception {
         System.err.println("Buscando usuario por email: " + email);
         User user = userRepository.findByEmail(email);
@@ -57,5 +52,4 @@ public class UserService implements IUserService {
         
         return UserMapper.entityToDto(user);
     }
-
 }
