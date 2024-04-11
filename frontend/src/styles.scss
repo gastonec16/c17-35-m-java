@@ -10,6 +10,7 @@
     --white: #ffffff;
     --yellow: #fcd535;
     --red: #b91919;
+    --grey: #575757;
     --shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -21,6 +22,13 @@
 body {
     background-color: var(--white);
     margin: 0;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    margin: 32px;
+    flex-direction: column;
 }
 
 .ng-invalid:not(form).ng-touched {
