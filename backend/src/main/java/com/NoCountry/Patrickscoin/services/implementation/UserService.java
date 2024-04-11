@@ -35,7 +35,7 @@ public class UserService  implements IUserService{
     }
 
     @Override
-    public User loginUser(UserDto userDto) {
+    public User findByEmail(String email) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'loginUser'");
     }

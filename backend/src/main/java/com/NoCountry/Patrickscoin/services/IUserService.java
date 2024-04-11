@@ -9,5 +9,6 @@ public interface IUserService {
 
 
     //TODO INGRESO
-    public User loginUser(UserDto userDto);
+    // public User loginUser(UserDto userDto);
+    public UserDto findByEmail(String email) throws Exception;
 }
