@@ -8,14 +8,12 @@ export class CryptoService {
     http = inject(HttpClient)
 
     getCryptoPrices(crypto: string, fiat: string) {
-        return this.http.get<any>(`https://criptoya.com/api/lemoncash/${crypto}/${fiat}/0.1`)
+        return this.http.get<any>(`https://criptoya.com/api/lemoncash/${crypto}/${fiat}`)
     }
 
     getUsdtPrice() {
-        return this.http.get<any>(`https://criptoya.com/api/binancep2p/usdt/usd/0.1`)
+        return this.http.get<any>(`https://criptoya.com/api/binancep2p/usdt/usd`)
     }
-
-    getAllCryptoPrices() {}
 }
 
 // Endpoint: /api/lemoncash/{coin}/{fiat}

@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core'
 import { FooterComponent } from '../footer/footer.component'
 import { Router, RouterModule } from '@angular/router'
 import { CryptoService } from '../../services/crypto.service'
-import { CryptoYaOutput } from '../../interfaces/crypto'
 import Swal from 'sweetalert2'
 
 @Component({
@@ -30,28 +29,30 @@ export class DashboardComponent {
             { coin: { id: 3, name: 'Bitcoin Cash', shortName: 'BCH' }, quantity: 0 },
             { coin: { id: 4, name: 'Bitcoin', shortName: 'BTC' }, quantity: 0.26 },
             { coin: { id: 5, name: 'Dai', shortName: 'DAI' }, quantity: 0 },
-            { coin: { id: 6, name: 'Dogecoin', shortName: 'DOGE' }, quantity: 666 },
-            { coin: { id: 7, name: 'Polkadot', shortName: 'DOT' }, quantity: 0 },
+            { coin: { id: 6, name: 'Dogecoin', shortName: 'DOGE' }, quantity: 0 },
+            { coin: { id: 7, name: 'Polkadot', shortName: 'DOT' }, quantity: 0.67 },
             { coin: { id: 8, name: 'Ethereum', shortName: 'ETH' }, quantity: 0.65 },
             { coin: { id: 9, name: 'ChainLink', shortName: 'LINK' }, quantity: 0 },
             { coin: { id: 10, name: 'Litecoin', shortName: 'LTC' }, quantity: 0 },
-            { coin: { id: 11, name: 'Decentraland', shortName: 'MANA' }, quantity: 0 },
-            { coin: { id: 12, name: 'Polygon', shortName: 'MATIC' }, quantity: 0 },
-            { coin: { id: 13, name: 'SHIBA INU', shortName: 'SHIB' }, quantity: 245 },
+            { coin: { id: 11, name: 'Decentraland', shortName: 'MANA' }, quantity: 21 },
+            { coin: { id: 12, name: 'Polygon', shortName: 'MATIC' }, quantity: 42.5 },
+            { coin: { id: 13, name: 'SHIBA INU', shortName: 'SHIB' }, quantity: 0 },
             { coin: { id: 14, name: 'Solana', shortName: 'SOL' }, quantity: 2.6 },
             { coin: { id: 15, name: 'TRON', shortName: 'TRX' }, quantity: 0 },
             { coin: { id: 16, name: 'USD Coin', shortName: 'USDC' }, quantity: 0 },
             { coin: { id: 17, name: 'TetherUS', shortName: 'USDT' }, quantity: 125 },
-            { coin: { id: 18, name: 'Ripple', shortName: 'XRP' }, quantity: 3.6 }
+            { coin: { id: 18, name: 'Ripple', shortName: 'XRP' }, quantity: 0 }
         ],
         avatar: 0
+    }
+
+    ngOnInit() {
+        this.refresh()
     }
 
     logOut() {
         this.router.navigate(['/'])
     }
-
-    crypto: CryptoYaOutput[] = []
 
     coinList = [
         { coin: { id: 1, name: '', shortName: 'AAVE' }, usd: 0, ars: 0 },
@@ -81,40 +82,39 @@ export class DashboardComponent {
     // MANA , MATIC , PAXG , SAND , SLP , SOL , UNI , USDC , USDT , XLM
 
     refresh() {
-        this.getUsdtUsdPrice()
         this.getCryptoPrices()
     }
 
     usdArsPrice = 0
 
-    async getUsdtUsdPrice() {
-        let ask = 1
-        this.cryptoService.getUsdtPrice().subscribe((data) => {
-            if (data.ask) {
-                ask = data.ask
-            }
-        })
-        return ask
-    }
+    getCryptoPrices() {
+        let usdtUsdPrice = 1
 
-    async getCryptoPrices() {
-        const usdtUsdPrice: any = await this.getUsdtUsdPrice()
-
-        await this.cryptoService.getCryptoPrices('usdt', 'ars').subscribe({
+        this.cryptoService.getUsdtPrice().subscribe({
             next: (data) => {
-                this.usdArsPrice = usdtUsdPrice * data.ask
-            }
-        })
-
-        this.coinList.forEach((item) => {
-            this.cryptoService.getCryptoPrices(item.coin.shortName, 'ars').subscribe({
-                next: (data) => {
-                    if (data.ask) {
-                        this.coinList[item.coin.id - 1].ars = data['bid']
-                        this.coinList[item.coin.id - 1].usd = data['bid'] / this.usdArsPrice
-                    }
+                if (data.ask) {
+                    usdtUsdPrice = data.ask
                 }
-            })
+
+                this.cryptoService.getCryptoPrices('usdt', 'ars').subscribe({
+                    next: (data) => {
+                        this.usdArsPrice = usdtUsdPrice * data.ask
+
+                        this.coinList.forEach((item) => {
+                            this.cryptoService.getCryptoPrices(item.coin.shortName, 'ars').subscribe({
+                                next: (data) => {
+                                    if (data.ask) {
+                                        this.coinList[item.coin.id - 1].ars = data['bid']
+                                        this.coinList[item.coin.id - 1].usd = parseFloat(
+                                            (data['bid'] / this.usdArsPrice).toFixed(2)
+                                        )
+                                    }
+                                }
+                            })
+                        })
+                    }
+                })
+            }
         })
     }
 }
