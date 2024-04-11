@@ -168,7 +168,7 @@
 
 .all-crypto-container {
     width: 100%;
-    height: 37rem;
+    height: 37.5rem;
     min-width: 20rem;
     background-color: var(--black);
     margin-top: 32px;
@@ -207,7 +207,7 @@
     }
 
     & .table-container {
-        margin: 0 24px;
+        margin: 0 24px 24px 24px;
         overflow-y: auto;
     }
 
@@ -250,7 +250,7 @@
 
 .buy-sell-container {
     width: 100%;
-    height: 34rem;
+    height: 34.5rem;
     background-color: var(--black);
     margin-top: 32px;
     margin-left: 32px;
@@ -274,11 +274,11 @@
     & .button-container {
         display: flex;
         justify-content: center;
-        margin: 32px 0;
+        margin: 24px 0;
     }
 
     & .button-buy,
-    .button-sell {
+    & .button-sell {
         background-image: url('/assets/img/golden-background.jpg');
         background-size: cover;
         background-repeat: no-repeat;
@@ -326,6 +326,13 @@
     & .operation-container {
         display: flex;
         justify-content: space-between;
+        background-color: var(--green-2);
+        border-radius: 1rem;
+
+        & input,
+        & select {
+            margin: 8px;
+        }
     }
 
     & .accept-button {
