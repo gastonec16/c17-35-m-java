@@ -32,6 +32,8 @@ public class UserValidator {
             contrains.put("lastName", "lastName no valido!");
         if (!passwordIsValid(userDto.getPassword()))
             contrains.put("password", "password no valido!");
+        if(!passwordCoincident(userDto))
+            contrains.put("repeatPassword", "password no coinciden!");
         return contrains.isEmpty();
     }
 
@@ -54,5 +56,8 @@ public class UserValidator {
     private static boolean passwordIsValid(String password) {
         return password.matches(VALID_PASSWORD)
                 && (password.length() <= MAX_PASSWORD && password.length() >= MIN_PASSWORD);
+    }
+    private static boolean passwordCoincident(UserDto userDto){
+        return userDto.getPassword().equals(userDto.getRepeatPassword());
     }
 }
