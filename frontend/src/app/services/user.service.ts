@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable, inject } from '@angular/core'
-import { RegisterUser } from '../interfaces/user'
+import { LogInCredentials, RegisterUser } from '../interfaces/user'
 import { environment } from '../environment'
 
 @Injectable({
@@ -9,11 +9,13 @@ import { environment } from '../environment'
 export class UserService {
     http = inject(HttpClient)
 
-
     registerUser(user: RegisterUser) {
+        console.log('test en servicio')
 
-        console.log("test en servicio")
+        return this.http.post<any>(`${environment.apiBaseUrl}/api/users`, user)
+    }
 
-        return this.http.post<any>(`${environment.apiBaseUrl}api/users`, user)
+    logIn(user: LogInCredentials) {
+        return this.http.post<any>(`${environment.apiBaseUrl}/api/users/log-in`, user)
     }
 }
