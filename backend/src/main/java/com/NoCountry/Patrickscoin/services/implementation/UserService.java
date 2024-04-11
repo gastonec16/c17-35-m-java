@@ -14,7 +14,7 @@ import com.NoCountry.Patrickscoin.services.IUserService;
 import com.NoCountry.Patrickscoin.utils.validator.UserValidator;
 
 @Service
-public class UserService  implements IUserService{
+public class UserService implements IUserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -32,7 +32,9 @@ public class UserService  implements IUserService{
 
     @Override
     public UserDto findById(Long id) throws Exception {
-        User user = userRepository.findById(id).orElseThrow(()->{ throw new UserException("Usuario no encontrado");});
+        User user = userRepository.findById(id).orElseThrow(() -> {
+            throw new UserException("Usuario no encontrado");
+        });
         return UserMapper.entityToDto(user);
     }
 
@@ -43,5 +45,17 @@ public class UserService  implements IUserService{
 
     public List<String> findAllEmail(){
         return findAll().stream().map(User::getEmail).toList();
+    }
+
+    public UserDto findByEmail(String email) throws Exception {
+        System.err.println("Buscando usuario por email: " + email);
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            System.out.println("No se encontró ningún usuario con el email: " + email);
+        } else {
+            System.err.println("Usuario encontrado: " + user.getName());
+        }
+        
+        return UserMapper.entityToDto(user);
     }
 }

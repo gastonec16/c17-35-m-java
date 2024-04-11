@@ -31,4 +31,11 @@ public class UserController {
     public ResponseEntity<?> getUserById(@PathVariable Long id) throws Exception{
         return ResponseEntity.ok().body(userService.findById(id));
     }
+
+    //FRONT api/users/log-in
+    @PostMapping("/users/log-in")
+    public ResponseEntity<?> getUserByEmail(@RequestBody UserDto user) throws Exception{
+        String email = user.getEmail();
+        return ResponseEntity.ok().body(userService.findByEmail(email));
+    }
 }
