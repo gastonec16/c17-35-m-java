@@ -1,4 +1,4 @@
-package com.NoCountry.Patrickscoin.exception;
+package com.NoCountry.Patrickscoin.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
