@@ -23,6 +23,7 @@ public class UserValidator {
     Map<String, String> contrains = new HashMap<>();
 
     public static boolean validateRegister(UserDto userDto) {
+        contrains.clear();
         if (!emailIsValid(userDto.getEmail()))
             contrains.put("email", "email no valido!");
         if (!nameIsValid(userDto.getName()))
