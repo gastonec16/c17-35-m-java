@@ -1,6 +1,7 @@
 package com.NoCountry.Patrickscoin.utils.validator;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.NoCountry.Patrickscoin.dto.UserDto;
@@ -22,9 +23,9 @@ public class UserValidator {
 
     Map<String, String> contrains = new HashMap<>();
 
-    public static boolean validateRegister(UserDto userDto) {
+    public static boolean validateRegister(UserDto userDto, List<String> emails) {
         contrains.clear();
-        if (!emailIsValid(userDto.getEmail()))
+        if (!emailIsValid(userDto.getEmail(), emails))
             contrains.put("email", "email no valido!");
         if (!nameIsValid(userDto.getName()))
             contrains.put("name", "name no valido!");
@@ -41,8 +42,8 @@ public class UserValidator {
         return contrains;
     }
 
-    private static boolean emailIsValid(String email) {
-        return email.matches(VALID_EMAIL) && email.length() <= MAX_EMAIL;
+    private static boolean emailIsValid(String email, List<String >emails) {
+        return !emails.contains(email) && email.matches(VALID_EMAIL) && email.length() <= MAX_EMAIL;
     }
 
     private static boolean nameIsValid(String name) {
