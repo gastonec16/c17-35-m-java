@@ -32,8 +32,10 @@ public class UserController {
         return ResponseEntity.ok().body(userService.findById(id));
     }
 
-    @GetMapping("/login/{password}")
-    public ResponseEntity<User> getUserByPassword(){
-        return null;
+    //FRONT api/users/log-in
+    @PostMapping("/users/log-in")
+    public ResponseEntity<?> getUserByEmail(@RequestBody UserDto user) throws Exception{
+        String email = user.getEmail();
+        return ResponseEntity.ok().body(userService.findByEmail(email));
     }
 }
