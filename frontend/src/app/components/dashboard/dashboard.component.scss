@@ -193,8 +193,10 @@
         }
 
         & svg {
+            margin-left: 16px;
             height: 32px;
             width: 32px;
+            color: var(--yellow);
 
             &:hover {
                 cursor: pointer;
@@ -248,7 +250,7 @@
     }
 }
 
-.buy-sell-container {
+.buy-sell-form {
     width: 100%;
     height: 34.5rem;
     background-color: var(--black);
@@ -262,12 +264,32 @@
     flex-direction: column;
     padding: 24px;
 
+    & input {
+        width: 100%;
+    }
+
     & .logo-container {
         width: 100%;
+        display: flex;
+        justify-content: center;
 
         & img {
-            width: 268px;
-            height: 96;
+            width: 201px;
+            height: 72;
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 1));
+        }
+    }
+
+    & .arrow-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 16px;
+
+        & svg {
+            height: 40px;
+            width: 40px;
+            color: var(--green-2);
         }
     }
 
@@ -282,7 +304,7 @@
         background-image: url('/assets/img/golden-background.jpg');
         background-size: cover;
         background-repeat: no-repeat;
-        height: 5rem;
+        height: 4rem;
         width: 12rem;
         border: none;
         color: var(--black);
@@ -335,7 +357,7 @@
         }
     }
 
-    & .accept-button {
+    & .accept-button-container {
         display: flex;
         justify-content: center;
         margin-top: 32px;
