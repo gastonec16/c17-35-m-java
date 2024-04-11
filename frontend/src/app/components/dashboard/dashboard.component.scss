@@ -163,12 +163,12 @@
 .bottom-container {
     width: 100%;
     max-width: 1280px;
+    display: flex;
 }
 
 .all-crypto-container {
-    max-height: 17rem;
-    overflow-y: auto;
     width: 100%;
+    height: 37rem;
     min-width: 20rem;
     background-color: var(--black);
     margin-top: 32px;
@@ -214,6 +214,8 @@
     & .all-crypto-table {
         width: 100%;
 
+        white-space: nowrap;
+
         & th {
             font-family: Germania One, sans-serif;
             font-size: 20pt;
@@ -243,5 +245,92 @@
                 margin: 0 8px;
             }
         }
+    }
+}
+
+.buy-sell-container {
+    width: 100%;
+    height: 34rem;
+    background-color: var(--black);
+    margin-top: 32px;
+    margin-left: 32px;
+    color: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 2px var(--black) solid;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+
+    & .logo-container {
+        width: 100%;
+
+        & img {
+            width: 268px;
+            height: 96;
+        }
+    }
+
+    & .button-container {
+        display: flex;
+        justify-content: center;
+        margin: 32px 0;
+    }
+
+    & .button-buy,
+    .button-sell {
+        background-image: url('/assets/img/golden-background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 5rem;
+        width: 12rem;
+        border: none;
+        color: var(--black);
+        box-shadow: var(--shadow);
+        display: flex;
+        justify-content: center;
+
+        &:hover {
+            cursor: unset;
+            filter: unset;
+        }
+    }
+
+    & .inactive-buy {
+        @extend .button-buy;
+        filter: grayscale(100%);
+        color: var(--grey);
+    }
+
+    & .inactive-sell {
+        @extend .button-sell;
+        filter: grayscale(100%);
+        color: var(--grey);
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(1.2);
+        }
+    }
+
+    & .button-buy {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    & .button-sell {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    & .operation-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    & .accept-button {
+        display: flex;
+        justify-content: center;
+        margin-top: 32px;
     }
 }

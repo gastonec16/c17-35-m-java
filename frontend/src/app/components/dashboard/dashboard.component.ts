@@ -1,14 +1,16 @@
-import { Component, inject, signal } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { FooterComponent } from '../footer/footer.component'
 import { Router, RouterModule } from '@angular/router'
 import { CryptoService } from '../../services/crypto.service'
 import { CryptoYaOutput } from '../../interfaces/crypto'
 import Swal from 'sweetalert2'
+import { CoinPricesComponent } from '../coin-prices/coin-prices.component'
+import { BuySellComponent } from '../buy-sell/buy-sell.component'
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [FooterComponent, RouterModule],
+    imports: [BuySellComponent, CoinPricesComponent, FooterComponent, RouterModule],
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss'
 })
@@ -55,11 +57,7 @@ export class DashboardComponent {
 
     // TODO: obtener del backend
     coinList = [
-        {
-            id: 1,
-            name: 'Cardano',
-            shortName: 'ADA'
-        },
+        { id: 1, name: 'Cardano', shortName: 'ADA' },
         { id: 2, name: 'Basic Attention Token', shortName: 'BAT' },
         { id: 3, name: 'Bitcoin Cash', shortName: 'BCH' },
         { id: 4, name: 'Bitcoin', shortName: 'BTC' },

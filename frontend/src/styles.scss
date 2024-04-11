@@ -10,6 +10,7 @@
     --white: #ffffff;
     --yellow: #fcd535;
     --red: #b91919;
+    --grey: #575757;
     --shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -26,7 +27,7 @@ body {
 .content {
     display: flex;
     align-items: center;
-    margin-top: 32px;
+    margin: 32px;
     flex-direction: column;
 }
 
