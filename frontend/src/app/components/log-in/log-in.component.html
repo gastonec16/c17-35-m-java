@@ -89,10 +89,26 @@
             <!-- ------------------ -->
 
             <label for="email"
-                >Correo electrónico * <input name="email" id="email" type="email" required />
+                >Correo electrónico *
+                <input
+                    name="email"
+                    id="email"
+                    type="text"
+                    required
+                    [(ngModel)]="user.email"
+                    #email="ngModel"
+                />
             </label>
             <label for="password"
-                >Contraseña * <input name="password" id="password" type="password" required />
+                >Contraseña *
+                <input
+                    name="password"
+                    id="password"
+                    type="password"
+                    required
+                    [(ngModel)]="user.password"
+                    #password="ngModel"
+                />
             </label>
 
             <div class="button-container">
