@@ -89,4 +89,12 @@ export class DashboardComponent {
             }
         })
     }
+
+
+    goToDeposit() {
+        this.router.navigate(['/deposit'])
+    }
+    goToWithdraw() {
+        this.router.navigate(['/withdraw'])
+    }
 }
