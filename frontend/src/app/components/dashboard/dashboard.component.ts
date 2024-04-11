@@ -4,13 +4,11 @@ import { Router, RouterModule } from '@angular/router'
 import { CryptoService } from '../../services/crypto.service'
 import { CryptoYaOutput } from '../../interfaces/crypto'
 import Swal from 'sweetalert2'
-import { CoinPricesComponent } from '../coin-prices/coin-prices.component'
-import { BuySellComponent } from '../buy-sell/buy-sell.component'
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [BuySellComponent, CoinPricesComponent, FooterComponent, RouterModule],
+    imports: [FooterComponent, RouterModule],
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss'
 })
