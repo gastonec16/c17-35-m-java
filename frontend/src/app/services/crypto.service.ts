@@ -8,16 +8,31 @@ export class CryptoService {
     http = inject(HttpClient)
 
     getCryptoPrices(crypto: string, fiat: string) {
-        return this.http.get<any>(`https://criptoya.com/api/bitsoalpha/${crypto}/${fiat}`)
+        return this.http.get<any>(`https://criptoya.com/api/lemoncash/${crypto}/${fiat}/0.1`)
     }
+
+    getUsdtPrice() {
+        return this.http.get<any>(`https://criptoya.com/api/binancep2p/usdt/usd/0.1`)
+    }
+
+    getAllCryptoPrices() {}
 }
 
-// Endpoint: /api/bitsoalpha/{coin}/{fiat}
+// Endpoint: /api/lemoncash/{coin}/{fiat}
 
-// coin: ADA , BAT , BCH , BTC , DAI , DOGE , DOT , ETH , LINK , LTC , MANA , MATIC , SHIB , SOL , TRX , USDC , USDT , XRP
-// fiat: BRL , MXN , USD , COP , ARS
+// coin: AAVE , ADA , ALGO , AVAX , AXS , BNB , BTC , DAI , DOT , ETH , FTM , LTC , MANA , MATIC , PAXG , SAND , SLP , SOL , UNI , USDC , USDT , XLM
 
-// Ejemplo: https://criptoya.com/api/bitsoalpha/ada/brl/0.1
+// fiat: ARS , BRL
+
+// Ejemplo: https://criptoya.com/api/lemoncash/aave/ars/0.1
+
+// Endpoint: /api/binancep2p/{coin}/{fiat}
+
+// coin: ADA , BNB , BTC , DAI , DOGE , ETH , MATIC , SLP , USDT , XRP
+
+// fiat: UYU , ARS , COP , PEN , VES , BOB , DOP , PYG , CLP , MXN , BRL , USD
+
+// Ejemplo: https://criptoya.com/api/binancep2p/ada/uyu/0.1
 
 // Salida:
 
