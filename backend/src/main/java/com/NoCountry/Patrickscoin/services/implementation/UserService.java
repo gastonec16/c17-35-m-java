@@ -9,6 +9,7 @@ import com.NoCountry.Patrickscoin.exception.UserException;
 import com.NoCountry.Patrickscoin.mapper.UserMapper;
 import com.NoCountry.Patrickscoin.repositories.UserRepository;
 import com.NoCountry.Patrickscoin.services.IUserService;
+import com.NoCountry.Patrickscoin.utils.validator.UserValidator;
 
 @Service
 public class UserService  implements IUserService{
@@ -18,8 +19,12 @@ public class UserService  implements IUserService{
 
     @Override
     public User registerUser(UserDto userDto) {
+
         // TODO LOGICA DE VALIDACION POR EMAIL
-        // Puede ser con una clase utilitaria en /utils
+        if(!UserValidator.validateRegister(userDto)){
+            //TODO agregar los contrains al emnsaje del UserException
+            throw new UserException("Usuario no pudo creado");
+        }
         return userRepository.save(UserMapper.dtoToEntity(userDto));
     }
 
