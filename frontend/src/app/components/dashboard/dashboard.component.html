@@ -136,12 +136,12 @@
 
             <label for="fiat-buy">Ingrese el total y moneda con la que desea comprar</label>
             <div class="operation-container">
-                <select name="" id="" class="input-style w-40">
+                <select name="" id="">
                     @for (item of coinList; track $index) {
                     <option value="{{ item.coin.shortName }}">{{ item.coin.shortName }}</option>
                     }
                 </select>
-                <input type="number" class="input-style w-40" />
+                <input type="number" />
             </div>
 
             <div class="arrow-container">
@@ -162,11 +162,11 @@
 
             <label for="crypto-buy">Ingrese la cripto que desea</label>
             <div class="operation-container">
-                <select name="" id="" class="input-style w-40">
+                <select name="" id="">
                     <option value="ARS" selected>ARS</option>
                     <option value="USD">USD</option>
                 </select>
-                <input type="number" class="input-style w-40" />
+                <input type="number" />
             </div>
             <div class="accept-button-container">
                 <button type="button" (click)="openDialog()">Aceptar</button>

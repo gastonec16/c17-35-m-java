@@ -372,12 +372,17 @@ h1 {
         border-radius: 1rem;
         box-shadow: var(--shadow);
 
-        & input {
+        & input,
+        & select {
             margin: 8px;
+            background-color: var(--white);
+            color: var(--black);
+            border-radius: 1rem;
+            font-size: larger;
         }
 
         & select {
-            max-width: 7rem;
+            width: 10rem;
             margin: 8px;
             font-family: Germania One, sans-serif;
         }
@@ -388,28 +393,4 @@ h1 {
         justify-content: center;
         margin-top: 32px;
     }
-}
-
-.bg-gradient-green {
-    background: rgb(40, 118, 53);
-    background: linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%);
-}
-
-.input-style {
-    background-color: white;
-    color: black;
-    border-radius: 1rem;
-    font-size: larger;
-}
-.w-40 {
-    width: 40%;
-}
-.w-70 {
-    width: 70%;
-}
-
-.centrado {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
