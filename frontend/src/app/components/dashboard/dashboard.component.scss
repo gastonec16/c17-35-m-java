@@ -188,7 +188,7 @@ h1 {
 }
 
 .all-crypto-container {
-    //width: 100%;
+    width: 100%;
     height: 37.5rem;
     min-width: 20rem;
     background-color: var(--black);
@@ -272,106 +272,7 @@ h1 {
 }
 
 .buy-sell-container {
-    //width: 100%;
-    height: 34.5rem;
-    background-color: var(--black);
-    margin-top: 32px;
-    margin-left: 32px;
-    color: var(--white);
-    border-radius: 16px;
-    box-shadow: var(--shadow);
-    border: 2px var(--black) solid;
-    display: flex;
-    flex-direction: column;
-    padding: 24px;
-
-    & .logo-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-
-        & img {
-            width: 268px;
-            height: 96;
-        }
-    }
-
-    & .button-container {
-        display: flex;
-        justify-content: center;
-        margin: 24px 0;
-    }
-
-    & .button-buy,
-    & .button-sell {
-        background-image: url('/assets/img/golden-background.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 5rem;
-        width: 12rem;
-        border: none;
-        color: var(--black);
-        box-shadow: var(--shadow);
-        display: flex;
-        justify-content: center;
-
-        &:hover {
-            cursor: unset;
-            filter: unset;
-        }
-    }
-
-    & .inactive-buy {
-        @extend .button-buy;
-        filter: grayscale(100%);
-        color: var(--grey);
-        
-    }
-
-    & .inactive-sell {
-        @extend .button-sell;
-        filter: grayscale(100%);
-        color: var(--grey);
-
-        &:hover {
-            cursor: pointer;
-            filter: brightness(1.2);
-        }
-    }
-
-    & .button-buy {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-
-    & .button-sell {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-
-    & .operation-container {
-        display: flex;
-        justify-content: space-between;
-        background-color: var(--green-2);
-        border-radius: 1rem;
-        align-items: center;
-
-        & input,
-        & select {
-            margin: 8px;
-        }
-    }
-
-    & .accept-button {
-        display: flex;
-        justify-content: center;
-        margin-top: 32px;
-        width: 250px;
-    }
-}
-
-.buy-sell-form {
-    //width: 100%;
+    width: 100%;
     height: 34.5rem;
     background-color: var(--green-5);
     margin-top: 32px;
@@ -383,32 +284,30 @@ h1 {
     display: flex;
     flex-direction: column;
     padding: 24px;
+    gap: 8px;
 
     & input {
         width: 100%;
     }
-
     & .logo-container {
         width: 100%;
         display: flex;
         justify-content: center;
-
         & img {
             width: 201px;
             height: 72;
             filter: drop-shadow(0 0 2px rgba(255, 255, 255, 1));
         }
     }
-
     & .arrow-container {
         display: flex;
         justify-content: center;
         width: 100%;
         margin-top: 16px;
-
         & svg {
             height: 40px;
             width: 40px;
+            color: var(--green-2);
             color: var(--yellow);
         }
     }
@@ -442,10 +341,6 @@ h1 {
         @extend .button-buy;
         filter: grayscale(100%);
         color: var(--grey);
-        &:hover {
-            cursor: pointer;
-            filter: brightness(1.2);
-        }
     }
 
     & .inactive-sell {
@@ -472,13 +367,18 @@ h1 {
     & .operation-container {
         display: flex;
         justify-content: space-between;
-        background-image: url('/assets/img/golden-background.jpg');
+        background-color: var(--green-2);
+        background-image: url('/assets/img/golden-background-h.jpg');
         border-radius: 1rem;
-        align-items: center;
 
-        & input,
-        & select {
+        & input {
             margin: 8px;
+        }
+
+        & select {
+            max-width: 7rem;
+            margin: 8px;
+            font-family: Germania One, sans-serif;
         }
     }
 
@@ -486,7 +386,6 @@ h1 {
         display: flex;
         justify-content: center;
         margin-top: 32px;
-        width: 250px;
     }
 }
 
@@ -495,16 +394,16 @@ h1 {
     background: linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%);
 }
 
-.input-style{
+.input-style {
     background-color: white;
-                  color: black;
-                  border-radius: 1rem;
-                  font-size: larger;
+    color: black;
+    border-radius: 1rem;
+    font-size: larger;
 }
-.w-40{
+.w-40 {
     width: 40%;
 }
-.w-70{
+.w-70 {
     width: 70%;
 }
 
