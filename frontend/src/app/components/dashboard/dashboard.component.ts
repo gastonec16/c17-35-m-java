@@ -15,7 +15,7 @@ import Swal from 'sweetalert2'
 export class DashboardComponent {
     router = inject(Router)
     cryptoService = inject(CryptoService)
-
+    isBuy=true;
     // TODO: obtener del backend
     user = {
         id: 34,
@@ -96,5 +96,47 @@ export class DashboardComponent {
     }
     goToWithdraw() {
         this.router.navigate(['/withdraw'])
+    }
+    activeButton( button : boolean) {
+        this.isBuy = button;
+        console.log(this.isBuy);
+    }
+    openDialog(): void {
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            html: `
+            <h4>Al aceptar la compra, estás aceptando todos los términos y condiciones de nuestra plataforma.</h4>
+            <h1 style="color: var(--yellow);">¡Gracias por tu confianza y por elegirnos!"</h1>
+            <h4>Te recomendamos revisar detenidamente nuestros términos y condiciones para comprender completamente nuestros servicios y tus responsabilidades como usuario.</h4> 
+            `,
+            icon: "warning",
+            confirmButtonText: "Aceptar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire({
+                    icon: "success",
+                    html: `
+              <h2 ><span  style="color: var(--yellow);">Compra realizada </span>con éxito!</h2>
+              <h3 >Tu saldo se actualizará en breve. </h3>
+              <h3 >¡Gracias por confiar en nuestro servicio! </h3>
+              
+            `,
+                    confirmButtonText: "Aceptar",
+                    //background: 'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)',
+
+                }).then((result) => {
+
+                    this.router.navigate(['/dashboard'])
+                });
+            }
+
+        });
     }
 }

@@ -302,6 +302,10 @@
         @extend .button-buy;
         filter: grayscale(100%);
         color: var(--grey);
+        &:hover {
+            cursor: pointer;
+            filter: brightness(1.2);
+        }
     }
 
     & .inactive-sell {
@@ -330,6 +334,7 @@
         justify-content: space-between;
         background-color: var(--green-2);
         border-radius: 1rem;
+        align-items: center;
 
         & input,
         & select {
@@ -341,10 +346,30 @@
         display: flex;
         justify-content: center;
         margin-top: 32px;
+        width: 250px;
     }
 }
 
 .bg-gradient-green {
     background: rgb(40, 118, 53);
     background: linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%);
+}
+
+.input-style{
+    background-color: white;
+                  color: black;
+                  border-radius: 1rem;
+                  font-size: larger;
+}
+.w-40{
+    width: 40%;
+}
+.w-70{
+    width: 70%;
+}
+
+.centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
