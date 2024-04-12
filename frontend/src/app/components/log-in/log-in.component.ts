@@ -54,30 +54,48 @@ export class LogInComponent {
                         Swal.fire({
                             title: 'Error',
                             text: data.message,
-                            icon: 'error'
+                            icon: 'error',
+                            customClass: {
+                                title: 'swalTitle',
+                                confirmButton: 'swalButton',
+                                popup: 'swalPopup'
+                            }
                         })
                 },
                 error: (err) => {
                     Swal.fire({
                         title: 'Error',
                         text: err.error.message,
-                        icon: 'error'
+                        icon: 'error',
+                        customClass: {
+                            title: 'swalTitle',
+                            confirmButton: 'swalButton',
+                            popup: 'swalPopup'
+                        }
                     })
                 }
             })
-        }
-        //  else if (!/[^ ]@[^ ]/.test(email)) {
-        //     Swal.fire({
-        //         title: 'Error',
-        //         text: 'El email no es válido',
-        //         icon: 'error'
-        //     })
-        // }
-        else {
+        } else if (!/[^ ]@[^ ]/.test(email)) {
+            Swal.fire({
+                title: 'Error',
+                text: 'El email no es válido',
+                icon: 'error',
+                customClass: {
+                    title: 'swalTitle',
+                    confirmButton: 'swalButton',
+                    popup: 'swalPopup'
+                }
+            })
+        } else {
             Swal.fire({
                 title: 'Error',
                 text: 'Ingresa los datos faltantes',
-                icon: 'error'
+                icon: 'error',
+                customClass: {
+                    title: 'swalTitle',
+                    confirmButton: 'swalButton',
+                    popup: 'swalPopup'
+                }
             })
         }
     }

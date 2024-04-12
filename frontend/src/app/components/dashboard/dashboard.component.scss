@@ -18,11 +18,29 @@
     width: 100%;
     height: 96px;
     background-color: var(--black);
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
 
     & button {
         margin: 0 32px;
+    }
+
+    & div {
+        margin: 0 32px;
+        width: 193.78px;
+        background-color: aquamarine;
+    }
+}
+
+h1 {
+    font-family: Germania One, sans-serif;
+    color: var(--green-3);
+    text-align: center;
+    font-size: 30pt;
+
+    & span {
+        font-family: Germania One, sans-serif;
+        color: var(--yellow);
     }
 }
 
@@ -134,17 +152,19 @@
             font-family: Germania One, sans-serif;
             font-size: 20pt;
             color: var(--black);
+            padding: 4px;
+            background-color: var(--white);
         }
 
         & td {
-            height: 40px;
             background-color: var(--white);
             color: var(--black);
             vertical-align: middle;
+            padding: 0 4px;
 
             & .crypto-name {
                 display: flex;
-                height: 40px;
+                height: 48px;
                 align-items: center;
 
                 & img {
@@ -178,6 +198,7 @@
     border: 2px var(--black) solid;
     display: flex;
     flex-direction: column;
+    overflow-x: auto;
 
     & .all-crypto-title {
         color: var(--white);
@@ -196,7 +217,7 @@
             margin-left: 16px;
             height: 32px;
             width: 32px;
-            color: var(--yellow);
+            color: var(--green-2);
 
             &:hover {
                 cursor: pointer;
@@ -216,25 +237,24 @@
     & .all-crypto-table {
         width: 100%;
 
-        white-space: nowrap;
-
         & th {
             font-family: Germania One, sans-serif;
             font-size: 20pt;
             color: var(--white);
             border: 1px solid var(--white);
+            padding: 4px;
         }
 
         & td {
-            height: 40px;
             background-color: var(--black);
             color: var(--white);
             vertical-align: middle;
             border: 1px solid var(--white);
+            padding: 0 4px;
 
             & .crypto-name {
+                height: 48px;
                 display: flex;
-                height: 40px;
                 align-items: center;
 
                 & img {
@@ -253,7 +273,7 @@
 .buy-sell-form {
     width: 100%;
     height: 34.5rem;
-    background-color: var(--black);
+    background-color: var(--green-5);
     margin-top: 32px;
     margin-left: 32px;
     color: var(--white);
@@ -289,7 +309,7 @@
         & svg {
             height: 40px;
             width: 40px;
-            color: var(--green-2);
+            color: var(--yellow);
         }
     }
 
@@ -348,7 +368,7 @@
     & .operation-container {
         display: flex;
         justify-content: space-between;
-        background-color: var(--green-2);
+        background-image: url('/assets/img/golden-background.jpg');
         border-radius: 1rem;
 
         & input,

@@ -138,3 +138,25 @@ a {
         opacity: 0.8;
     }
 }
+
+.swal2-styled.swal2-confirm.swalButton {
+    @extend button;
+    &:hover {
+        background: linear-gradient(to right, var(--green-5), var(--green-3));
+        cursor: pointer;
+        filter: brightness(1.2);
+    }
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+.swalTitle {
+    font-family: Germania One, sans-serif;
+    font-size: 30pt;
+    color: var(--green-5);
+}
+
+.swalPopup {
+    border-radius: 16px;
+}

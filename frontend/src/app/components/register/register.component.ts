@@ -67,7 +67,12 @@ export class RegisterComponent implements OnInit {
                         Swal.fire({
                             title: 'Éxito',
                             text: 'Ya puedes iniciar sesión',
-                            icon: 'success'
+                            icon: 'success',
+                            customClass: {
+                                title: 'swalTitle',
+                                confirmButton: 'swalButton',
+                                popup: 'swalPopup'
+                            }
                         })
                         this.router.navigate(['/log-in'])
                         form.reset()
@@ -75,14 +80,24 @@ export class RegisterComponent implements OnInit {
                         Swal.fire({
                             title: 'Error',
                             text: data.message,
-                            icon: 'error'
+                            icon: 'error',
+                            customClass: {
+                                title: 'swalTitle',
+                                confirmButton: 'swalButton',
+                                popup: 'swalPopup'
+                            }
                         })
                 },
                 error: (err) => {
                     Swal.fire({
                         title: 'Error',
                         text: err.error.message,
-                        icon: 'error'
+                        icon: 'error',
+                        customClass: {
+                            title: 'swalTitle',
+                            confirmButton: 'swalButton',
+                            popup: 'swalPopup'
+                        }
                     })
                 }
             })
@@ -90,13 +105,23 @@ export class RegisterComponent implements OnInit {
             Swal.fire({
                 title: 'Error',
                 text: 'El email no es válido',
-                icon: 'error'
+                icon: 'error',
+                customClass: {
+                    title: 'swalTitle',
+                    confirmButton: 'swalButton',
+                    popup: 'swalPopup'
+                }
             })
         } else {
             Swal.fire({
                 title: 'Error',
                 text: 'Ingresa los datos faltantes',
-                icon: 'error'
+                icon: 'error',
+                customClass: {
+                    title: 'swalTitle',
+                    confirmButton: 'swalButton',
+                    popup: 'swalPopup'
+                }
             })
         }
     }

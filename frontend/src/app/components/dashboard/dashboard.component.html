@@ -1,5 +1,7 @@
 <img class="patrick-logo" src="assets/img/patrick-logo.png" alt="logo" routerLink="/" />
 <div class="header">
+    <div></div>
+    <h1>Perfil <span>de Cuenta</span></h1>
     <button type="button" (click)="logOut()">Cerrar Sesión</button>
 </div>
 <div class="gradient-line"></div>
@@ -30,6 +32,8 @@
                     <tr>
                         <th>Criptomoneda</th>
                         <th>Cantidad</th>
+                        <th>USD</th>
+                        <th>ARS</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,6 +52,8 @@
                             </div>
                         </td>
                         <td>{{ item.quantity }}</td>
+                        <td>{{ (coinList[item.coin.id - 1].usd * item.quantity).toFixed(2) }}</td>
+                        <td>{{ (coinList[item.coin.id - 1].ars * item.quantity).toFixed(2) }}</td>
                     </tr>
                     } }
                 </tbody>
@@ -66,7 +72,7 @@
                         viewBox="0 0 24 24"
                         stroke-width="2"
                         stroke="currentColor"
-                        (click)="(refresh)"
+                        (click)="refresh()"
                     >
                         <path
                             stroke-linecap="round"
