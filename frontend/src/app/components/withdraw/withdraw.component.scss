@@ -39,10 +39,11 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    
+
     & h2 {
         text-align: center;
         font-family: Germania One, sans-serif;
+        font-weight: 400;
         font-size: 24pt;
         color: var(--white);
         margin: 16px 0;
@@ -57,6 +58,7 @@
         & .ars,
         & .usd {
             font-family: Germania One, sans-serif;
+            font-weight: 400;
             font-size: 18pt;
             border-radius: 1rem;
             border: 2px var(--black) solid;
@@ -116,7 +118,6 @@
         }
     }
 
-
     & .crypto-container {
         max-height: 17rem;
         overflow-y: auto;
@@ -131,6 +132,7 @@
 
         & th {
             font-family: Germania One, sans-serif;
+            font-weight: 400;
             font-size: 20pt;
             color: var(--black);
         }
@@ -187,6 +189,7 @@
 
         & h2 {
             font-family: Germania One, sans-serif;
+            font-weight: 400;
             font-size: 24pt;
             white-space: nowrap;
         }
@@ -218,6 +221,7 @@
 
         & th {
             font-family: Germania One, sans-serif;
+            font-weight: 400;
             font-size: 20pt;
             color: var(--white);
             border: 1px solid var(--white);
@@ -254,16 +258,16 @@
     align-items: center;
 }
 
-.flex-column{
+.flex-column {
     flex-direction: column;
 }
-.flex-row{
+.flex-row {
     flex-direction: row;
 }
-.space-around{
+.space-around {
     justify-content: space-around;
 }
-.d-flex{
+.d-flex {
     display: flex;
 }
 
@@ -271,11 +275,10 @@
     background: rgb(40, 118, 53) !important ;
     background: linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%) !important ;
 }
-.seniorcito{
+.seniorcito {
     z-index: 99;
 }
-.gb-white-transparent{
-    
+.gb-white-transparent {
     width: 50%;
     max-width: 512px;
     background-color: rgba(255, 255, 255, 0.75);
@@ -287,7 +290,7 @@
     margin-top: -70px;
     margin-bottom: 70px;
 }
-.br-1{
+.br-1 {
     border-radius: 1rem;
 }
 .deposit-container {
@@ -304,13 +307,12 @@
     flex-direction: column;
     padding: 24px;
 
-    & article{
+    & article {
         padding: 24px;
     }
     & .title-container {
         display: flex;
         justify-content: center;
-        
     }
 
     & .text {
@@ -331,8 +333,6 @@
         }
     }
 
-
-
     & .operation-container {
         width: 100%;
         display: flex;
@@ -340,7 +340,7 @@
         background-color: white;
         border-radius: 1rem;
         color: black;
-        padding:0 24px;
+        padding: 0 24px;
         margin: 0.5em;
     }
 
@@ -352,28 +352,25 @@
     }
 }
 
-
 .bg-deposit {
-    background-image: url("/assets/img/bg-deposit.png");
+    background-image: url('/assets/img/bg-deposit.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-
-input[type=checkbox] {
+input[type='checkbox'] {
     position: relative;
-      cursor: pointer;
+    cursor: pointer;
 
-      box-shadow:none;
-      
-      width: 24px;
-      height: 24px;
-      top: 0;
-      left: 0;
-      border: 2px solid #555555;
-      border-radius: 3px;
-      background-color: white;
+    box-shadow: none;
+
+    width: 24px;
+    height: 24px;
+    top: 0;
+    left: 0;
+    border: 2px solid #555555;
+    border-radius: 3px;
+    background-color: white;
 }
-
 
 /*SWEET ALERT*/
