@@ -1,5 +1,4 @@
 <div class="bg-deposit">
-
     <img class="patrick-logo" src="assets/img/patrick-logo.png" alt="logo" routerLink="/" />
     <div class="header">
         <button type="button" (click)="logOut()">Cerrar Sesión</button>
@@ -7,59 +6,51 @@
     <div class="gradient-line"></div>
 
     <section class="centrado flex-row">
-
-        <div class="deposit-container bg-gradient-green ">
-
+        <div class="deposit-container bg-gradient-green">
             <div class="title-container">
                 <button class="text">RETIRAR</button>
             </div>
             <div class="money-container">
-
                 <h2>Monedas adquiridas</h2>
 
                 <div class="money">
                     <div class="ars">{{ user.ars + ' ARS' }}</div>
                     <div class="usd">{{ user.usd + ' USD' }}</div>
                 </div>
-
-
             </div>
 
             <article class="centrado flex-column">
-
                 <p>Ingrese la cantidad que desea retirar</p>
                 <div class="operation-container centrado flex-row">
                     <h4>Total:</h4>
                     <input type="number" min="0" />
                     <select name="" id="">
-
                         <option value="ARS" selected>ARS</option>
                         <option value="USD">USD</option>
                         <option value="CLP">CLP</option>
                     </select>
-
                 </div>
 
                 <H2>Métodos de retiro</H2>
                 <div class="operation-container centrado flex-row">
-                    <img src="/assets/img/icon-creditcard.png" alt="" width="40px" height="40px">
+                    <img src="/assets/img/icon-creditcard.png" alt="" width="40px" height="40px" />
                     <h3>Tarjeta de crédito o debito</h3>
-                    <input type="checkbox" name="" id="" size="24px">
+                    <input type="checkbox" name="" id="" size="24px" />
                 </div>
                 <div class="operation-container centrado flex-row">
-                    <img src="/assets/img/icon-mercadopago.png" alt="" width="40px" height="40px">
+                    <img src="/assets/img/icon-mercadopago.png" alt="" width="40px" height="40px" />
                     <h3>Mercado Pago</h3>
-                    <input type="checkbox" name="" id="" size="24px">
+                    <input type="checkbox" name="" id="" size="24px" />
                 </div>
                 <div class="operation-container centrado flex-row">
-                    <img src="/assets/img/icon-paypal.png" alt="" width="40px" height="40px">
+                    <img src="/assets/img/icon-paypal.png" alt="" width="40px" height="40px" />
                     <h3>Paypal</h3>
-                    <input type="checkbox" name="" id="" size="24px">
+                    <input type="checkbox" name="" id="" size="24px" />
                 </div>
                 <div class="operation-container centrado flex-row">
-                    <img src="/assets/img/icon-bank.png" alt="" width="40px" height="40px">
+                    <img src="/assets/img/icon-bank.png" alt="" width="40px" height="40px" />
                     <h3>Cuenta bancaria en USD</h3>
-                    <input type="checkbox" name="" id="" size="24px">
+                    <input type="checkbox" name="" id="" size="24px" />
                 </div>
 
                 <button type="button" class="accept-button" (click)="openDialog()">Aceptar</button>
@@ -67,20 +58,17 @@
         </div>
 
         <aside class="centrado flex-column">
-            <img src="/assets/img/seniorcito2.png" class="seniorcito" width="300px" alt="">
+            <img src="/assets/img/seniorcito2.png" class="seniorcito" width="240px" alt="" />
             <div class="gb-white-transparent br-1">
-                <h3>¡Retira tus fondos de forma conveniente y segura! </h3>
+                <h3>¡Retira tus fondos de forma conveniente y segura!</h3>
                 <h3>
-                    Si deseas retirar en dólares, podrás hacerlo mediante transferencia a una cuenta bancaria en dólares
-                    o a través de PayPal. Si prefieres retirar en tu moneda local, tienes la opción de hacerlo
-                    utilizando billeteras virtuales o mediante transferencia bancaria local.
+                    Si deseas retirar en dólares, podrás hacerlo mediante transferencia a una cuenta bancaria
+                    en dólares o a través de PayPal. Si prefieres retirar en tu moneda local, tienes la opción
+                    de hacerlo utilizando billeteras virtuales o mediante transferencia bancaria local.
                 </h3>
                 <h3>¡Tu elección, tu comodidad, tu control financiero!</h3>
-                
             </div>
         </aside>
-
-
     </section>
     <app-footer></app-footer>
 </div>
