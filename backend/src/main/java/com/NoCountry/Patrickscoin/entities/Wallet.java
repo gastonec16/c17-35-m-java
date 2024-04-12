@@ -1,5 +1,7 @@
 package com.NoCountry.Patrickscoin.entities;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,5 +32,5 @@ public class Wallet {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "coin.id")
-    private Coin coin;    
+    private Set<Coin> coins;    
 }
