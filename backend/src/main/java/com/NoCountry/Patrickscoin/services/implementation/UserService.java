@@ -18,6 +18,7 @@ public class UserService implements IUserService {
     @Autowired
     private UserRepository userRepository;
 
+
     @Override
     public User registerUser(UserDto userDto) {
         // TODO LOGICA DE VALIDACION POR EMAIL
@@ -42,21 +43,16 @@ public class UserService implements IUserService {
     }
 
     public UserDto findByEmail(String email, String password) throws Exception {
-        System.err.println("Buscando usuario por email: " + email);
         User user = userRepository.findByEmail(email);
         if (user == null) {
-            System.out.println("No se encontró ningún usuario con el email: " + email);
-            throw new Exception("Usuario no encontrado");
+            throw new UserException("Usuario no encontrado");
         }
         
         // Verificar si la contraseña coincide
         if (!user.getPassword().equals(password)) {
-            System.out.println("La contraseña proporcionada no coincide para el usuario con email: " + email);
-            throw new Exception("Contraseña incorrecta");
+            throw new UserException("La contraseña proporcionada no coincide para el usuario con email: " + email);
         }
-        
-        System.err.println("Usuario encontrado: " + user.getName());
-        
+
         // Convertir la entidad User a un DTO
         UserDto userDto = UserMapper.entityToDto(user);
         return userDto; // Usuario encontrado y contraseña correcta
