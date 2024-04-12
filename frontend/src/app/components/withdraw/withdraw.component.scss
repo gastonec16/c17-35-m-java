@@ -8,6 +8,7 @@
         cursor: pointer;
         filter: brightness(1.2);
     }
+
     &:active {
         opacity: 0.8;
     }
@@ -32,6 +33,46 @@
     height: 8px;
     margin-top: 4px;
     background: linear-gradient(to right, var(--green-1), var(--green-5));
+}
+
+.money-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    & h2 {
+        text-align: center;
+        font-family: Germania One, sans-serif;
+        font-size: 24pt;
+        color: var(--white);
+        margin: 16px 0;
+        white-space: nowrap;
+    }
+
+    .money {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+
+        & .ars,
+        & .usd {
+            font-family: Germania One, sans-serif;
+            font-size: 18pt;
+            border-radius: 1rem;
+            border: 2px var(--black) solid;
+            background-image: linear-gradient(to bottom, var(--green-1), var(--green-4));
+            color: var(--black);
+            padding: 4px 12px;
+            text-align: center;
+            max-width: 10rem;
+            overflow-x: hidden;
+            white-space: nowrap;
+        }
+    }
+
+    & button {
+        margin-bottom: 16px;
+    }
 }
 
 .account-container {
@@ -75,48 +116,6 @@
         }
     }
 
-    & .money-container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        margin: 24px;
-
-        & h2 {
-            text-align: center;
-            font-family: Germania One, sans-serif;
-            font-size: 24pt;
-            color: var(--black);
-            margin: 16px 0;
-            white-space: nowrap;
-        }
-
-        .money {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-bottom: 32px;
-
-            & .ars,
-            & .usd {
-                font-family: Germania One, sans-serif;
-                font-size: 18pt;
-                border-radius: 1rem;
-                border: 2px var(--black) solid;
-                background-image: linear-gradient(to bottom, var(--green-1), var(--green-4));
-                color: var(--black);
-                padding: 4px 12px;
-                text-align: center;
-                max-width: 10rem;
-                overflow-x: hidden;
-                margin: 8px;
-                white-space: nowrap;
-            }
-        }
-
-        & button {
-            margin-bottom: 16px;
-        }
-    }
 
     & .crypto-container {
         max-height: 17rem;
@@ -200,6 +199,7 @@
                 cursor: pointer;
                 filter: brightness(1.2);
             }
+
             &:active {
                 opacity: 0.8;
             }
@@ -248,9 +248,51 @@
     }
 }
 
-.buy-sell-container {
-    width: 100%;
-    height: 34rem;
+.centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+.flex-row{
+    flex-direction: row;
+}
+.space-around{
+    justify-content: space-around;
+}
+.d-flex{
+    display: flex;
+}
+
+.bg-gradient-green {
+    background: rgb(40, 118, 53) !important ;
+    background: linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%) !important ;
+}
+.seniorcito{
+    z-index: 99;
+}
+.gb-white-transparent{
+    
+    width: 50%;
+    max-width: 512px;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 1rem;
+    padding-top: 2rem;
+    text-align: center;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: -70px;
+    margin-bottom: 70px;
+}
+.br-1{
+    border-radius: 1rem;
+}
+.deposit-container {
+    width: 70%;
+    max-width: 512px;
     background-color: var(--black);
     margin-top: 32px;
     margin-left: 32px;
@@ -262,28 +304,21 @@
     flex-direction: column;
     padding: 24px;
 
-    & .logo-container {
-        width: 100%;
-
-        & img {
-            width: 268px;
-            height: 96;
-        }
+    & article{
+        padding: 24px;
     }
-
-    & .button-container {
+    & .title-container {
         display: flex;
         justify-content: center;
-        margin: 32px 0;
+        
     }
 
-    & .button-buy,
-    .button-sell {
-        background-image: url('/assets/img/golden-background.jpg');
+    & .text {
+        background-image: url('/assets/img/golden-background-h.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         height: 5rem;
-        width: 12rem;
+        width: 60%;
         border: none;
         color: var(--black);
         box-shadow: var(--shadow);
@@ -296,41 +331,49 @@
         }
     }
 
-    & .inactive-buy {
-        @extend .button-buy;
-        filter: grayscale(100%);
-        color: var(--grey);
-    }
 
-    & .inactive-sell {
-        @extend .button-sell;
-        filter: grayscale(100%);
-        color: var(--grey);
-
-        &:hover {
-            cursor: pointer;
-            filter: brightness(1.2);
-        }
-    }
-
-    & .button-buy {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-
-    & .button-sell {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
 
     & .operation-container {
+        width: 100%;
         display: flex;
         justify-content: space-between;
+        background-color: white;
+        border-radius: 1rem;
+        color: black;
+        padding:0 24px;
+        margin: 0.5em;
     }
 
     & .accept-button {
         display: flex;
         justify-content: center;
         margin-top: 32px;
+        width: 250px;
     }
 }
+
+
+.bg-deposit {
+    background-image: url("/assets/img/bg-deposit.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+input[type=checkbox] {
+    position: relative;
+      cursor: pointer;
+
+      box-shadow:none;
+      
+      width: 24px;
+      height: 24px;
+      top: 0;
+      left: 0;
+      border: 2px solid #555555;
+      border-radius: 3px;
+      background-color: white;
+}
+
+
+/*SWEET ALERT*/
