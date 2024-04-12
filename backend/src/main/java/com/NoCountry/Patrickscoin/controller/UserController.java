@@ -38,18 +38,10 @@ public class UserController {
 
     // FRONT api/users/log-in
     @PostMapping("/users/log-in")
-    public ResponseEntity<?> getUserByEmail(@RequestBody UserDto user) {
+    public ResponseEntity<?> getUserByEmail(@RequestBody UserDto user) throws Exception {
         String email = user.getEmail();
         String password = user.getPassword();
-    
-        try {
-            UserDto foundUser = userService.findByEmail(email, password);
-            if (foundUser == null) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
-            }
-            return ResponseEntity.ok().body(foundUser);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al intentar iniciar sesión: " + e.getMessage());
-        }
+            return ResponseEntity.ok().body(userService.findByEmail(email, password));
+        
     }
 }
