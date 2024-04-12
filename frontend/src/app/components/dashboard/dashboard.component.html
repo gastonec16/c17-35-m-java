@@ -22,8 +22,8 @@
                 <div class="usd">{{ user.usd + ' USD' }}</div>
             </div>
 
-            <button type="button">Depositar</button>
-            <button type="button">Retirar</button>
+            <button type="button" (click)="goToDeposit()">Depositar</button>
+            <button type="button" (click)="goToWithdraw()">Retirar</button>
         </div>
 
         <div class="crypto-container">

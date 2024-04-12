@@ -1,0 +1,379 @@
+.patrick-logo {
+    position: absolute;
+    top: 16px;
+    left: 32px;
+    transition: filter 0.2s;
+
+    &:hover {
+        cursor: pointer;
+        filter: brightness(1.2);
+    }
+
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    height: 96px;
+    background-color: var(--black);
+    justify-content: end;
+    align-items: center;
+
+    & button {
+        margin: 0 32px;
+    }
+}
+
+.gradient-line {
+    display: flex;
+    width: 100%;
+    height: 8px;
+    margin-top: 4px;
+    background: linear-gradient(to right, var(--green-1), var(--green-5));
+}
+
+.money-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    & h2 {
+        text-align: center;
+        font-family: Germania One, sans-serif;
+        font-size: 24pt;
+        color: var(--white);
+        margin: 16px 0;
+        white-space: nowrap;
+    }
+
+    .money {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+
+        & .ars,
+        & .usd {
+            font-family: Germania One, sans-serif;
+            font-size: 18pt;
+            border-radius: 1rem;
+            border: 2px var(--black) solid;
+            background-image: linear-gradient(to bottom, var(--green-1), var(--green-4));
+            color: var(--black);
+            padding: 4px 12px;
+            text-align: center;
+            max-width: 10rem;
+            overflow-x: hidden;
+            white-space: nowrap;
+        }
+    }
+
+    & button {
+        margin-bottom: 16px;
+    }
+}
+
+.account-container {
+    margin-top: 24px;
+    border-radius: 16px;
+    background-color: var(--green-2);
+    box-shadow: var(--shadow);
+    border: 2px var(--black) solid;
+    display: flex;
+    align-items: center;
+    max-width: 1280px;
+    width: 100%;
+    overflow-x: auto;
+
+    & .profile-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 24px;
+
+        & .user-name,
+        .user-email {
+            border-radius: 1rem;
+            background-color: var(--green-5);
+            color: var(--white);
+            padding: 4px 12px;
+            text-align: center;
+            max-width: 10rem;
+            overflow-x: hidden;
+            margin: 16px 0;
+        }
+
+        .user-email {
+            font-size: smaller;
+        }
+
+        & .profile-picture {
+            border-radius: 64px;
+            height: 128px;
+            width: 128px;
+        }
+    }
+
+
+    & .crypto-container {
+        max-height: 17rem;
+        overflow-y: auto;
+        width: 100%;
+        min-width: 20rem;
+        color: var(--black);
+        margin: 24px;
+    }
+
+    & .crypto-table {
+        width: 100%;
+
+        & th {
+            font-family: Germania One, sans-serif;
+            font-size: 20pt;
+            color: var(--black);
+        }
+
+        & td {
+            height: 40px;
+            background-color: var(--white);
+            color: var(--black);
+            vertical-align: middle;
+
+            & .crypto-name {
+                display: flex;
+                height: 40px;
+                align-items: center;
+
+                & img {
+                    height: 32px;
+                    width: 32px;
+                }
+            }
+
+            & img {
+                margin: 0 8px;
+            }
+        }
+    }
+}
+
+.bottom-container {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+}
+
+.all-crypto-container {
+    width: 100%;
+    height: 37rem;
+    min-width: 20rem;
+    background-color: var(--black);
+    margin-top: 32px;
+    color: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 2px var(--black) solid;
+    display: flex;
+    flex-direction: column;
+
+    & .all-crypto-title {
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        margin: 0 24px;
+        justify-content: space-between;
+
+        & h2 {
+            font-family: Germania One, sans-serif;
+            font-size: 24pt;
+            white-space: nowrap;
+        }
+
+        & svg {
+            height: 32px;
+            width: 32px;
+
+            &:hover {
+                cursor: pointer;
+                filter: brightness(1.2);
+            }
+
+            &:active {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    & .table-container {
+        margin: 0 24px;
+        overflow-y: auto;
+    }
+
+    & .all-crypto-table {
+        width: 100%;
+
+        white-space: nowrap;
+
+        & th {
+            font-family: Germania One, sans-serif;
+            font-size: 20pt;
+            color: var(--white);
+            border: 1px solid var(--white);
+        }
+
+        & td {
+            height: 40px;
+            background-color: var(--black);
+            color: var(--white);
+            vertical-align: middle;
+            border: 1px solid var(--white);
+
+            & .crypto-name {
+                display: flex;
+                height: 40px;
+                align-items: center;
+
+                & img {
+                    height: 32px;
+                    width: 32px;
+                }
+            }
+
+            & img {
+                margin: 0 8px;
+            }
+        }
+    }
+}
+
+.centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+.flex-row{
+    flex-direction: row;
+}
+.space-around{
+    justify-content: space-around;
+}
+.d-flex{
+    display: flex;
+}
+
+.bg-gradient-green {
+    background: rgb(40, 118, 53) !important ;
+    background: linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%) !important ;
+}
+.seniorcito{
+    z-index: 99;
+}
+.gb-white-transparent{
+    
+    width: 50%;
+    max-width: 512px;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 1rem;
+    padding-top: 2rem;
+    text-align: center;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: -70px;
+    margin-bottom: 70px;
+}
+.br-1{
+    border-radius: 1rem;
+}
+.deposit-container {
+    width: 70%;
+    max-width: 512px;
+    background-color: var(--black);
+    margin-top: 32px;
+    margin-left: 32px;
+    color: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 2px var(--black) solid;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+
+    & article{
+        padding: 24px;
+    }
+    & .title-container {
+        display: flex;
+        justify-content: center;
+        
+    }
+
+    & .text {
+        background-image: url('/assets/img/golden-background-h.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 5rem;
+        width: 60%;
+        border: none;
+        color: var(--black);
+        box-shadow: var(--shadow);
+        display: flex;
+        justify-content: center;
+
+        &:hover {
+            cursor: unset;
+            filter: unset;
+        }
+    }
+
+
+
+    & .operation-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        border-radius: 1rem;
+        color: black;
+        padding:0 24px;
+        margin: 0.5em;
+    }
+
+    & .accept-button {
+        display: flex;
+        justify-content: center;
+        margin-top: 32px;
+        width: 250px;
+    }
+}
+
+
+.bg-deposit {
+    background-image: url("/assets/img/bg-deposit.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+input[type=checkbox] {
+    position: relative;
+      cursor: pointer;
+
+      box-shadow:none;
+      
+      width: 24px;
+      height: 24px;
+      top: 0;
+      left: 0;
+      border: 2px solid #555555;
+      border-radius: 3px;
+      background-color: white;
+}
+
+
+/*SWEET ALERT*/

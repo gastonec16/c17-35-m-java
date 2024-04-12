@@ -9,4 +9,6 @@ import com.NoCountry.Patrickscoin.entities.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Serializable>{
+
+    public User findByEmail(String email);
 }

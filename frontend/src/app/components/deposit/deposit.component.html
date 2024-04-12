@@ -1,1 +1,68 @@
-<p>deposit works!</p>
+<div class="bg-deposit">
+
+    <img class="patrick-logo" src="assets/img/patrick-logo.png" alt="logo" routerLink="/" />
+    <div class="header">
+        <button type="button" (click)="logOut()">Cerrar Sesión</button>
+    </div>
+    <div class="gradient-line"></div>
+
+    <section class="centrado flex-column">
+
+        <div class="deposit-container bg-gradient-green ">
+
+            <div class="title-container">
+                <button class="text">DEPOSITAR</button>
+            </div>
+            <article class="centrado flex-column">
+
+                <p>Ingrese la cantidad que desea depositar</p>
+                <div class="operation-container centrado flex-row">
+                    <h4>Total:</h4>
+                    <input type="number" min="0" />
+                    <select name="" id="">
+
+                        <option value="ARS" selected>ARS</option>
+                        <option value="USD">USD</option>
+                        <option value="CLP">CLP</option>
+                    </select>
+
+                </div>
+
+                <H2>Métodos de pago</H2>
+                <div class="operation-container centrado flex-row">
+                    <img src="/assets/img/icon-creditcard.png" alt="" width="40px" height="40px">
+                    <h3>Tarjeta de crédito o debito</h3>
+                    <input type="checkbox" name="" id="" size="24px">
+                </div>
+                <div class="operation-container centrado flex-row">
+                    <img src="/assets/img/icon-mercadopago.png" alt="" width="40px" height="40px">
+                    <h3>Mercado Pago</h3>
+                    <input type="checkbox" name="" id="" size="24px">
+                </div>
+                <div class="operation-container centrado flex-row">
+                    <img src="/assets/img/icon-paypal.png" alt="" width="40px" height="40px">
+                    <h3>Paypal</h3>
+                    <input type="checkbox" name="" id="" size="24px">
+                </div>
+                
+                <button type="button" class="accept-button">Aceptar</button>
+            </article>
+        </div>
+
+        <footer>
+            <img src="/assets/img/seniorcito.png" class="seniorcito" width="300px" alt="">
+            <div class="gb-white-transparent br-1">
+                <h3>¡Deposita fondos de manera rápida y segura para aprovechar las oportunidades del mercado!</h3>
+                <div class="d-flex space-around">
+                    <img src="/assets/img/icon-shield.png" alt="" width="40px" height="40px">
+                    <img src="/assets/img/icon-card.png" alt="" width="40px" height="40px">
+                    <img src="/assets/img/icon-cashcoin.png" alt="" width="40px" height="40px">
+                    
+                </div>
+            </div>
+        </footer>
+
+
+    </section>
+    <app-footer></app-footer>
+</div>

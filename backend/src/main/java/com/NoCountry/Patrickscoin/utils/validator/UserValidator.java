@@ -1,13 +1,15 @@
 package com.NoCountry.Patrickscoin.utils.validator;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.NoCountry.Patrickscoin.dto.UserDto;
+import com.NoCountry.Patrickscoin.exception.UserException;
+import com.NoCountry.Patrickscoin.services.IUserService;
 
-import lombok.experimental.UtilityClass;
-
-@UtilityClass
+@Component
 public class UserValidator {
     private final static int MAX_EMAIL = 100;
     private final static int MAX_FULLNAME = 50;
@@ -20,27 +22,29 @@ public class UserValidator {
     private final static String VALID_EMAIL = "[a-zA-Z0-9]{3,}[\\._\\-\\+]*[a-zA-Z0-9]*@\\p{Lower}{3,}.com";
     private final static String VALID_PASSWORD = "^(?=\\p{Alnum}*[a-z])(?=\\p{Alnum}*[A-Z])(?=\\p{Alnum}*[0-9])\\p{Alnum}*$";
 
-    Map<String, String> contrains = new HashMap<>();
+    @Autowired
+    private IUserService userService;
 
-    public static boolean validateRegister(UserDto userDto) {
-        contrains.clear();
+    public void validateRegister(UserDto userDto) throws UserException{
         if (!emailIsValid(userDto.getEmail()))
-            contrains.put("email", "email no valido!");
+            throw new UserException("email no valido");
         if (!nameIsValid(userDto.getName()))
-            contrains.put("name", "name no valido!");
+            throw new UserException("nombre debe tener minimo 3 caracteres alfabeticos");
         if (!lastNameIsValid(userDto.getLastName()))
-            contrains.put("lastName", "lastName no valido!");
+            throw new UserException("apellido debe tener minimo 2 caracteres alfabeticos");
         if (!passwordIsValid(userDto.getPassword()))
-            contrains.put("password", "password no valido!");
-        return contrains.isEmpty();
-    }
-
-    public Map<String, String> getContrains() {
-        return contrains;
+            throw new UserException("contraseña debe tener como mínimo una mayúsculas, minúsculas, números y 8 caracteres");
+        if(!passwordCoincident(userDto))
+            throw new UserException("contraseñas no coincíden");
+        if(!emailNotExist(userDto.getEmail(), userService.findAllEmail()))
+            throw new UserException("email ya esta registrado");
     }
 
     private static boolean emailIsValid(String email) {
         return email.matches(VALID_EMAIL) && email.length() <= MAX_EMAIL;
+    }
+    private static boolean emailNotExist(String email,List<String >emails) {
+        return !emails.contains(email);
     }
 
     private static boolean nameIsValid(String name) {
@@ -54,5 +58,8 @@ public class UserValidator {
     private static boolean passwordIsValid(String password) {
         return password.matches(VALID_PASSWORD)
                 && (password.length() <= MAX_PASSWORD && password.length() >= MIN_PASSWORD);
+    }
+    private static boolean passwordCoincident(UserDto userDto){
+        return userDto.getPassword().equals(userDto.getRepeatPassword());
     }
 }
