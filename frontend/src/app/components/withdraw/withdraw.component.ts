@@ -112,34 +112,34 @@ export class WithdrawComponent {
         <h2 style="color: var(--yellow);">Vas a enviar dinero a:</h2>
         <h3> <span  style="color: var(--yellow);">Nombre Segundo</span> <span style="color: var(--green-3);">Apellido</span></h3>
         <div style="text-align: left; color: #ffffff;">
-      <label>Alias:</label>
-      <div style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;">
-      <span id="alias-value">alias-value</span>
-      </div>
+        <label>Alias:</label>
+        <div style="background-color: white;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 1rem;
+        font-size: larger;">
+        <span id="alias-value">alias-value</span>
+        </div>
       
-      <label>Cuil:</label>
-      <div style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;">
-      <span id="cuil-value">cuil-value</span>
-      </div>
+        <label>Cuil:</label>
+        <div style="background-color: white;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 1rem;
+        font-size: larger;">
+        <span id="cuil-value">cuil-value</span>
+        </div>
       
-      <label>Banco entidad:</label>
-      <div style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;">
-      <span id="entidad-value">entidad-value</span>
-      </div>
-      </div>
-    `,
+        <label>Banco entidad:</label>
+        <div style="background-color: white;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 1rem;
+        font-size: larger;">
+        <span id="entidad-value">entidad-value</span>
+        </div>
+        </div>
+        `,
         focusConfirm: false,
         showCancelButton: true,
         confirmButtonText: "Aceptar",
@@ -168,49 +168,49 @@ export class WithdrawComponent {
               justify-content: space-between;">
                 <div style="display: flex;
                 flex-direction: column;">
-                  <label>Monto depositado:</label>
+                  <label>Monto retirado:</label>
                   <div style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;">
-    <span>500.000</span>
-    </div>
+              color: black;
+              padding: 10px 20px;
+              border-radius: 1rem;
+              font-size: larger;">
+              <span>500.000</span>
+              </div>
                 </div>
                 <div style="display: flex;
                 flex-direction: column; ">
                   <label>Moneda:</label>
                   <div style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;">
+              color: black;
+              padding: 10px 20px;
+              border-radius: 1rem;
+              font-size: larger;">
                   <span>ARS</span>
                   </div>
                 </div>
               </div>
               <label>Desde:</label>
               <div style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;">
+              color: black;
+              padding: 10px 20px;
+              border-radius: 1rem;
+              font-size: larger;">
               <span id="entidad-value">entidad-value</span>
               </div>
               <label>Alias:</label>
               <div style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;">
+              color: black;
+              padding: 10px 20px;
+              border-radius: 1rem;
+              font-size: larger;">
               <span id="alias-value">alias-value</span>
               </div>
               <label>Cuil:</label>
               <div style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;">
+              color: black;
+              padding: 10px 20px;
+              border-radius: 1rem;
+              font-size: larger;">
               <span id="cuil-value">cuil-value</span>
               </div>
               <div style="display: flex;
@@ -220,22 +220,22 @@ export class WithdrawComponent {
                 flex-direction: column;">
                   <label>Fecha:</label>
                   <div style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;">
-    <span>07 / 07 / 2024</span>
-    </div>
+              color: black;
+              padding: 10px 20px;
+              border-radius: 1rem;
+              font-size: larger;">
+              <span>07 / 07 / 2024</span>
+              </div>
                 </div>
                 
                 <div style="display: flex;
                 flex-direction: column;">
                   <label>Hora:</label>
                   <div style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;">
+                color: black;
+                padding: 10px 20px;
+                border-radius: 1rem;
+                font-size: larger;">
                   <span>11:11 am</span>
                   </div>
                 </div>
@@ -248,15 +248,14 @@ export class WithdrawComponent {
                   </h4>
             `,
               confirmButtonText: "Aceptar",
-      background:'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)',
+            background:'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)',
 
             }).then((result) => {
               
         this.router.navigate(['/dashboard'])
             });
           }});
-        } else if (
-          /* Read more about handling dismissals below */
+        } /* else if (
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire({
@@ -264,7 +263,7 @@ export class WithdrawComponent {
             text: "Your imaginary file is safe :)",
             icon: "error"
           });
-        }
+        } */
       });
     }});
   }
