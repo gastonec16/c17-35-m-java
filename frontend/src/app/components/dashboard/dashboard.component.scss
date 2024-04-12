@@ -264,6 +264,8 @@
 
     & .logo-container {
         width: 100%;
+        display: flex;
+        justify-content: center;
 
         & img {
             width: 268px;
@@ -340,4 +342,9 @@
         justify-content: center;
         margin-top: 32px;
     }
+}
+
+.bg-gradient-green {
+    background: rgb(40, 118, 53);
+    background: linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%);
 }
