@@ -12,5 +12,5 @@ public interface IUserService {
     public List<String> findAllEmail();
     //TODO INGRESO
     // public User loginUser(UserDto userDto);
-    public UserDto findByEmail(String email) throws Exception;
+    public UserDto findByEmail(String email, String password) throws Exception;
 }

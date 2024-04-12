@@ -18,28 +18,38 @@ import com.NoCountry.Patrickscoin.utils.validator.UserValidator;
 @RestController
 @RequestMapping("/api")
 public class UserController {
-    
+
     @Autowired
     private IUserService userService;
 
     @Autowired
     private UserValidator userValidator;
 
-    @PostMapping ("/users")
-    public ResponseEntity<User> registerUser(@RequestBody UserDto userdto){
+    @PostMapping("/users")
+    public ResponseEntity<User> registerUser(@RequestBody UserDto userdto) {
         userValidator.validateRegister(userdto);
         return new ResponseEntity<>(userService.registerUser(userdto), HttpStatus.CREATED);
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<?> getUserById(@PathVariable Long id) throws Exception{
+    public ResponseEntity<?> getUserById(@PathVariable Long id) throws Exception {
         return ResponseEntity.ok().body(userService.findById(id));
     }
 
-    //FRONT api/users/log-in
+    // FRONT api/users/log-in
     @PostMapping("/users/log-in")
-    public ResponseEntity<?> getUserByEmail(@RequestBody UserDto user) throws Exception{
+    public ResponseEntity<?> getUserByEmail(@RequestBody UserDto user) {
         String email = user.getEmail();
-        return ResponseEntity.ok().body(userService.findByEmail(email));
+        String password = user.getPassword();
+    
+        try {
+            UserDto foundUser = userService.findByEmail(email, password);
+            if (foundUser == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
+            }
+            return ResponseEntity.ok().body(foundUser);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al intentar iniciar sesión: " + e.getMessage());
+        }
     }
 }
