@@ -34,8 +34,6 @@ public class UserValidator {
             throw new UserException("apellido debe tener minimo 2 caracteres alfabeticos");
         if (!passwordIsValid(userDto.getPassword()))
             throw new UserException("contraseña debe tener como mínimo una mayúsculas, minúsculas, números y 8 caracteres");
-        if(!passwordCoincident(userDto))
-            throw new UserException("contraseñas no coincíden");
         if(!emailNotExist(userDto.getEmail(), userService.findAllEmail()))
             throw new UserException("email ya esta registrado");
     }
@@ -58,8 +56,5 @@ public class UserValidator {
     private static boolean passwordIsValid(String password) {
         return password.matches(VALID_PASSWORD)
                 && (password.length() <= MAX_PASSWORD && password.length() >= MIN_PASSWORD);
-    }
-    private static boolean passwordCoincident(UserDto userDto){
-        return userDto.getPassword().equals(userDto.getRepeatPassword());
     }
 }
