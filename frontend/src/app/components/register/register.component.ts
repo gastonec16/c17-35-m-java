@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, Validators } from '@angular/forms'
 import { Router, RouterModule } from '@angular/router'
 import Swal from 'sweetalert2'
 import { RegisterUser } from '../../interfaces/user'
@@ -37,6 +37,8 @@ export class RegisterComponent implements OnInit {
         confirmPassword: ''
     }
 
+    patrickStyle = { title: 'swalTitle', confirmButton: 'swalButton', popup: 'swalPopup' }
+
     registerUser(event: SubmitEvent) {
         event.preventDefault()
         const form = event.target as HTMLFormElement
@@ -50,8 +52,10 @@ export class RegisterComponent implements OnInit {
         if (password != confirmPassword) {
             Swal.fire({
                 title: 'Error',
-                text: 'Las contraseñas no coinciden',
-                icon: 'error'
+                text: 'Las contraseñas no coinciden. Por favor, inténtalo de nuevo.',
+                icon: 'error',
+                iconColor: '#b91919',
+                customClass: this.patrickStyle
             })
         } else if (form.checkValidity()) {
             const newUser: RegisterUser = {
@@ -68,11 +72,8 @@ export class RegisterComponent implements OnInit {
                             title: 'Éxito',
                             text: 'Ya puedes iniciar sesión',
                             icon: 'success',
-                            customClass: {
-                                title: 'swalTitle',
-                                confirmButton: 'swalButton',
-                                popup: 'swalPopup'
-                            }
+                            iconColor: '#61a830',
+                            customClass: this.patrickStyle
                         })
                         this.router.navigate(['/log-in'])
                         form.reset()
@@ -81,11 +82,8 @@ export class RegisterComponent implements OnInit {
                             title: 'Error',
                             text: data.message,
                             icon: 'error',
-                            customClass: {
-                                title: 'swalTitle',
-                                confirmButton: 'swalButton',
-                                popup: 'swalPopup'
-                            }
+                            iconColor: '#b91919',
+                            customClass: this.patrickStyle
                         })
                 },
                 error: (err) => {
@@ -93,35 +91,26 @@ export class RegisterComponent implements OnInit {
                         title: 'Error',
                         text: err.error.message,
                         icon: 'error',
-                        customClass: {
-                            title: 'swalTitle',
-                            confirmButton: 'swalButton',
-                            popup: 'swalPopup'
-                        }
+                        iconColor: '#b91919',
+                        customClass: this.patrickStyle
                     })
                 }
             })
-        } else if (!/[^ ]@[^ ]/.test(email)) {
+        } else if (!/[^ ][^ ][^ ]@[^ ]/.test(email)) {
             Swal.fire({
                 title: 'Error',
-                text: 'El email no es válido',
+                text: 'Por favor, ingresa una dirección de correo válida.',
                 icon: 'error',
-                customClass: {
-                    title: 'swalTitle',
-                    confirmButton: 'swalButton',
-                    popup: 'swalPopup'
-                }
+                iconColor: '#b91919',
+                customClass: this.patrickStyle
             })
         } else {
             Swal.fire({
                 title: 'Error',
-                text: 'Ingresa los datos faltantes',
+                text: 'Por favor, ingresa los datos faltantes',
                 icon: 'error',
-                customClass: {
-                    title: 'swalTitle',
-                    confirmButton: 'swalButton',
-                    popup: 'swalPopup'
-                }
+                iconColor: '#b91919',
+                customClass: this.patrickStyle
             })
         }
     }

@@ -31,6 +31,8 @@ export class LogInComponent {
         password: ''
     }
 
+    patrickStyle = { title: 'swalTitle', confirmButton: 'swalButton', popup: 'swalPopup' }
+
     logIn(event: SubmitEvent) {
         event.preventDefault()
         const form = event.target as HTMLFormElement

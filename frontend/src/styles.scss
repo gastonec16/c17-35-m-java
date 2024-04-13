@@ -162,3 +162,12 @@ a {
 .swalPopup {
     border-radius: 16px;
 }
+
+.form-error {
+    font-size: small;
+    color: var(--red);
+}
+.form-information {
+    font-size: small;
+    color: var(--green-4);
+}

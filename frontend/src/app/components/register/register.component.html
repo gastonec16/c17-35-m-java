@@ -78,7 +78,20 @@
 
             <label for="name"
                 >Nombre *
-                <input name="name" id="name" type="text" required [(ngModel)]="user.name" #name="ngModel" />
+                <input
+                    name="name"
+                    id="name"
+                    type="text"
+                    required
+                    minlength="3"
+                    maxlength="50"
+                    [(ngModel)]="user.name"
+                    #name="ngModel"
+                />
+
+                @if (name.invalid && (name.dirty || name.touched)) {
+                <div class="form-error">Por favor, ingresa un nombre válido.</div>
+                }
             </label>
             <label for="last-name"
                 >Apellido *
@@ -87,9 +100,16 @@
                     id="last-name"
                     type="text"
                     required
+                    minlength="2"
+                    maxlength="50"
                     [(ngModel)]="user.lastName"
                     #lastName="ngModel"
                 />
+
+                @if (lastName.invalid && (lastName.dirty || lastName.touched)) {
+                <div class="form-error">Por favor, ingresa un apellido válido.</div>
+
+                }
             </label>
             <label for="email"
                 >Correo electrónico *
@@ -98,9 +118,14 @@
                     id="email"
                     type="email"
                     required
+                    maxlength="100"
                     [(ngModel)]="user.email"
                     #email="ngModel"
                 />
+
+                @if (email.invalid && (email.dirty || email.touched)) {
+                <div class="form-error">Por favor, ingresa una dirección de correo válida.</div>
+                }
             </label>
             <label for="password"
                 >Contraseña *
@@ -109,9 +134,21 @@
                     id="password"
                     type="password"
                     required
+                    minlength="8"
+                    maxlength="50"
                     [(ngModel)]="user.password"
                     #password="ngModel"
                 />
+
+                <div class="form-information">
+                    Al menos una letra mayúscula, una letra minúscula y un número.
+                </div>
+                @if (password.invalid && (password.dirty || password.touched)) {
+                <div class="form-error">
+                    La contraseña debe tener al menos 8 caracteres e incluir al menos una letra mayúscula, una
+                    letra minúscula y un número.
+                </div>
+                }
             </label>
             <label for="confirm-password"
                 >Repetir contraseña *
@@ -123,6 +160,11 @@
                     [(ngModel)]="user.confirmPassword"
                     #confirmPassword="ngModel"
                 />
+
+                @if ((confirmPassword.dirty || confirmPassword.touched || password.touched) && (password.value
+                != confirmPassword.value)) {
+                <div class="form-error">Las contraseñas no coinciden.</div>
+                }
             </label>
 
             <div class="button-container">
