@@ -129,16 +129,48 @@
             </label>
             <label for="password"
                 >Contraseña *
-                <input
-                    name="password"
-                    id="password"
-                    type="password"
-                    required
-                    minlength="8"
-                    maxlength="50"
-                    [(ngModel)]="user.password"
-                    #password="ngModel"
-                />
+                <div class="password-container">
+                    <input
+                        name="password"
+                        id="password"
+                        type="{{ showPassword ? 'text' : 'password' }}"
+                        required
+                        minlength="8"
+                        maxlength="50"
+                        [(ngModel)]="user.password"
+                        #password="ngModel"
+                    />
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icono-contrasenia"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        (click)="showHidePassword()"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                        />
+                        @if (!showPassword ) {
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M 1,20 L 23,4"
+                        />
+                        }
+                    </svg>
+                </div>
 
                 <div class="form-information">
                     Al menos una letra mayúscula, una letra minúscula y un número.
@@ -152,16 +184,48 @@
             </label>
             <label for="confirm-password"
                 >Repetir contraseña *
-                <input
-                    name="confirm-password"
-                    id="confirm-password"
-                    type="password"
-                    required
-                    minlength="8"
-                    maxlength="50"
-                    [(ngModel)]="user.confirmPassword"
-                    #confirmPassword="ngModel"
-                />
+                <div class="password-container">
+                    <input
+                        name="confirm-password"
+                        id="confirm-password"
+                        type="{{ showConfirmPassword ? 'text' : 'password' }}"
+                        required
+                        minlength="8"
+                        maxlength="50"
+                        [(ngModel)]="user.confirmPassword"
+                        #confirmPassword="ngModel"
+                    />
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icono-contrasenia"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        (click)="showHideConfirmPassword()"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                        />
+                        @if (!showConfirmPassword ) {
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M 1,20 L 23,4"
+                        />
+                        }
+                    </svg>
+                </div>
 
                 @if ((confirmPassword.dirty || confirmPassword.touched || password.touched) && (password.value
                 != confirmPassword.value)) {
@@ -196,7 +260,7 @@
             }
 
             <div class="button-container">
-                <button class="submit-button">Registrarse</button>
+                <button class="submit-button" [disabled]="!form.form.valid">Registrarse</button>
             </div>
 
             <p>¿Ya tienes una cuenta? <a routerLink="/log-in">¡Inicia sesión!</a></p>

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core'
+import { Component, OnInit, inject, signal } from '@angular/core'
 import { FormsModule, Validators } from '@angular/forms'
 import { Router, RouterModule } from '@angular/router'
 import Swal from 'sweetalert2'
@@ -40,6 +40,17 @@ export class RegisterComponent implements OnInit {
     }
 
     patrickStyle = { title: 'swalTitle', confirmButton: 'swalButton', popup: 'swalPopup' }
+
+    showPassword = false
+
+    showHidePassword() {
+        this.showPassword = !this.showPassword
+    }
+    showConfirmPassword = false
+
+    showHideConfirmPassword() {
+        this.showConfirmPassword = !this.showConfirmPassword
+    }
 
     registerUser(event: SubmitEvent) {
         event.preventDefault()

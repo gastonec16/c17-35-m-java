@@ -118,7 +118,7 @@ export class TermsAndConditions {
 
     <h2>Cambios en los Términos</h2>
     <p>
-        Nos reservamos el derecho de modificar o reemplazar estos Términos en cualquier momento. Si realizamos
+        Nos reservamos el derecho de modificar o reemplazar estos Términos y Condiciones en cualquier momento. Si realizamos
         cambios materiales, te notificaremos mediante una notificación en la Plataforma o por correo
         electrónico antes de que los cambios entren en vigencia. El uso continuado de la Plataforma después de 
         dichos cambios constituye tu aceptación de los nuevos Términos y Condiciones.

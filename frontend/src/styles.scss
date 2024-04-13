@@ -143,6 +143,33 @@ a {
     }
 }
 
+.password-container {
+    position: relative;
+    width: 100%;
+
+    & input {
+        width: calc(100% - 70px);
+        padding-right: 50px;
+    }
+
+    & svg {
+        color: var(--green-5);
+        position: absolute;
+        right: 0;
+        width: 24px;
+        top: 9px;
+        right: 16px;
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(1.2);
+        }
+        &:active {
+            opacity: 0.8;
+        }
+    }
+}
+
 .swal2-styled.swal2-confirm.swalButton {
     @extend button;
     &:hover {
