@@ -47,6 +47,7 @@ form {
 
     & h2 {
         font-family: 'Germania One', sans-serif;
+        font-weight: 400;
         color: var(--black);
         font-size: 30pt;
         margin-top: 40px;
@@ -92,7 +93,7 @@ button {
     transition: filter 0.2s;
     box-shadow: var(--shadow);
     font-family: Germania One, sans-serif;
-    letter-spacing: 1pt;
+    font-weight: 400;
 
     &:hover {
         cursor: pointer;
@@ -153,6 +154,7 @@ a {
 
 .swalTitle {
     font-family: Germania One, sans-serif;
+    font-weight: 400;
     font-size: 30pt;
     color: var(--green-5);
 }

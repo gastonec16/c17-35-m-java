@@ -50,6 +50,10 @@ h2 {
     background-color: var(--green-3);
     color: var(--white);
     min-height: 155px;
+
+    & p {
+        max-width: 680px;
+    }
 }
 
 .container-1,
@@ -86,6 +90,11 @@ h2 {
     color: var(--white);
     min-height: 160px;
     text-align: end;
+    justify-content: end;
+
+    & p {
+        max-width: 680px;
+    }
 }
 
 .start-button-container {
@@ -93,4 +102,30 @@ h2 {
     width: 100%;
     margin: 48px;
     justify-content: center;
+}
+
+@media (min-width: 1025px) {
+    .img-2 {
+        right: calc((100vw - 960px) / 2);
+    }
+
+    .title-2 {
+        padding-right: calc((100vw - 416px) / 2);
+    }
+
+    .text-2 p {
+        margin-right: calc((100vw - 1024px) / 2);
+    }
+
+    .img-1 {
+        left: calc((100vw - 960px) / 2);
+    }
+
+    .patrick-coins-logo {
+        margin-left: calc((100vw - 416px) / 2);
+    }
+
+    .text-1 p {
+        margin-left: calc((100vw - 1024px) / 2);
+    }
 }
