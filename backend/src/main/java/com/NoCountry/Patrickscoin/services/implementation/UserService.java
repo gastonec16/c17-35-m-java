@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.NoCountry.Patrickscoin.dto.UserDto;
+import com.NoCountry.Patrickscoin.dto.WalletDto;
 import com.NoCountry.Patrickscoin.entities.User;
+import com.NoCountry.Patrickscoin.entities.Wallet;
 import com.NoCountry.Patrickscoin.exception.UserException;
 import com.NoCountry.Patrickscoin.mapper.UserMapper;
 import com.NoCountry.Patrickscoin.repositories.UserRepository;
@@ -21,8 +23,18 @@ public class UserService implements IUserService {
 
     @Override
     public User registerUser(UserDto userDto) {
-        // TODO LOGICA DE VALIDACION POR EMAIL
-        return userRepository.save(UserMapper.dtoToEntity(userDto));
+
+        User user = UserMapper.dtoToEntity(userDto);
+        
+        Wallet wallet = new Wallet();
+
+        wallet.setUser(user);
+
+        System.err.println("walletId--->" + wallet.getUser().getId());
+
+        user.setWallet(wallet);
+
+        return userRepository.save(user);
     }
 
     @Override

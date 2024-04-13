@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,5 +33,9 @@ public class Wallet {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "coin.id")
-    private Set<Coin> coins;    
+    private Set<Coin> coins;  
+    
+    @OneToOne
+    @JoinColumn(name = "id_socio")
+    private User user;
 }
