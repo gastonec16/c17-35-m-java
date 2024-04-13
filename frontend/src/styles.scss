@@ -17,6 +17,7 @@
 * {
     font-family: 'Gowun Batang', sans-serif;
     font-weight: 700;
+    color: var(--black);
 }
 
 body {
@@ -123,6 +124,7 @@ textarea {
     align-items: center;
     overflow-x: hidden;
     box-shadow: var(--shadow);
+    font-size: 14pt;
 
     &:focus {
         outline: 2px var(--green-3) solid;
@@ -169,5 +171,5 @@ a {
 }
 .form-information {
     font-size: small;
-    color: var(--green-4);
+    color: var(--green-5);
 }

@@ -130,6 +130,40 @@ p {
     margin: 8px 0;
 }
 
+.terms-label {
+    margin-bottom: 0;
+}
+
+.terms-container {
+    position: relative;
+
+    & input {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+    }
+
+    & p {
+        padding-left: 36px;
+        text-align: left;
+        color: var(--black);
+        font-size: 14pt;
+        margin: 0;
+    }
+}
+
+.link-terms {
+    color: var(--green-3);
+
+    &:hover {
+        cursor: pointer;
+        filter: brightness(1.2);
+    }
+    &:active {
+        opacity: 0.8;
+    }
+}
+
 #facebook-button {
     background-color: #4063b3;
 }

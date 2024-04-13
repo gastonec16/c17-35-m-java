@@ -157,6 +157,8 @@
                     id="confirm-password"
                     type="password"
                     required
+                    minlength="8"
+                    maxlength="50"
                     [(ngModel)]="user.confirmPassword"
                     #confirmPassword="ngModel"
                 />
@@ -166,6 +168,32 @@
                 <div class="form-error">Las contraseñas no coinciden.</div>
                 }
             </label>
+
+            <label for="terms" class="terms-label">Términos y Condiciones *</label>
+            <div class="form-information">
+                Por favor, lee detenidamente nuestros
+                <span class="link-terms" (click)="showTermsAndConditions()">Términos y Condiciones</span>
+                antes de continuar. Al marcar la casilla confirmas que has leído, entendido y estás de acuerdo
+                con nuestros Términos y Condiciones.
+            </div>
+            <div class="terms-container">
+                <input
+                    type="checkbox"
+                    name="terms"
+                    id="terms"
+                    [(ngModel)]="user.terms"
+                    #terms="ngModel"
+                    required
+                />
+                <p>
+                    Acepto los
+                    <span class="link-terms" (click)="showTermsAndConditions()">Términos y Condiciones</span>
+                </p>
+            </div>
+
+            @if (terms.invalid && (terms.dirty || terms.touched)) {
+            <div class="form-error">Debes aceptar los términos y condiciones para registrarte.</div>
+            }
 
             <div class="button-container">
                 <button class="submit-button">Registrarse</button>

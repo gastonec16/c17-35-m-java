@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router'
 import Swal from 'sweetalert2'
 import { RegisterUser } from '../../interfaces/user'
 import { UserService } from '../../services/user.service'
+import { TermsAndConditions } from './terms-and-conditions.component'
 
 @Component({
     selector: 'app-register',
@@ -34,7 +35,8 @@ export class RegisterComponent implements OnInit {
         lastName: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        terms: false
     }
 
     patrickStyle = { title: 'swalTitle', confirmButton: 'swalButton', popup: 'swalPopup' }
@@ -55,6 +57,7 @@ export class RegisterComponent implements OnInit {
                 text: 'Las contraseñas no coinciden. Por favor, inténtalo de nuevo.',
                 icon: 'error',
                 iconColor: '#b91919',
+                confirmButtonText: 'Aceptar',
                 customClass: this.patrickStyle
             })
         } else if (form.checkValidity()) {
@@ -73,6 +76,7 @@ export class RegisterComponent implements OnInit {
                             text: 'Ya puedes iniciar sesión',
                             icon: 'success',
                             iconColor: '#61a830',
+                            confirmButtonText: 'Aceptar',
                             customClass: this.patrickStyle
                         })
                         this.router.navigate(['/log-in'])
@@ -83,6 +87,7 @@ export class RegisterComponent implements OnInit {
                             text: data.message,
                             icon: 'error',
                             iconColor: '#b91919',
+                            confirmButtonText: 'Aceptar',
                             customClass: this.patrickStyle
                         })
                 },
@@ -92,6 +97,7 @@ export class RegisterComponent implements OnInit {
                         text: err.error.message,
                         icon: 'error',
                         iconColor: '#b91919',
+                        confirmButtonText: 'Aceptar',
                         customClass: this.patrickStyle
                     })
                 }
@@ -102,6 +108,7 @@ export class RegisterComponent implements OnInit {
                 text: 'Por favor, ingresa una dirección de correo válida.',
                 icon: 'error',
                 iconColor: '#b91919',
+                confirmButtonText: 'Aceptar',
                 customClass: this.patrickStyle
             })
         } else {
@@ -110,8 +117,17 @@ export class RegisterComponent implements OnInit {
                 text: 'Por favor, ingresa los datos faltantes',
                 icon: 'error',
                 iconColor: '#b91919',
+                confirmButtonText: 'Aceptar',
                 customClass: this.patrickStyle
             })
         }
+    }
+
+    showTermsAndConditions() {
+        Swal.fire({
+            html: TermsAndConditions.termsAndConditions,
+            confirmButtonText: 'Aceptar',
+            customClass: this.patrickStyle
+        })
     }
 }
