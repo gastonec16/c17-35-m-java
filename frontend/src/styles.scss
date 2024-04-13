@@ -17,7 +17,6 @@
 * {
     font-family: 'Gowun Batang', sans-serif;
     font-weight: 700;
-    color: var(--black);
 }
 
 body {
@@ -59,10 +58,12 @@ form {
         display: flex;
         flex-direction: column;
         margin: 16px 0;
+        color: var(--black);
     }
 
     & h3 {
         text-align: center;
+        color: var(--black);
     }
 
     & .submit-button {

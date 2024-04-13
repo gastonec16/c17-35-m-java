@@ -15,6 +15,7 @@ export class TermsAndConditions {
         }
         p {
             font-weight: 400;
+            color: #1e1e1e;
             margin-bottom: 10px;
             text-align: start;
         }
@@ -24,6 +25,7 @@ export class TermsAndConditions {
             text-align: start;
         }
         li {
+            color: #1e1e1e;
             font-weight: 400;
         }
         li::before {
