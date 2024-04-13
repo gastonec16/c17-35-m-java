@@ -30,6 +30,6 @@ public class Coin {
     private String quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "wallet.id")
+    @JoinColumn(name = "wallet_id")
     private Wallet wallet;
 }

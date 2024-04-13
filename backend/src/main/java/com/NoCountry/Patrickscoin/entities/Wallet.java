@@ -2,6 +2,7 @@ package com.NoCountry.Patrickscoin.entities;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,8 +32,7 @@ public class Wallet {
     @Column(nullable = false)
     private double balance;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "coin.id")
+    @OneToMany
     private Set<Coin> coins;  
     
     @OneToOne
