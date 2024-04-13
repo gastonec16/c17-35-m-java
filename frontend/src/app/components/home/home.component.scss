@@ -106,11 +106,11 @@ h2 {
 
 @media (min-width: 1025px) {
     .img-2 {
-        right: calc((100vw - 1024px + 64px) / 2);
+        right: calc((100vw - 960px) / 2);
     }
 
     .title-2 {
-        padding-right: calc((100vw - 512px + 96px) / 2);
+        padding-right: calc((100vw - 416px) / 2);
     }
 
     .text-2 p {
@@ -118,7 +118,7 @@ h2 {
     }
 
     .img-1 {
-        left: calc((100vw - 1024px + 64px) / 2);
+        left: calc((100vw - 960px) / 2);
     }
 
     .patrick-coins-logo {
