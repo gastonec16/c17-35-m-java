@@ -194,10 +194,12 @@ a {
 }
 
 .form-error {
+    margin-top: 1px;
     font-size: small;
     color: var(--red);
 }
 .form-information {
+    margin-top: 1px;
     font-size: small;
     color: var(--green-5);
 }

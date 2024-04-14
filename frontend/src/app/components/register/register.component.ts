@@ -42,12 +42,11 @@ export class RegisterComponent implements OnInit {
     patrickStyle = { title: 'swalTitle', confirmButton: 'swalButton', popup: 'swalPopup' }
 
     showPassword = false
-
     showHidePassword() {
         this.showPassword = !this.showPassword
     }
-    showConfirmPassword = false
 
+    showConfirmPassword = false
     showHideConfirmPassword() {
         this.showConfirmPassword = !this.showConfirmPassword
     }

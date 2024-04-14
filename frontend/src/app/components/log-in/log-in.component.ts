@@ -33,6 +33,11 @@ export class LogInComponent {
 
     patrickStyle = { title: 'swalTitle', confirmButton: 'swalButton', popup: 'swalPopup' }
 
+    showPassword = false
+    showHidePassword() {
+        this.showPassword = !this.showPassword
+    }
+
     logIn(event: SubmitEvent) {
         event.preventDefault()
         const form = event.target as HTMLFormElement
