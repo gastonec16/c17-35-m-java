@@ -126,6 +126,8 @@ textarea {
     overflow-x: hidden;
     box-shadow: var(--shadow);
     font-size: 14pt;
+    font-family: 'Gowun Batang', sans-serif;
+    font-weight: 700;
 
     &:focus {
         outline: 2px var(--green-3) solid;
@@ -170,7 +172,7 @@ a {
     }
 }
 
-.swal2-styled.swal2-confirm.swalButton {
+.swal2-styled.swal2-confirm.swal-button {
     @extend button;
     &:hover {
         background: linear-gradient(to right, var(--green-5), var(--green-3));
@@ -182,14 +184,28 @@ a {
     }
 }
 
-.swalTitle {
+.swal2-styled.swal2-cancel.swal-button {
+    @extend button;
+    background: linear-gradient(to right, var(--green-3), var(--green-5));
+
+    &:hover {
+        background: linear-gradient(to right, var(--green-3), var(--green-5));
+        cursor: pointer;
+        filter: brightness(1.2);
+    }
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+.swal2-title {
     font-family: Germania One, sans-serif;
     font-weight: 400;
     font-size: 30pt;
     color: var(--green-5);
 }
 
-.swalPopup {
+.swal2-popup {
     border-radius: 16px;
 }
 
@@ -202,4 +218,15 @@ a {
     margin-top: 1px;
     font-size: small;
     color: var(--green-5);
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
 }

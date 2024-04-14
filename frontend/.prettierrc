@@ -4,7 +4,7 @@
     "tabWidth": 4,
     "semi": false,
     "proseWrap": "preserve",
-    "printWidth": 110,
+    "printWidth": 120,
     "endOfLine": "crlf",
     "bracketSpacing": true
 }

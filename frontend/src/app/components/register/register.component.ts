@@ -39,8 +39,6 @@ export class RegisterComponent implements OnInit {
         terms: false
     }
 
-    patrickStyle = { title: 'swalTitle', confirmButton: 'swalButton', popup: 'swalPopup' }
-
     showPassword = false
     showHidePassword() {
         this.showPassword = !this.showPassword
@@ -66,9 +64,9 @@ export class RegisterComponent implements OnInit {
                 title: 'Error',
                 text: 'Las contraseñas no coinciden. Por favor, inténtalo de nuevo.',
                 icon: 'error',
-                iconColor: '#b91919',
+                iconColor: 'var(--red)',
                 confirmButtonText: 'Aceptar',
-                customClass: this.patrickStyle
+                customClass: { confirmButton: 'swal-button' }
             })
         } else if (form.checkValidity()) {
             const newUser: RegisterUser = {
@@ -85,9 +83,9 @@ export class RegisterComponent implements OnInit {
                             title: 'Éxito',
                             text: 'Ya puedes iniciar sesión',
                             icon: 'success',
-                            iconColor: '#61a830',
+                            iconColor: 'var(--green-3)',
                             confirmButtonText: 'Aceptar',
-                            customClass: this.patrickStyle
+                            customClass: { confirmButton: 'swal-button' }
                         })
                         this.router.navigate(['/log-in'])
                         form.reset()
@@ -96,9 +94,9 @@ export class RegisterComponent implements OnInit {
                             title: 'Error',
                             text: data.message,
                             icon: 'error',
-                            iconColor: '#b91919',
+                            iconColor: 'var(--red)',
                             confirmButtonText: 'Aceptar',
-                            customClass: this.patrickStyle
+                            customClass: { confirmButton: 'swal-button' }
                         })
                 },
                 error: (err) => {
@@ -106,9 +104,9 @@ export class RegisterComponent implements OnInit {
                         title: 'Error',
                         text: err.error.message,
                         icon: 'error',
-                        iconColor: '#b91919',
+                        iconColor: 'var(--red)',
                         confirmButtonText: 'Aceptar',
-                        customClass: this.patrickStyle
+                        customClass: { confirmButton: 'swal-button' }
                     })
                 }
             })
@@ -117,18 +115,18 @@ export class RegisterComponent implements OnInit {
                 title: 'Error',
                 text: 'Por favor, ingresa una dirección de correo válida.',
                 icon: 'error',
-                iconColor: '#b91919',
+                iconColor: 'var(--red)',
                 confirmButtonText: 'Aceptar',
-                customClass: this.patrickStyle
+                customClass: { confirmButton: 'swal-button' }
             })
         } else {
             Swal.fire({
                 title: 'Error',
                 text: 'Por favor, ingresa los datos faltantes',
                 icon: 'error',
-                iconColor: '#b91919',
+                iconColor: 'var(--red)',
                 confirmButtonText: 'Aceptar',
-                customClass: this.patrickStyle
+                customClass: { confirmButton: 'swal-button' }
             })
         }
     }
@@ -137,7 +135,7 @@ export class RegisterComponent implements OnInit {
         Swal.fire({
             html: TermsAndConditions.termsAndConditions,
             confirmButtonText: 'Aceptar',
-            customClass: this.patrickStyle
+            customClass: { confirmButton: 'swal-button' }
         })
     }
 }

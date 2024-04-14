@@ -4,18 +4,20 @@ export class TermsAndConditions {
     <style>
         h1 {
             font-family: 'Germania One', sans-serif;
-            color: #224d17;
+            font-weight: 400;
+            color: var(--green-5);
             margin-bottom: 10px;
         }
         h2 {
             font-family: 'Germania One', sans-serif;
-            color: #224d17;
+            font-weight: 400;
+            color: var(--green-5);
             margin-bottom: 5px;
             text-align: start;
         }
         p {
             font-weight: 400;
-            color: #1e1e1e;
+            color: var(--black);
             margin-bottom: 10px;
             text-align: start;
         }
@@ -25,7 +27,7 @@ export class TermsAndConditions {
             text-align: start;
         }
         li {
-            color: #1e1e1e;
+            color: var(--black);
             font-weight: 400;
         }
         li::before {

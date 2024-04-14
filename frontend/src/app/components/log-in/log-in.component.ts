@@ -31,8 +31,6 @@ export class LogInComponent {
         password: ''
     }
 
-    patrickStyle = { title: 'swalTitle', confirmButton: 'swalButton', popup: 'swalPopup' }
-
     showPassword = false
     showHidePassword() {
         this.showPassword = !this.showPassword
@@ -54,7 +52,6 @@ export class LogInComponent {
             this.userService.logIn(credentials).subscribe({
                 next: (data) => {
                     if (data.email) {
-                        console.log('Inicio de sesión exitoso')
                         this.router.navigate(['dashboard'])
                         form.reset()
                     } else
@@ -62,11 +59,9 @@ export class LogInComponent {
                             title: 'Error',
                             text: data.message,
                             icon: 'error',
-                            customClass: {
-                                title: 'swalTitle',
-                                confirmButton: 'swalButton',
-                                popup: 'swalPopup'
-                            }
+                            iconColor: 'var(--red)',
+                            confirmButtonText: 'Aceptar',
+                            customClass: { confirmButton: 'swal-button' }
                         })
                 },
                 error: (err) => {
@@ -74,35 +69,29 @@ export class LogInComponent {
                         title: 'Error',
                         text: err.error.message,
                         icon: 'error',
-                        customClass: {
-                            title: 'swalTitle',
-                            confirmButton: 'swalButton',
-                            popup: 'swalPopup'
-                        }
+                        iconColor: 'var(--red)',
+                        confirmButtonText: 'Aceptar',
+                        customClass: { confirmButton: 'swal-button' }
                     })
                 }
             })
-        } else if (!/[^ ]@[^ ]/.test(email)) {
+        } else if (!/[^ ][^ ][^ ]@[^ ]/.test(email)) {
             Swal.fire({
                 title: 'Error',
-                text: 'El email no es válido',
+                text: 'Por favor, ingresa una dirección de correo válida.',
                 icon: 'error',
-                customClass: {
-                    title: 'swalTitle',
-                    confirmButton: 'swalButton',
-                    popup: 'swalPopup'
-                }
+                iconColor: 'var(--red)',
+                confirmButtonText: 'Aceptar',
+                customClass: { confirmButton: 'swal-button' }
             })
         } else {
             Swal.fire({
                 title: 'Error',
-                text: 'Ingresa los datos faltantes',
+                text: 'Por favor, ingresa los datos faltantes',
                 icon: 'error',
-                customClass: {
-                    title: 'swalTitle',
-                    confirmButton: 'swalButton',
-                    popup: 'swalPopup'
-                }
+                iconColor: 'var(--red)',
+                confirmButtonText: 'Aceptar',
+                customClass: { confirmButton: 'swal-button' }
             })
         }
     }

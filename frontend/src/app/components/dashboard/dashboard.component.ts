@@ -3,19 +3,58 @@ import { FooterComponent } from '../footer/footer.component'
 import { Router, RouterModule } from '@angular/router'
 import { CryptoService } from '../../services/crypto.service'
 import Swal from 'sweetalert2'
+import { FormsModule } from '@angular/forms'
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [FooterComponent, RouterModule],
+    imports: [FooterComponent, FormsModule, RouterModule],
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
     router = inject(Router)
     cryptoService = inject(CryptoService)
-    isBuy=true;
-    // TODO: obtener del backend
+    isBuying = true
+
+    operationBuy = {
+        fiat: '',
+        fiatQuantity: null,
+        crypto: 0,
+        cryptoQuantity: null
+    }
+    operationSell = {
+        crypto: 0,
+        cryptoQuantity: null,
+        fiat: '',
+        fiatQuantity: null
+    }
+
+    cryptoBuyValue = 0
+    cryptoSellValue = 0
+
+    getCryptoBuyValue() {
+        if (this.operationBuy.fiat == '' || this.operationBuy.crypto == 0) {
+            this.cryptoBuyValue = 0
+        } else if (this.operationBuy.fiat == 'ARS' && this.operationBuy.fiatQuantity) {
+            this.cryptoBuyValue = this.operationBuy.fiatQuantity / this.coinList[this.operationBuy.crypto - 1].arsBuy
+        } else if (this.operationBuy.fiat == 'USD' && this.operationBuy.fiatQuantity) {
+            this.cryptoBuyValue = this.operationBuy.fiatQuantity / this.coinList[this.operationBuy.crypto - 1].usdBuy
+        }
+    }
+
+    getCryptoSellValue() {
+        if (this.operationSell.fiat == '' || this.operationSell.crypto == 0) {
+            this.cryptoSellValue = 0
+        } else if (this.operationSell.fiat == 'ARS' && this.operationSell.cryptoQuantity) {
+            this.cryptoSellValue =
+                this.operationSell.cryptoQuantity * this.coinList[this.operationSell.crypto - 1].arsSell
+        } else if (this.operationSell.fiat == 'USD' && this.operationSell.cryptoQuantity) {
+            this.cryptoSellValue =
+                this.operationSell.cryptoQuantity * this.coinList[this.operationSell.crypto - 1].usdSell
+        }
+    }
+
     user = {
         id: 34,
         name: 'David',
@@ -48,28 +87,28 @@ export class DashboardComponent {
     }
 
     coinList = [
-        { coin: { id: 1, name: 'Aave', shortName: 'AAVE' }, usd: 0, ars: 0 },
-        { coin: { id: 2, name: 'Cardano', shortName: 'ADA' }, usd: 0, ars: 0 },
-        { coin: { id: 3, name: 'Algorand', shortName: 'ALGO' }, usd: 0, ars: 0 },
-        { coin: { id: 4, name: 'Avalanche', shortName: 'AVAX' }, usd: 0, ars: 0 },
-        { coin: { id: 5, name: 'Axie Infinity', shortName: 'AXS' }, usd: 0, ars: 0 },
-        { coin: { id: 6, name: 'BNB', shortName: 'BNB' }, usd: 0, ars: 0 },
-        { coin: { id: 7, name: 'Bitcoin', shortName: 'BTC' }, usd: 0, ars: 0 },
-        { coin: { id: 8, name: 'Dai', shortName: 'DAI' }, usd: 0, ars: 0 },
-        { coin: { id: 9, name: 'Polkadot', shortName: 'DOT' }, usd: 0, ars: 0 },
-        { coin: { id: 10, name: 'Ethereum', shortName: 'ETH' }, usd: 0, ars: 0 },
-        { coin: { id: 11, name: 'Fantom', shortName: 'FTM' }, usd: 0, ars: 0 },
-        { coin: { id: 12, name: 'Litecoin', shortName: 'LTC' }, usd: 0, ars: 0 },
-        { coin: { id: 13, name: 'Decentraland', shortName: 'MANA' }, usd: 0, ars: 0 },
-        { coin: { id: 14, name: 'Polygon', shortName: 'MATIC' }, usd: 0, ars: 0 },
-        { coin: { id: 15, name: 'PAX Gold', shortName: 'PAXG' }, usd: 0, ars: 0 },
-        { coin: { id: 16, name: 'The Sandbox', shortName: 'SAND' }, usd: 0, ars: 0 },
-        { coin: { id: 17, name: 'SLP', shortName: 'SLP' }, usd: 0, ars: 0 },
-        { coin: { id: 18, name: 'Solana', shortName: 'SOL' }, usd: 0, ars: 0 },
-        { coin: { id: 19, name: 'Uniswap', shortName: 'UNI' }, usd: 0, ars: 0 },
-        { coin: { id: 20, name: 'USD Coin', shortName: 'USDC' }, usd: 0, ars: 0 },
-        { coin: { id: 21, name: 'TetherUS', shortName: 'USDT' }, usd: 0, ars: 0 },
-        { coin: { id: 22, name: 'Stellar Lumens', shortName: 'XLM' }, usd: 0, ars: 0 }
+        { coin: { id: 1, name: 'Aave', shortName: 'AAVE' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 2, name: 'Cardano', shortName: 'ADA' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 3, name: 'Algorand', shortName: 'ALGO' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 4, name: 'Avalanche', shortName: 'AVAX' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 5, name: 'Axie Infinity', shortName: 'AXS' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 6, name: 'BNB', shortName: 'BNB' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 7, name: 'Bitcoin', shortName: 'BTC' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 8, name: 'Dai', shortName: 'DAI' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 9, name: 'Polkadot', shortName: 'DOT' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 10, name: 'Ethereum', shortName: 'ETH' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 11, name: 'Fantom', shortName: 'FTM' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 12, name: 'Litecoin', shortName: 'LTC' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 13, name: 'Decentraland', shortName: 'MANA' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 14, name: 'Polygon', shortName: 'MATIC' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 15, name: 'PAX Gold', shortName: 'PAXG' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 16, name: 'The Sandbox', shortName: 'SAND' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 17, name: 'SLP', shortName: 'SLP' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 18, name: 'Solana', shortName: 'SOL' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 19, name: 'Uniswap', shortName: 'UNI' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 20, name: 'USD Coin', shortName: 'USDC' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 21, name: 'TetherUS', shortName: 'USDT' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
+        { coin: { id: 22, name: 'Stellar Lumens', shortName: 'XLM' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 }
     ]
     // AAVE , ADA , ALGO , AVAX , AXS , BNB , BTC , DAI , DOT , ETH , FTM , LTC ,
     // MANA , MATIC , PAXG , SAND , SLP , SOL , UNI , USDC , USDT , XLM
@@ -80,11 +119,9 @@ export class DashboardComponent {
             title: 'Éxito',
             text: 'Se ha actualizado la cotización de todas las criptomonedas',
             icon: 'success',
-            customClass: {
-                title: 'swalTitle',
-                confirmButton: 'swalButton',
-                popup: 'swalPopup'
-            }
+            iconColor: 'var(--green-3)',
+            confirmButtonText: 'Aceptar',
+            customClass: { confirmButton: 'swal-button' }
         })
     }
 
@@ -107,8 +144,10 @@ export class DashboardComponent {
                             this.cryptoService.getCryptoPrices(item.coin.shortName, 'ars').subscribe({
                                 next: (data) => {
                                     if (data.ask) {
-                                        this.coinList[item.coin.id - 1].ars = data['bid']
-                                        this.coinList[item.coin.id - 1].usd = data['bid'] / this.usdArsPrice
+                                        this.coinList[item.coin.id - 1].arsSell = data['bid']
+                                        this.coinList[item.coin.id - 1].usdSell = data['bid'] / this.usdArsPrice
+                                        this.coinList[item.coin.id - 1].arsBuy = data['ask']
+                                        this.coinList[item.coin.id - 1].usdBuy = data['ask'] / this.usdArsPrice
                                     }
                                 }
                             })
@@ -119,53 +158,41 @@ export class DashboardComponent {
         })
     }
 
-
     goToDeposit() {
         this.router.navigate(['/deposit'])
     }
     goToWithdraw() {
         this.router.navigate(['/withdraw'])
     }
-    activeButton( button : boolean) {
-        this.isBuy = button;
-        console.log(this.isBuy);
+    activeButton(button: boolean) {
+        this.isBuying = button
     }
-    openDialog(): void {
 
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: "btn btn-success",
-                cancelButton: "btn btn-danger"
-            },
-            buttonsStyling: false
-        });
-        swalWithBootstrapButtons.fire({
-            html: `
-            <h4>Al aceptar la compra, estás aceptando todos los términos y condiciones de nuestra plataforma.</h4>
-            <h1 style="color: var(--yellow);">¡Gracias por tu confianza y por elegirnos!"</h1>
-            <h4>Te recomendamos revisar detenidamente nuestros términos y condiciones para comprender completamente nuestros servicios y tus responsabilidades como usuario.</h4> 
-            `,
-            icon: "warning",
-            confirmButtonText: "Aceptar",
+    openDialog(event: SubmitEvent): void {
+        event.preventDefault()
+
+        Swal.fire({
+            title: '¡Gracias por tu confianza y por elegirnos!',
+            text: 'Al aceptar la compra, estás aceptando todos los términos y condiciones de nuestra plataforma.',
+            icon: 'warning',
+            iconColor: 'var(--yellow)',
+            confirmButtonText: 'Aceptar',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            customClass: { confirmButton: 'swal-button', cancelButton: 'swal-button' }
         }).then((result) => {
             if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire({
-                    icon: "success",
-                    html: `
-              <h2 ><span  style="color: var(--yellow);">Compra realizada </span>con éxito!</h2>
-              <h3 >Tu saldo se actualizará en breve. </h3>
-              <h3 >¡Gracias por confiar en nuestro servicio! </h3>
-              
-            `,
-                    confirmButtonText: "Aceptar",
-                    //background: 'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)',
-
+                Swal.fire({
+                    title: '¡Compra realizada con éxito!',
+                    text: 'Tu saldo se actualizará en breve. ¡Gracias por confiar en nuestro servicio!',
+                    icon: 'success',
+                    iconColor: 'var(--green-3)',
+                    confirmButtonText: 'Aceptar',
+                    customClass: { confirmButton: 'swal-button' }
                 }).then((result) => {
-
                     this.router.navigate(['/dashboard'])
-                });
+                })
             }
-
-        });
+        })
     }
 }
