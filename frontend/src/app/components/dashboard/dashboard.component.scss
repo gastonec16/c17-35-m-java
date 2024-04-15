@@ -74,6 +74,7 @@ h1 {
         & .user-name,
         .user-email {
             border-radius: 1rem;
+            border: 2px solid var(--black);
             background-color: var(--green-5);
             color: var(--white);
             padding: 4px 12px;
@@ -158,6 +159,7 @@ h1 {
             color: var(--black);
             padding: 4px;
             background-color: var(--lightgrey);
+            border: 1px solid var(--black);
         }
 
         & td {
@@ -165,6 +167,7 @@ h1 {
             color: var(--black);
             vertical-align: middle;
             padding: 0 4px;
+            border: 1px solid var(--black);
 
             & .crypto-name {
                 display: flex;
