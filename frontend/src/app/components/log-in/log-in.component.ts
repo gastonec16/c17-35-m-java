@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router'
 import Swal from 'sweetalert2'
 import { LogInCredentials } from '../../interfaces/user'
 import { UserService } from '../../services/user.service'
+import { AppComponent } from '../../app.component'
 
 @Component({
     selector: 'app-log-in',
@@ -15,6 +16,7 @@ import { UserService } from '../../services/user.service'
 export class LogInComponent {
     router = inject(Router)
     userService = inject(UserService)
+    appComponent = inject(AppComponent)
 
     continueWithFacebook() {
         window.open('https://www.facebook.com', '_blank')
@@ -52,6 +54,7 @@ export class LogInComponent {
             this.userService.logIn(credentials).subscribe({
                 next: (data) => {
                     if (data.email) {
+                        this.appComponent.user = data
                         this.router.navigate(['dashboard'])
                         form.reset()
                     } else
