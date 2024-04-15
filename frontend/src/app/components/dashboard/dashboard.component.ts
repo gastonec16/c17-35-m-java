@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router'
 import { CryptoService } from '../../services/crypto.service'
 import Swal from 'sweetalert2'
 import { FormsModule } from '@angular/forms'
+import { AppComponent } from '../../app.component'
 
 @Component({
     selector: 'app-dashboard',
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms'
     styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+    appComponent = inject(AppComponent)
     router = inject(Router)
     cryptoService = inject(CryptoService)
     isBuying = true
@@ -83,6 +85,7 @@ export class DashboardComponent {
     }
 
     logOut() {
+        this.appComponent.user = {}
         this.router.navigate(['/'])
     }
 
