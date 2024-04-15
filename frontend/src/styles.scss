@@ -188,6 +188,7 @@ a {
 .swal2-styled.swal2-cancel.swal-button {
     @extend button;
     background: linear-gradient(to right, var(--green-3), var(--green-5));
+    filter: grayscale(50%);
 
     &:hover {
         background: linear-gradient(to right, var(--green-3), var(--green-5));
