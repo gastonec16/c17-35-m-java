@@ -3,7 +3,6 @@ package com.NoCountry.Patrickscoin.services.implementation;
 import org.springframework.stereotype.Service;
 
 import com.NoCountry.Patrickscoin.dto.DepositDto;
-import com.NoCountry.Patrickscoin.services.IUserService;
 import com.NoCountry.Patrickscoin.services.IWalletService;
 
 @Service
