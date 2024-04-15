@@ -42,18 +42,14 @@
                         <td>
                             <div class="crypto-name">
                                 <img
-                                    src="{{
-                                        'assets/img/crypto-icons/' +
-                                            item.coin.shortName.toLowerCase() +
-                                            '.png'
-                                    }}"
+                                    src="{{ 'assets/img/crypto-icons/' + item.coin.shortName.toLowerCase() + '.png' }}"
                                 />
                                 <p>{{ item.coin.shortName + ' - ' + item.coin.name }}</p>
                             </div>
                         </td>
                         <td>{{ item.quantity }}</td>
-                        <td>{{ (coinList[item.coin.id - 1].usd * item.quantity).toFixed(2) }}</td>
-                        <td>{{ (coinList[item.coin.id - 1].ars * item.quantity).toFixed(2) }}</td>
+                        <td>{{ (coinList[item.coin.id - 1].usdSell * item.quantity).toFixed(2) }}</td>
+                        <td>{{ (coinList[item.coin.id - 1].arsSell * item.quantity).toFixed(2) }}</td>
                     </tr>
                     } }
                 </tbody>
@@ -100,16 +96,14 @@
                                 <div class="crypto-name">
                                     <img
                                         src="{{
-                                            'assets/img/crypto-icons/' +
-                                                item.coin.shortName.toLowerCase() +
-                                                '.png'
+                                            'assets/img/crypto-icons/' + item.coin.shortName.toLowerCase() + '.png'
                                         }}"
                                     />
                                     <p>{{ item.coin.shortName + ' - ' + item.coin.name }}</p>
                                 </div>
                             </td>
-                            <td>{{ item.usd.toFixed(2) }}</td>
-                            <td>{{ item.ars.toFixed(2) }}</td>
+                            <td>{{ item.usdSell.toFixed(2) }}</td>
+                            <td>{{ item.arsSell.toFixed(2) }}</td>
                         </tr>
                         }
                     </tbody>
@@ -117,33 +111,91 @@
             </div>
         </div>
 
-        <div class="buy-sell-container">
+        <form #form="ngForm" class="buy-sell-form" (submit)="openDialog($event)">
             <div class="logo-container">
                 <img src="assets/img/logo.png" alt="logo" />
             </div>
 
-            @if (isBuy == true) {
             <div class="button-container">
-                <button class="button-buy" (click)="activeButton(true)">Comprar</button>
-                <button class="inactive-sell" (click)="activeButton(false)">Vender</button>
+                <button class="button-buy" [disabled]="isBuying" (click)="activeButton(true)">Comprar</button>
+                <button class="button-sell" [disabled]="!isBuying" (click)="activeButton(false)">Vender</button>
             </div>
-            } @if (isBuy == false){
-            <div class="button-container">
-                <button class="inactive-buy" (click)="activeButton(true)">Comprar</button>
-                <button class="button-sell" (click)="activeButton(false)">Vender</button>
-            </div>
-            }
 
-            <label for="fiat-buy">Ingrese el total y moneda con la que desea comprar</label>
+            <!-- fiat buy -->
+            @if (isBuying) {
+            <label for="fiat-buy">Ingresa el total y moneda con la que deseas comprar</label>
             <div class="operation-container">
-                <select name="" id="">
+                <select
+                    name="fiat"
+                    id="fiat"
+                    required
+                    [(ngModel)]="operationBuy.fiat"
+                    #fiat="ngModel"
+                    (change)="getCryptoBuyValue()"
+                >
+                    <option value="ARS">ARS</option>
+                    <option value="USD">USD</option>
+                </select>
+                <input
+                    name="fiat-buy"
+                    id="fiat-buy"
+                    type="number"
+                    min="0.01"
+                    max="99999999999999999999"
+                    required
+                    [(ngModel)]="operationBuy.fiatQuantity"
+                    #fiatQuantity="ngModel"
+                    (change)="getCryptoBuyValue()"
+                />
+            </div>
+
+            @if (fiat.invalid && (fiat.dirty || fiat.touched)) { @if (fiatQuantity.invalid && (fiatQuantity.dirty ||
+            fiatQuantity.touched)) {
+            <div class="form-error">Por favor, ingresa una moneda y una cantidad válida.</div>
+            } @else {
+            <div class="form-error">Por favor, selecciona una moneda.</div>
+            } } @else if (fiatQuantity.invalid && (fiatQuantity.dirty || fiatQuantity.touched)) {
+            <div class="form-error">Por favor, ingresa una cantidad válida.</div>
+            } }
+
+            <!-- crypto sell -->
+            @if (!isBuying) {
+            <label for="crypto-sell">Ingresa el total y criptomoneda que deseas vender</label>
+            <div class="operation-container div-crypto">
+                <select
+                    name="crypto"
+                    id="crypto"
+                    required
+                    [(ngModel)]="operationSell.crypto"
+                    #crypto="ngModel"
+                    (change)="getCryptoSellValue()"
+                >
                     @for (item of coinList; track $index) {
-                    <option value="{{ item.coin.shortName }}">{{ item.coin.shortName }}</option>
+                    <option value="{{ item.coin.id }}">{{ item.coin.shortName }}</option>
                     }
                 </select>
-                <input type="number" />
+                <input
+                    name="crypto-sell"
+                    id="crypto-sell"
+                    type="number"
+                    min="0.000000000000000001"
+                    max="99999999999999999999"
+                    required
+                    [(ngModel)]="operationSell.cryptoQuantity"
+                    #cryptoQuantity="ngModel"
+                    (change)="getCryptoSellValue()"
+                />
             </div>
+            @if (crypto.invalid && (crypto.dirty || crypto.touched)) { @if (cryptoQuantity.invalid &&
+            (cryptoQuantity.dirty || cryptoQuantity.touched)) {
+            <div class="form-error">Por favor, ingresa una criptomoneda y una cantidad válida.</div>
+            } @else {
+            <div class="form-error">Por favor, selecciona una criptomoneda.</div>
+            } } @else if (cryptoQuantity.invalid && (cryptoQuantity.dirty || cryptoQuantity.touched)) {
+            <div class="form-error">Por favor, ingresa una cantidad válida.</div>
+            }}
 
+            <!-- arrow -->
             <div class="arrow-container">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -160,18 +212,55 @@
                 </svg>
             </div>
 
-            <label for="crypto-buy">Ingrese la cripto que desea</label>
+            <!-- crypto buy -->
+            @if (isBuying) {
+            <label for="crypto-buy">Ingresa la criptomoneda que deseas</label>
+            <div class="operation-container div-crypto">
+                <select
+                    name="crypto"
+                    id="crypto"
+                    required
+                    [(ngModel)]="operationBuy.crypto"
+                    #crypto="ngModel"
+                    (change)="getCryptoBuyValue()"
+                >
+                    @for (item of coinList; track $index) {
+                    <option value="{{ item.coin.id }}">{{ item.coin.shortName }}</option>
+                    }
+                </select>
+                <input name="crypto-buy" id="crypto-buy" type="number" disabled [value]="cryptoBuyValue" />
+            </div>
+            }
+
+            <!-- fiat sell -->
+            @if (!isBuying) {
+            <label for="fiat-sell">Ingresa la moneda que deseas recibir</label>
             <div class="operation-container">
-                <select name="" id="">
-                    <option value="ARS" selected>ARS</option>
+                <select
+                    name="fiat"
+                    id="fiat"
+                    required
+                    [(ngModel)]="operationSell.fiat"
+                    #fiat="ngModel"
+                    (change)="getCryptoSellValue()"
+                >
+                    <option value="ARS">ARS</option>
                     <option value="USD">USD</option>
                 </select>
-                <input type="number" />
+                <input
+                    name="fiat-sell"
+                    id="fiat-sell"
+                    type="number"
+                    disabled
+                    [value]="cryptoSellValue ? cryptoSellValue.toFixed(2) : null"
+                />
             </div>
+            }
+
             <div class="accept-button-container">
-                <button type="button" (click)="openDialog()">Aceptar</button>
+                <button type="submit" [disabled]="!form.form.valid">Aceptar</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 

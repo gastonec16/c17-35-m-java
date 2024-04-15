@@ -1,9 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core'
-import { FormsModule } from '@angular/forms'
+import { Component, OnInit, inject, signal } from '@angular/core'
+import { FormsModule, Validators } from '@angular/forms'
 import { Router, RouterModule } from '@angular/router'
 import Swal from 'sweetalert2'
 import { RegisterUser } from '../../interfaces/user'
 import { UserService } from '../../services/user.service'
+import { TermsAndConditions } from './terms-and-conditions.component'
 
 @Component({
     selector: 'app-register',
@@ -34,7 +35,18 @@ export class RegisterComponent implements OnInit {
         lastName: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        terms: false
+    }
+
+    showPassword = false
+    showHidePassword() {
+        this.showPassword = !this.showPassword
+    }
+
+    showConfirmPassword = false
+    showHideConfirmPassword() {
+        this.showConfirmPassword = !this.showConfirmPassword
     }
 
     registerUser(event: SubmitEvent) {
@@ -50,8 +62,11 @@ export class RegisterComponent implements OnInit {
         if (password != confirmPassword) {
             Swal.fire({
                 title: 'Error',
-                text: 'Las contraseñas no coinciden',
-                icon: 'error'
+                text: 'Las contraseñas no coinciden. Por favor, inténtalo de nuevo.',
+                icon: 'error',
+                iconColor: 'var(--red)',
+                confirmButtonText: 'Aceptar',
+                customClass: { confirmButton: 'swal-button' }
             })
         } else if (form.checkValidity()) {
             const newUser: RegisterUser = {
@@ -68,11 +83,9 @@ export class RegisterComponent implements OnInit {
                             title: 'Éxito',
                             text: 'Ya puedes iniciar sesión',
                             icon: 'success',
-                            customClass: {
-                                title: 'swalTitle',
-                                confirmButton: 'swalButton',
-                                popup: 'swalPopup'
-                            }
+                            iconColor: 'var(--green-3)',
+                            confirmButtonText: 'Aceptar',
+                            customClass: { confirmButton: 'swal-button' }
                         })
                         this.router.navigate(['/log-in'])
                         form.reset()
@@ -81,11 +94,9 @@ export class RegisterComponent implements OnInit {
                             title: 'Error',
                             text: data.message,
                             icon: 'error',
-                            customClass: {
-                                title: 'swalTitle',
-                                confirmButton: 'swalButton',
-                                popup: 'swalPopup'
-                            }
+                            iconColor: 'var(--red)',
+                            confirmButtonText: 'Aceptar',
+                            customClass: { confirmButton: 'swal-button' }
                         })
                 },
                 error: (err) => {
@@ -93,36 +104,38 @@ export class RegisterComponent implements OnInit {
                         title: 'Error',
                         text: err.error.message,
                         icon: 'error',
-                        customClass: {
-                            title: 'swalTitle',
-                            confirmButton: 'swalButton',
-                            popup: 'swalPopup'
-                        }
+                        iconColor: 'var(--red)',
+                        confirmButtonText: 'Aceptar',
+                        customClass: { confirmButton: 'swal-button' }
                     })
                 }
             })
-        } else if (!/[^ ]@[^ ]/.test(email)) {
+        } else if (!/[^ ][^ ][^ ]@[^ ]/.test(email)) {
             Swal.fire({
                 title: 'Error',
-                text: 'El email no es válido',
+                text: 'Por favor, ingresa una dirección de correo válida.',
                 icon: 'error',
-                customClass: {
-                    title: 'swalTitle',
-                    confirmButton: 'swalButton',
-                    popup: 'swalPopup'
-                }
+                iconColor: 'var(--red)',
+                confirmButtonText: 'Aceptar',
+                customClass: { confirmButton: 'swal-button' }
             })
         } else {
             Swal.fire({
                 title: 'Error',
-                text: 'Ingresa los datos faltantes',
+                text: 'Por favor, ingresa los datos faltantes',
                 icon: 'error',
-                customClass: {
-                    title: 'swalTitle',
-                    confirmButton: 'swalButton',
-                    popup: 'swalPopup'
-                }
+                iconColor: 'var(--red)',
+                confirmButtonText: 'Aceptar',
+                customClass: { confirmButton: 'swal-button' }
             })
         }
+    }
+
+    showTermsAndConditions() {
+        Swal.fire({
+            html: TermsAndConditions.termsAndConditions,
+            confirmButtonText: 'Aceptar',
+            customClass: { confirmButton: 'swal-button' }
+        })
     }
 }

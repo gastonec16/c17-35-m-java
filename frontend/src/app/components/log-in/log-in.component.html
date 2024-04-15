@@ -23,20 +23,8 @@
                 <h2>Iniciar Sesión</h2>
 
                 <!-- botones facebook, google y apple -->
-                <button
-                    type="button"
-                    class="log-button"
-                    id="facebook-button"
-                    (click)="continueWithFacebook()"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        x="0px"
-                        y="0px"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 48 48"
-                    >
+                <button type="button" class="log-button" id="facebook-button" (click)="continueWithFacebook()">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48">
                         <path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"></path>
                         <path
                             fill="#fff"
@@ -46,14 +34,7 @@
                     Continuar con Facebook
                 </button>
                 <button type="button" class="log-button" id="google-button" (click)="continueWithGoogle()">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        x="0px"
-                        y="0px"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 48 48"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48">
                         <path
                             fill="#FFC107"
                             d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
@@ -74,14 +55,7 @@
                     Continuar con Google
                 </button>
                 <button type="button" class="log-button" id="apple-button" (click)="continueWithApple()">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        x="0px"
-                        y="0px"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 50 50"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50">
                         <path
                             fill="#fff"
                             d="M 44.527344 34.75 C 43.449219 37.144531 42.929688 38.214844 41.542969 40.328125 C 39.601563 43.28125 36.863281 46.96875 33.480469 46.992188 C 30.46875 47.019531 29.691406 45.027344 25.601563 45.0625 C 21.515625 45.082031 20.664063 47.03125 17.648438 47 C 14.261719 46.96875 11.671875 43.648438 9.730469 40.699219 C 4.300781 32.429688 3.726563 22.734375 7.082031 17.578125 C 9.457031 13.921875 13.210938 11.773438 16.738281 11.773438 C 20.332031 11.773438 22.589844 13.746094 25.558594 13.746094 C 28.441406 13.746094 30.195313 11.769531 34.351563 11.769531 C 37.492188 11.769531 40.8125 13.480469 43.1875 16.433594 C 35.421875 20.691406 36.683594 31.78125 44.527344 34.75 Z M 31.195313 8.46875 C 32.707031 6.527344 33.855469 3.789063 33.4375 1 C 30.972656 1.167969 28.089844 2.742188 26.40625 4.78125 C 24.878906 6.640625 23.613281 9.398438 24.105469 12.066406 C 26.796875 12.152344 29.582031 10.546875 31.195313 8.46875 Z"
@@ -99,22 +73,61 @@
                     <input
                         name="email"
                         id="email"
-                        type="text"
+                        type="email"
                         required
+                        maxlength="100"
                         [(ngModel)]="user.email"
                         #email="ngModel"
+                        oninput="this.value = this.value.toLowerCase()"
                     />
+
+                    @if (email.invalid && (email.dirty || email.touched)) {
+                    <div class="form-error">Por favor, ingresa una dirección de correo válida.</div>
+                    }
                 </label>
                 <label for="password"
                     >Contraseña *
-                    <input
-                        name="password"
-                        id="password"
-                        type="password"
-                        required
-                        [(ngModel)]="user.password"
-                        #password="ngModel"
-                    />
+                    <div class="password-container">
+                        <input
+                            name="password"
+                            id="password"
+                            type="{{ showPassword ? 'text' : 'password' }}"
+                            required
+                            minlength="8"
+                            maxlength="50"
+                            [(ngModel)]="user.password"
+                            #password="ngModel"
+                        />
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icono-contrasenia"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            (click)="showHidePassword()"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                            />
+                            @if (!showPassword ) {
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M 1,20 L 23,4" />
+                            }
+                        </svg>
+                    </div>
+
+                    @if (password.invalid && (password.dirty || password.touched)) {
+                    <div class="form-error">Por favor, ingresa tu contraseña.</div>
+                    }
                 </label>
 
                 <div class="button-container">
