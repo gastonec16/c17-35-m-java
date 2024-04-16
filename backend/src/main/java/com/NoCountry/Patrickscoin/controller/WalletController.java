@@ -13,10 +13,10 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 @RequestMapping("/api/wallet")
 public class WalletController {
 
-    @PostMapping("/")
+    /* @PostMapping("/")
     public ResponseEntity<?> depositFiat(@PathVariable("walletId") Long walletId, @RequestBody DesposiDto depositDto){
         walletService.deposit(walletId, depositDto);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+    } */
     
 }
