@@ -23,6 +23,9 @@ public class WalletService implements IWalletService{
     public void deposit(Long walletId, DepositDto depositDto /*, CardDto card*/) throws WalletException {
         Wallet wallet = findById(walletId);
 
+        if(depositDto.getAmount() <= 0)
+            throw new WalletException("El monto a ingresar debe de ser valido");
+
         //TODO hacer validacion de la tarjeta
 
         if(depositDto.getName().equalsIgnoreCase(MoneyType.ARS.toString()))
