@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.NoCountry.Patrickscoin.dto.UserDto;
-import com.NoCountry.Patrickscoin.dto.WalletDto;
 import com.NoCountry.Patrickscoin.entities.User;
 import com.NoCountry.Patrickscoin.entities.Wallet;
 import com.NoCountry.Patrickscoin.exception.UserException;
