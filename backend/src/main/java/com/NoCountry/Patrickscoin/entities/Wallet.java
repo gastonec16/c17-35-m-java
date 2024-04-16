@@ -30,7 +30,9 @@ public class Wallet {
     private Long id;
     
     @Column(nullable = false)
-    private double balance;
+    private double localMoney;
+    @Column(nullable = false)
+    private double globalMoney;
 
     @OneToMany
     private Set<Coin> coins;  
