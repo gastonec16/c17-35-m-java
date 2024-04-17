@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
 import com.NoCountry.Patrickscoin.exception.UserException;
+import com.NoCountry.Patrickscoin.exception.WalletException;
 import com.NoCountry.Patrickscoin.response.ErrorResponse;
 
 @RestControllerAdvice
 public class GlobalHandlerException {
     
-    @ExceptionHandler(UserException.class)
-    public ResponseEntity<?> handlerErrorField(UserException ex, WebRequest req){
+    @ExceptionHandler({UserException.class, WalletException.class})
+    public ResponseEntity<?> handlerErrorField(Exception ex, WebRequest req){
         ErrorResponse errorResponse = ErrorResponse.builder()
                                         .status(HttpStatus.BAD_REQUEST.value())
                                         .error(ex.getMessage())

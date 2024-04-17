@@ -1,7 +1,11 @@
 package com.NoCountry.Patrickscoin.entities;
 
+import com.NoCountry.Patrickscoin.entities.enumeration.CoinType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +31,9 @@ public class Coin {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private String quantity;
+    private double quantity;
+    @Enumerated(EnumType.STRING)
+    private CoinType type;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wallet_id")
