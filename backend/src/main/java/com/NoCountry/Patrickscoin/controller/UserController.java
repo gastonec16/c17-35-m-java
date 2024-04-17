@@ -1,22 +1,19 @@
 package com.NoCountry.Patrickscoin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.NoCountry.Patrickscoin.dto.UserDto;
-import com.NoCountry.Patrickscoin.entities.User;
 import com.NoCountry.Patrickscoin.services.IUserService;
-import com.NoCountry.Patrickscoin.utils.validator.UserValidator;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -39,8 +36,6 @@ public class UserController {
     
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response) {
-
-        System.out.println("En controladora");
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
