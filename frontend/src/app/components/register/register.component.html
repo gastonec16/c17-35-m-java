@@ -67,6 +67,7 @@
                     [(ngModel)]="user.name"
                     #name="ngModel"
                     oninput="this.value = this.value.replace(/[^a-zA-Z\u00C0-\u024F]/g, '')"
+                    pattern="[a-zA-Z\u00C0-\u024F\s]+"
                 />
 
                 @if (name.invalid && (name.dirty || name.touched)) {
@@ -85,6 +86,7 @@
                     [(ngModel)]="user.lastName"
                     #lastName="ngModel"
                     oninput="this.value = this.value.replace(/[^a-zA-Z\u00C0-\u024F]/g, '')"
+                    pattern="[a-zA-Z\u00C0-\u024F\s]+"
                 />
 
                 @if (lastName.invalid && (lastName.dirty || lastName.touched)) {
