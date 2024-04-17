@@ -87,7 +87,6 @@ public class UserService implements IUserService {
 
     @Override
     public AuthResponse register(UserDto userdto) {
-        System.out.println("Email---->"+ userdto.getEmail());
         User user = User.builder()
             .email(userdto.getEmail())
             .password(passwordEncoder.encode(userdto.getPassword()))
