@@ -15,12 +15,9 @@
     --shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-* {
+body {
     font-family: 'Gowun Batang', sans-serif;
     font-weight: 700;
-}
-
-body {
     background-color: var(--white);
     margin: 0;
 }
@@ -34,6 +31,11 @@ body {
 
 .ng-invalid:not(form).ng-touched {
     border: 2px solid var(--red);
+}
+
+h2 {
+    font-family: 'Germania One', sans-serif;
+    font-weight: 400;
 }
 
 form {

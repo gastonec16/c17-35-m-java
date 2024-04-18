@@ -66,6 +66,8 @@
                     maxlength="50"
                     [(ngModel)]="user.name"
                     #name="ngModel"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\u00C0-\u024F]/g, '')"
+                    pattern="[a-zA-Z\u00C0-\u024F\s]+"
                 />
 
                 @if (name.invalid && (name.dirty || name.touched)) {
@@ -83,6 +85,8 @@
                     maxlength="50"
                     [(ngModel)]="user.lastName"
                     #lastName="ngModel"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\u00C0-\u024F]/g, '')"
+                    pattern="[a-zA-Z\u00C0-\u024F\s]+"
                 />
 
                 @if (lastName.invalid && (lastName.dirty || lastName.touched)) {
@@ -100,7 +104,8 @@
                     maxlength="100"
                     [(ngModel)]="user.email"
                     #email="ngModel"
-                    oninput="this.value = this.value.toLowerCase()"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z@\-_.]/g, '').toLowerCase()"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                 />
 
                 @if (email.invalid && (email.dirty || email.touched)) {
@@ -119,6 +124,7 @@
                         maxlength="50"
                         [(ngModel)]="user.password"
                         #password="ngModel"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$"
                     />
 
                     <svg
