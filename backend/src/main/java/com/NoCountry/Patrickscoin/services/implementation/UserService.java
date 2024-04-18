@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.NoCountry.Patrickscoin.controller.AuthResponse;
-import com.NoCountry.Patrickscoin.dto.UserDto;
+import com.NoCountry.Patrickscoin.dto.request.UserDto;
 import com.NoCountry.Patrickscoin.entities.User;
 import com.NoCountry.Patrickscoin.entities.Wallet;
 import com.NoCountry.Patrickscoin.entities.enumeration.Role;

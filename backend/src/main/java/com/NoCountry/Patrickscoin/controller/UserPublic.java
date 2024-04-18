@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.NoCountry.Patrickscoin.dto.UserDto;
+import com.NoCountry.Patrickscoin.dto.request.UserDto;
 import com.NoCountry.Patrickscoin.services.IUserService;
 import com.NoCountry.Patrickscoin.utils.validator.UserValidator;
 

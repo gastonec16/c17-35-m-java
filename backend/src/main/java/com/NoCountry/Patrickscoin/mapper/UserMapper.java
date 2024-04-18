@@ -2,7 +2,7 @@ package com.NoCountry.Patrickscoin.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.NoCountry.Patrickscoin.dto.UserDto;
+import com.NoCountry.Patrickscoin.dto.request.UserDto;
 import com.NoCountry.Patrickscoin.entities.User;
 
 
