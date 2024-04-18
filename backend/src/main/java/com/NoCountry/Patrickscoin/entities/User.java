@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.NoCountry.Patrickscoin.entities.enumeration.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -65,8 +66,6 @@ public class User implements UserDetails {
     public String getUsername() {
         return this.getEmail();
     }
-
-
 
     @Override
     public boolean isAccountNonExpired() {
