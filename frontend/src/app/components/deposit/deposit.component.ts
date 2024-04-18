@@ -55,7 +55,7 @@ export class DepositComponent {
                   border-radius: 1rem;
                   font-size: larger;
                   width:70%;">
-                  <small style="color: grey">EJEMPLO: 05/27</small>
+                  <small style="color: grey">EJEMPLO: 05-27</small>
                   </div>
                   <div style="display: flex;
                   flex-direction: column; ">
@@ -69,7 +69,6 @@ export class DepositComponent {
                   width:70%;">
                   <small style="color: grey">EJEMPLO: 123</small>
                 </div>
-                <img src="/assets/img/img-creditcard.png"  width="40px" height="40px" alt=""> <br>
 
               </div>
       
