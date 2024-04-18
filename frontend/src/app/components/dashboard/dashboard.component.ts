@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router'
 import { CryptoService } from '../../services/crypto.service'
 import Swal from 'sweetalert2'
 import { FormsModule } from '@angular/forms'
+import { UserService } from '../../services/user.service'
 import { AppComponent } from '../../app.component'
 
 @Component({
@@ -18,6 +19,8 @@ export class DashboardComponent {
     router = inject(Router)
     cryptoService = inject(CryptoService)
     isBuying = true
+
+    userService = inject(UserService)
 
     operationBuy = {
         fiat: '',
@@ -96,9 +99,16 @@ export class DashboardComponent {
     }
 
     logOut() {
-        this.appComponent.user = {}
-        this.router.navigate(['/'])
-    }
+        this.userService.logOut().subscribe(
+          () => {
+            console.log('Logout exitoso');
+            this.router.navigate(["/"])
+          },
+          error => {
+            console.error('Error al realizar el logout:', error);
+          }
+        );
+      }
 
     coinList = [
         { coin: { id: 1, name: 'Aave', shortName: 'AAVE' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },

@@ -1,6 +1,6 @@
 package com.NoCountry.Patrickscoin.services;
 
-import com.NoCountry.Patrickscoin.dto.DepositDto;
+import com.NoCountry.Patrickscoin.dto.request.DepositDto;
 import com.NoCountry.Patrickscoin.entities.Wallet;
 import com.NoCountry.Patrickscoin.exception.WalletException;
 

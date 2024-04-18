@@ -2,7 +2,9 @@ package com.NoCountry.Patrickscoin.services;
 
 import java.util.List;
 
-import com.NoCountry.Patrickscoin.dto.UserDto;
+import com.NoCountry.Patrickscoin.controller.AuthResponse;
+import com.NoCountry.Patrickscoin.dto.request.UserDto;
+import com.NoCountry.Patrickscoin.dto.response.UserLoguedDto;
 import com.NoCountry.Patrickscoin.entities.User;
 
 public interface IUserService {
@@ -10,7 +12,10 @@ public interface IUserService {
     public UserDto findById(Long id) throws Exception;
     public List<User> findAll();
     public List<String> findAllEmail();
-    //TODO INGRESO
-    // public User loginUser(UserDto userDto);
     public UserDto findByEmail(String email, String password) throws Exception;
+
+
+    public AuthResponse register(UserDto userdto);
+    public UserLoguedDto login(UserDto user);
+
 }

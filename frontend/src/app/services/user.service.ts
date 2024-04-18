@@ -10,10 +10,14 @@ export class UserService {
     http = inject(HttpClient)
 
     registerUser(user: RegisterUser) {
-        return this.http.post<any>(`${environment.apiBaseUrl}/api/users`, user)
+        return this.http.post<any>(`${environment.apiBaseUrl}/public/register`, user)
     }
 
     logIn(user: LogInCredentials) {
-        return this.http.post<any>(`${environment.apiBaseUrl}/api/users/log-in`, user)
+        return this.http.post<any>(`${environment.apiBaseUrl}/public/log-in`, user)
+    }
+
+    logOut(){
+        return this.http.post<any>(`${environment.apiBaseUrl}/api/logout`,{})
     }
 }

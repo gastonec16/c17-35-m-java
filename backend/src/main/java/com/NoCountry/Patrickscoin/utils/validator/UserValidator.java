@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.NoCountry.Patrickscoin.dto.UserDto;
+import com.NoCountry.Patrickscoin.dto.request.UserDto;
 import com.NoCountry.Patrickscoin.exception.UserException;
 import com.NoCountry.Patrickscoin.services.IUserService;
 
