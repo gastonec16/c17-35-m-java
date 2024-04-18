@@ -23,14 +23,12 @@ public class WalletService implements IWalletService{
     public void deposit(Long walletId, DepositDto depositDto /*, CardDto card*/) throws WalletException {
         Wallet wallet = findById(walletId);
 
-        if(depositDto.getAmount() <= 0)
-            throw new WalletException("El monto a ingresar debe de ser valido");
-
+        validateDeposit(depositDto);
         //TODO hacer validacion de la tarjeta
 
-        if(depositDto.getName().equalsIgnoreCase(MoneyType.ARS.toString()))
+        if(depositDto.getName().equalsIgnoreCase(MoneyType.ARS.name()))
             wallet.setLocalMoney(depositDto.getAmount());
-        if(depositDto.getName().equalsIgnoreCase(MoneyType.USD.toString()))
+        if(depositDto.getName().equalsIgnoreCase(MoneyType.USD.name()))
             wallet.setGlobalMoney(depositDto.getAmount());
 
     }
@@ -38,6 +36,16 @@ public class WalletService implements IWalletService{
     @Override
     public Wallet findById(Long walletId) throws WalletException {
         return walletRepository.findById(walletId).orElseThrow(()-> new WalletException("Wallet no encontrada"));
+    }
+
+    //valida que el monto sea valido
+    private boolean validateDeposit(DepositDto deposit) throws WalletException{
+        if(deposit.getName().equalsIgnoreCase(MoneyType.USD.name()) && deposit.getAmount() < 1)
+            throw new WalletException("El monto no es valido");
+        if(deposit.getName().equalsIgnoreCase(MoneyType.ARS.name()) && deposit.getAmount() < 1000)
+            throw new WalletException("El monto no es valido");
+            
+        return true;
     }
 
 }

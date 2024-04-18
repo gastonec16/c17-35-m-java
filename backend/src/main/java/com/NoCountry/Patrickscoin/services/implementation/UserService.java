@@ -8,7 +8,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.NoCountry.Patrickscoin.controller.AuthResponse;
 import com.NoCountry.Patrickscoin.dto.request.UserDto;
 import com.NoCountry.Patrickscoin.dto.response.UserLoguedDto;
 import com.NoCountry.Patrickscoin.entities.User;
@@ -35,17 +34,33 @@ public class UserService implements IUserService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public User registerUser(UserDto userDto) {
-
-        User user = UserMapper.dtoToEntity(userDto);
+    public void register(UserDto userdto) {
         Wallet wallet = new Wallet();
-        wallet.setUser(user);
-        user.setWallet(wallet);
+        User user = User.builder()
+            .email(userdto.getEmail())
+            .password(passwordEncoder.encode(userdto.getPassword()))
+            .lastname(userdto.getLastName())
+            .name(userdto.getName())
+            .role(Role.USER)
+            .build();
+            wallet.setUser(user);
+            user.setWallet(wallet);
+            userRepository.save(user);
+    }
 
-        userRepository.save(user);
-        AuthResponse.builder().token(jwtservice.getToken(user)).build();
+    @Override
+    public UserLoguedDto login(UserDto user) {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
+        User userEntity = userRepository.findByEmail(user.getEmail());
+        String token = jwtservice.getToken(userEntity);
 
-        return user;
+        return new UserLoguedDto(
+            userEntity.getId(),
+            userEntity.getName(),
+            userEntity.getEmail(),
+            userEntity.getPassword(),
+            token
+        );
     }
     @Override
     public UserDto findById(Long id) throws Exception {
@@ -81,44 +96,4 @@ public class UserService implements IUserService {
         return userDto; // Usuario encontrado y contraseña correcta
     }
 
-   
-
-    @Override
-    public AuthResponse register(UserDto userdto) {
-        Wallet wallet = new Wallet();
-        User user = User.builder()
-            .email(userdto.getEmail())
-            .password(passwordEncoder.encode(userdto.getPassword()))
-            .lastname(userdto.getLastName())
-            .name(userdto.getName())
-            .role(Role.USER)
-            .build();
-            wallet.setUser(user);
-            user.setWallet(wallet);
-
-            userRepository.save(user);
-
-            return AuthResponse.builder()
-                .token(jwtservice.getToken(user))
-                .build();
-            
-    }
-
-    @Override
-    public UserLoguedDto login(UserDto user) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
-        User userEntity = userRepository.findByEmail(user.getEmail());
-        String token = jwtservice.getToken(userEntity);
-
-        return new UserLoguedDto(
-            userEntity.getId(),
-            userEntity.getName(),
-            userEntity.getEmail(),
-            userEntity.getPassword(),
-            token
-        );
-    }
-
-    
-    
 }
