@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.NoCountry.Patrickscoin.controller.AuthResponse;
 import com.NoCountry.Patrickscoin.dto.request.UserDto;
+import com.NoCountry.Patrickscoin.dto.response.UserLoguedDto;
 import com.NoCountry.Patrickscoin.entities.User;
 import com.NoCountry.Patrickscoin.entities.Wallet;
 import com.NoCountry.Patrickscoin.entities.enumeration.Role;
@@ -66,7 +66,6 @@ public class UserService implements IUserService {
 
     public UserDto findByEmail(String email, String password) throws Exception {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
-        UserDetails userDetails = userRepository.findByEmail(email);
         User user = userRepository.findByEmail(email);
         if (user == null) {
             throw new UserException("Usuario no encontrado");
@@ -106,13 +105,18 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public AuthResponse login(UserDto user) {
+    public UserLoguedDto login(UserDto user) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
-        UserDetails userDetails = userRepository.findByEmail(user.getEmail());
-        String token = jwtservice.getToken(userDetails);
-        return AuthResponse.builder()
-            .token(token)
-            .build();
+        User userEntity = userRepository.findByEmail(user.getEmail());
+        String token = jwtservice.getToken(userEntity);
+
+        return new UserLoguedDto(
+            userEntity.getId(),
+            userEntity.getName(),
+            userEntity.getEmail(),
+            userEntity.getPassword(),
+            token
+        );
     }
 
     
