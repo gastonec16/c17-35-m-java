@@ -55,7 +55,7 @@ export class DepositComponent {
                   border-radius: 1rem;
                   font-size: larger;
                   width:70%;">
-                  <small style="color: grey">EJEMPLO: 05/27</small>
+                  <small style="color: grey">EJEMPLO: 05-27</small>
                   </div>
                   <div style="display: flex;
                   flex-direction: column; ">
