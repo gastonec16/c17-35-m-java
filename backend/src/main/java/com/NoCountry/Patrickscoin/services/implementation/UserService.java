@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.NoCountry.Patrickscoin.controller.AuthResponse;
 import com.NoCountry.Patrickscoin.dto.UserDto;
-import com.NoCountry.Patrickscoin.entities.Role;
 import com.NoCountry.Patrickscoin.entities.User;
 import com.NoCountry.Patrickscoin.entities.Wallet;
+import com.NoCountry.Patrickscoin.entities.enumeration.Role;
 import com.NoCountry.Patrickscoin.exception.UserException;
 import com.NoCountry.Patrickscoin.mapper.UserMapper;
 import com.NoCountry.Patrickscoin.repositories.UserRepository;
@@ -67,7 +67,6 @@ public class UserService implements IUserService {
     public UserDto findByEmail(String email, String password) throws Exception {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         UserDetails userDetails = userRepository.findByEmail(email);
-        String token = jwtservice.getToken(userDetails);
         User user = userRepository.findByEmail(email);
         if (user == null) {
             throw new UserException("Usuario no encontrado");
@@ -87,6 +86,7 @@ public class UserService implements IUserService {
 
     @Override
     public AuthResponse register(UserDto userdto) {
+        Wallet wallet = new Wallet();
         User user = User.builder()
             .email(userdto.getEmail())
             .password(passwordEncoder.encode(userdto.getPassword()))
@@ -94,6 +94,8 @@ public class UserService implements IUserService {
             .name(userdto.getName())
             .role(Role.USER)
             .build();
+            wallet.setUser(user);
+            user.setWallet(wallet);
 
             userRepository.save(user);
 
