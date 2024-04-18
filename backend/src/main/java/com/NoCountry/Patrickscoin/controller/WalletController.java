@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.NoCountry.Patrickscoin.dto.DepositDto;
+import com.NoCountry.Patrickscoin.dto.request.DepositDto;
 import com.NoCountry.Patrickscoin.exception.WalletException;
 import com.NoCountry.Patrickscoin.services.IWalletService;
 

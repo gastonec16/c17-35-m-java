@@ -3,7 +3,7 @@ package com.NoCountry.Patrickscoin.services.implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.NoCountry.Patrickscoin.dto.DepositDto;
+import com.NoCountry.Patrickscoin.dto.request.DepositDto;
 import com.NoCountry.Patrickscoin.entities.Wallet;
 import com.NoCountry.Patrickscoin.entities.enumeration.MoneyType;
 import com.NoCountry.Patrickscoin.exception.WalletException;

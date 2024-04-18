@@ -1,4 +1,4 @@
-package com.NoCountry.Patrickscoin.dto;
+package com.NoCountry.Patrickscoin.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
