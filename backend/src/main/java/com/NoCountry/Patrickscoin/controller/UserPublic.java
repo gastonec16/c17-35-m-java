@@ -31,8 +31,7 @@ public class UserPublic {
     }
 
     @PostMapping(value="log-in")
-    public ResponseEntity<AuthResponse> login(@RequestBody UserDto user) throws Exception {
-
+    public ResponseEntity<?> login(@RequestBody UserDto user) throws Exception {
         return ResponseEntity.ok(userService.login(user));
 
     }
