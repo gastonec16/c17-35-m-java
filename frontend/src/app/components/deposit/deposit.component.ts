@@ -69,7 +69,6 @@ export class DepositComponent {
                   width:70%;">
                   <small style="color: grey">EJEMPLO: 123</small>
                 </div>
-                <img src="/assets/img/img-creditcard.png"  width="40px" height="40px" alt=""> <br>
 
               </div>
       
