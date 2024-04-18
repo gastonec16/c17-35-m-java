@@ -40,4 +40,9 @@ public class WalletService implements IWalletService{
         return walletRepository.findById(walletId).orElseThrow(()-> new WalletException("Wallet no encontrada"));
     }
 
+    @Override
+    public Wallet getWalletByUserId(Long userId) throws WalletException {
+        return walletRepository.findByUserId(userId).orElseThrow(() -> new WalletException("Wallet no encontrada"));
+    }
+
 }

@@ -7,4 +7,5 @@ import com.NoCountry.Patrickscoin.exception.WalletException;
 public interface IWalletService {
     public void deposit(Long walletId, DepositDto depositDto) throws WalletException ;
     public Wallet findById(Long walletId) throws WalletException;
+    public Wallet getWalletByUserId(Long userId) throws WalletException;
 }
