@@ -416,4 +416,9 @@ h1 {
     & .form-error {
         color: var(--yellow);
     }
+
+    & .form-information {
+        color: var(--white);
+        text-align: end;
+    }
 }
