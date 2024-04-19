@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.NoCountry.Patrickscoin.dto.request.DepositDto;
+import com.NoCountry.Patrickscoin.entities.Wallet;
 import com.NoCountry.Patrickscoin.exception.WalletException;
 import com.NoCountry.Patrickscoin.services.IWalletService;
 
@@ -32,6 +32,11 @@ public class WalletController {
     public ResponseEntity<?> depositFiat(@PathVariable Long walletId, @RequestBody DepositDto depositDto) throws WalletException{
         walletService.deposit(walletId, depositDto);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } 
+    }
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<Wallet> getWalletByUserId(@PathVariable Long userId) throws WalletException{
+        Wallet wallet = walletService.getWalletByUserId(userId);
+        return ResponseEntity.ok(wallet);
+    }
     
 }
