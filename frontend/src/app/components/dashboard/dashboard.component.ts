@@ -99,6 +99,10 @@ export class DashboardComponent {
     }
 
     logOut() {
+<<<<<<< HEAD
+        this.router.navigate(['/'])
+    }
+=======
         this.userService.logOut().subscribe(
           () => {
             console.log('Logout exitoso');
@@ -109,6 +113,7 @@ export class DashboardComponent {
           }
         );
       }
+>>>>>>> c6ec6bb9f815023976d66158d9f754aafccbf41a
 
     coinList = [
         { coin: { id: 1, name: 'Aave', shortName: 'AAVE' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
