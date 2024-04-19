@@ -2,6 +2,7 @@ package com.NoCountry.Patrickscoin.entities;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,6 +25,7 @@ import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
@@ -32,6 +34,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(exclude = "wallet")
 public class User implements UserDetails {
 
     @Id
@@ -85,4 +88,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    
 }

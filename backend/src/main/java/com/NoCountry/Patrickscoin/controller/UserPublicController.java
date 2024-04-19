@@ -17,7 +17,7 @@ import com.NoCountry.Patrickscoin.utils.validator.UserValidator;
 @RestController
 @RequestMapping("/public")
 @CrossOrigin(allowedHeaders = "*")
-public class UserPublic {
+public class UserPublicController {
 
     @Autowired
     private IUserService userService;
