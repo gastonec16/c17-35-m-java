@@ -38,6 +38,11 @@ public class WalletService implements IWalletService{
         return walletRepository.findById(walletId).orElseThrow(()-> new WalletException("Wallet no encontrada"));
     }
 
+    @Override
+    public Wallet getWalletByUserId(Long userId) throws WalletException {
+        return walletRepository.findByUserId(userId).orElseThrow(() -> new WalletException("Wallet no encontrada"));
+    }
+    
     //valida que el monto sea valido
     private boolean validateDeposit(DepositDto deposit) throws WalletException{
         if(deposit.getName().equalsIgnoreCase(MoneyType.USD.name()) && deposit.getAmount() < 1)

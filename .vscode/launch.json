@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<PatricksCoins>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.NoCountry.Patrickscoin.Application",
+            "projectName": "PatricksCoins",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
