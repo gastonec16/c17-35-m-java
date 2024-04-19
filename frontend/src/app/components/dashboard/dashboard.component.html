@@ -248,7 +248,13 @@
                     <option value="{{ item.coin.id }}">{{ item.coin.shortName }}</option>
                     }
                 </select>
-                <input name="crypto-buy" id="crypto-buy" type="number" disabled [value]="cryptoBuyValue" />
+                <input
+                    name="crypto-buy"
+                    id="crypto-buy"
+                    type="number"
+                    disabled
+                    [value]="cryptoBuyValue ? cryptoBuyValue : null"
+                />
             </div>
             }
 
@@ -278,7 +284,12 @@
             }
 
             <div class="accept-button-container">
-                <button type="submit" [disabled]="!form.form.valid">Aceptar</button>
+                <button
+                    type="submit"
+                    [disabled]="!form.form.valid || (operationBuy.crypto == 0 && operationSell.fiat == '')"
+                >
+                    Aceptar
+                </button>
             </div>
         </form>
     </div>
