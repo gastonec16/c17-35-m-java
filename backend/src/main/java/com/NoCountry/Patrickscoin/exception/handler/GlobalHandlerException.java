@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
+import com.NoCountry.Patrickscoin.dto.response.ErrorResponse;
 import com.NoCountry.Patrickscoin.exception.UserException;
 import com.NoCountry.Patrickscoin.exception.WalletException;
-import com.NoCountry.Patrickscoin.response.ErrorResponse;
 
 @RestControllerAdvice
 public class GlobalHandlerException {
