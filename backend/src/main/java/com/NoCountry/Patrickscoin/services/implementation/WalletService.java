@@ -30,10 +30,10 @@ public class WalletService implements IWalletService{
         validateDeposit(depositDto);
         //TODO hacer validacion de la tarjeta
 
-        if(depositDto.getName().equalsIgnoreCase(MoneyType.ARS.name()))
-            wallet.setLocalMoney(depositDto.getAmount());
-        if(depositDto.getName().equalsIgnoreCase(MoneyType.USD.name()))
-            wallet.setGlobalMoney(depositDto.getAmount());
+        if(depositDto.type().equals(MoneyType.ARS))
+            wallet.setLocalMoney(depositDto.amount());
+        if(depositDto.type().equals(MoneyType.ARS))
+            wallet.setGlobalMoney(depositDto.amount());
 
     }
 
@@ -42,7 +42,7 @@ public class WalletService implements IWalletService{
     public TicketWithdrawDtoResponse withdraw(Long walletId, WithdrawDto withdraw) throws WalletException{
         Wallet wallet = findById(walletId);
 
-        if(!validateFound(wallet, withdraw))
+        if(!foundsIsValid(wallet, withdraw))
             throw new WalletException("Monto a retirar invalido");
 
         substractFounds(wallet, withdraw);
@@ -64,7 +64,7 @@ public class WalletService implements IWalletService{
             wallet.setLocalMoney(wallet.getLocalMoney()-withdraw.amount());
     }
 
-    private boolean validateFound(Wallet wallet, WithdrawDto withdraw){
+    private boolean foundsIsValid(Wallet wallet, WithdrawDto withdraw){
         if(withdraw.amount() <=0 )
             return false;
         if(withdraw.type().equals(MoneyType.USD))
@@ -86,9 +86,9 @@ public class WalletService implements IWalletService{
     
     //valida que el monto sea valido
     private boolean validateDeposit(DepositDto deposit) throws WalletException{
-        if(deposit.getName().equalsIgnoreCase(MoneyType.USD.name()) && deposit.getAmount() < 1)
+        if(deposit.type().equals(MoneyType.USD) && deposit.amount() < 1)
             throw new WalletException("El monto no es valido");
-        if(deposit.getName().equalsIgnoreCase(MoneyType.ARS.name()) && deposit.getAmount() < 1000)
+        if(deposit.type().equals(MoneyType.ARS) && deposit.amount() < 1000)
             throw new WalletException("El monto no es valido");
             
         return true;
