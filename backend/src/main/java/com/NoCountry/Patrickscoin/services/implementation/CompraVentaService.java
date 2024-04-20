@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.NoCountry.Patrickscoin.dto.request.BuyCriptoDto;
 import com.NoCountry.Patrickscoin.dto.request.SellCriptoDto;
 import com.NoCountry.Patrickscoin.entities.Coin;
 import com.NoCountry.Patrickscoin.entities.Wallet;
@@ -25,34 +26,36 @@ public class CompraVentaService implements ICompraVentaService{
     private WalletRepository walletRepository;
 
     @Override
-    public void compra(long walletId, String coin, String fiat, double cantidadFiat, double cantidadCripto) throws WalletException {
-
+    public void compra(Long walletId, BuyCriptoDto dto) throws WalletException {
         Wallet wallet = walletService.findById(walletId);
 
-        if(fiat.equals(MoneyType.ARS.name())) wallet.setLocalMoney(wallet.getLocalMoney()-cantidadFiat);
-        if(fiat.equals(MoneyType.USD.name())) wallet.setLocalMoney(wallet.getGlobalMoney()-cantidadFiat);
-
-        Set<Coin> coins = wallet.getCoins(); 
+        if(dto.moneyType().name().equals(MoneyType.USD.name())) wallet.setLocalMoney(wallet.getGlobalMoney()-dto.quantityFiat());
+        if(dto.moneyType().name().equals(MoneyType.ARS.name())) wallet.setLocalMoney(wallet.getLocalMoney()-dto.quantityFiat());
         
+        //CRIPTO EN WALLET. ACTUALIZAR
+        Set<Coin> coins = wallet.getCoins();
         boolean coinExists = false;
-        for(Coin existingCoin : coins){
-            if(coin.equals(existingCoin.getName())){
-                existingCoin.setQuantity(existingCoin.getQuantity()+cantidadCripto);
+        for(Coin existingCoing: coins){
+            if(dto.cripto().name().equals(existingCoing.getType().name())){
+                existingCoing.setQuantity(existingCoing.getQuantity()+dto.quiantity());
                 coinExists = true;
             }
         }
+        //CRIPTO NO EN WALLET. AGREGAR
         if(!coinExists){
             Coin newCoin = Coin.builder()
-                    .name(coin)
-                    .quantity(cantidadCripto)
-                    //.type(CoinType.CRYPTO)
-                    .wallet(wallet)
-                    .build();
+                .name(dto.cripto().name())
+                .quantity(dto.quiantity())
+                //ARREGLAR ENTIDADES
+                //.type(dto.moneyType)
+                .wallet(wallet)
+                .build();
                 coins.add(newCoin);
         }
 
         wallet.setCoins(coins);
         walletRepository.save(wallet);
+
     }
 
     @Transactional

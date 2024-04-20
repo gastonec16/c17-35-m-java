@@ -1,4 +1,4 @@
-package com.NoCountry.Patrickscoin.controller;
+package com.NoCountry.Patrickscoin.controller.api.wallet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

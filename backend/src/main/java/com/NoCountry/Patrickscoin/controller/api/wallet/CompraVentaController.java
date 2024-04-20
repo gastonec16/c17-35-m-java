@@ -1,4 +1,4 @@
-package com.NoCountry.Patrickscoin.controller;
+package com.NoCountry.Patrickscoin.controller.api.wallet;
 
 import java.util.Map;
 
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.NoCountry.Patrickscoin.dto.request.BuyCriptoDto;
 import com.NoCountry.Patrickscoin.dto.request.SellCriptoDto;
 import com.NoCountry.Patrickscoin.exception.WalletException;
 import com.NoCountry.Patrickscoin.services.ICompraVentaService;
@@ -26,14 +27,9 @@ public class CompraVentaController {
 
     @PostMapping("/compra/{walletId}")
     //                                                              Create un dto para manejar mejor los datos
-public ResponseEntity<?> compraCripto(@PathVariable Long walletId, @RequestBody Map<String, Object> requestBody) throws WalletException {
-    String coin = (String) requestBody.get("coin");
-    String fiat = (String) requestBody.get("fiat");
-    Double cantidadFiat = (Double) requestBody.get("cantidadFiat");
-    Double cantidadCrito = (Double) requestBody.get("cantidadCrito");
+public ResponseEntity<?> compraCripto(@RequestBody Long walletId, BuyCriptoDto dto) throws WalletException {
 
-        System.out.println("cantidad de plata--->" + cantidadFiat);
-        compraVentaService.compra(walletId, coin, fiat, cantidadFiat, cantidadCrito);
+        compraVentaService.compra(walletId, dto);
 
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }

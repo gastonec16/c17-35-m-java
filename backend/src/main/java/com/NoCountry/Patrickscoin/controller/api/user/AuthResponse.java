@@ -1,4 +1,4 @@
-package com.NoCountry.Patrickscoin.controller;
+package com.NoCountry.Patrickscoin.controller.api.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
