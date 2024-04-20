@@ -141,12 +141,12 @@
                     id="fiat-buy"
                     type="number"
                     min="0.01"
+                    maxlength="20"
                     [max]="operationBuy.fiat == 'ARS' ? user.ars : operationBuy.fiat == 'USD' ? user.usd : 0"
                     required
                     [(ngModel)]="operationBuy.fiatQuantity"
                     #fiatQuantity="ngModel"
                     (change)="getCryptoBuyValue()"
-                    oninput="this.value = this.value.toString().slice(0, 20)"
                 />
             </div>
 
@@ -156,7 +156,7 @@
             <div class="form-information">Saldo: {{ user.usd }} USD</div>
 
             } @if (fiatQuantity.errors?.['max']) {
-            <div class="form-error">Saldo insuficiente</div>
+            <div class="form-error">Saldo insuficiente.</div>
 
             }} @if (fiat.invalid && (fiat.dirty || fiat.touched)) { @if (fiatQuantity.invalid && (fiatQuantity.dirty ||
             fiatQuantity.touched)) {
@@ -188,12 +188,12 @@
                     id="crypto-sell"
                     type="number"
                     min="0.000000000000000001"
+                    maxlength="20"
                     [max]="operationSell.crypto > 0 ? user.crypto[operationSell.crypto - 1].quantity : 0"
                     required
                     [(ngModel)]="operationSell.cryptoQuantity"
                     #cryptoQuantity="ngModel"
                     (change)="getCryptoSellValue()"
-                    oninput="this.value = this.value.toString().slice(0, 20)"
                 />
             </div>
 
@@ -204,7 +204,7 @@
             </div>
 
             @if (cryptoQuantity.errors?.['max']) {
-            <div class="form-error">Saldo insuficiente</div>
+            <div class="form-error">Saldo insuficiente.</div>
 
             } }@if (crypto.invalid && (crypto.dirty || crypto.touched)) { @if (cryptoQuantity.invalid &&
             (cryptoQuantity.dirty || cryptoQuantity.touched)) {

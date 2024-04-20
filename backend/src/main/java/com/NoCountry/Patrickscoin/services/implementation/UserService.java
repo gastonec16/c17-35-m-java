@@ -39,7 +39,7 @@ public class UserService implements IUserService {
         User user = User.builder()
             .email(userdto.getEmail())
             .password(passwordEncoder.encode(userdto.getPassword()))
-            .lastname(userdto.getLastName())
+            .lastName(userdto.getLastName())
             .name(userdto.getName())
             .role(Role.USER)
             .build();
@@ -57,6 +57,7 @@ public class UserService implements IUserService {
         return new UserLoguedDtoResponse(
             userEntity.getId(),
             userEntity.getName(),
+            userEntity.getLastName(),
             userEntity.getEmail(),
             userEntity.getPassword(),
             token
