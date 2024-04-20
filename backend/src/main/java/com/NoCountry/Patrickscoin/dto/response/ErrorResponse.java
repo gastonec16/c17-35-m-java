@@ -1,4 +1,4 @@
-package com.NoCountry.Patrickscoin.response;
+package com.NoCountry.Patrickscoin.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
