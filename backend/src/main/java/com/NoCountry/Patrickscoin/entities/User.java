@@ -2,7 +2,6 @@ package com.NoCountry.Patrickscoin.entities;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

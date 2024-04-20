@@ -100,15 +100,15 @@ export class DashboardComponent {
 
     logOut() {
         this.userService.logOut().subscribe(
-          () => {
-            console.log('Logout exitoso');
-            this.router.navigate(["/"])
-          },
-          error => {
-            console.error('Error al realizar el logout:', error);
-          }
-        );
-      }
+            () => {
+                console.log('Logout exitoso')
+                this.router.navigate(['/'])
+            },
+            (error) => {
+                console.error('Error al realizar el logout:', error)
+            }
+        )
+    }
 
     coinList = [
         { coin: { id: 1, name: 'Aave', shortName: 'AAVE' }, usdBuy: 0, arsBuy: 0, usdSell: 0, arsSell: 0 },
@@ -190,6 +190,21 @@ export class DashboardComponent {
     }
     activeButton(button: boolean) {
         this.isBuying = button
+
+        this.operationBuy = {
+            fiat: '',
+            fiatQuantity: null,
+            crypto: 0,
+            cryptoQuantity: null
+        }
+        this.operationSell = {
+            crypto: 0,
+            cryptoQuantity: null,
+            fiat: '',
+            fiatQuantity: null
+        }
+        this.cryptoBuyValue = 0
+        this.cryptoSellValue = 0
     }
 
     openDialog(event: SubmitEvent): void {

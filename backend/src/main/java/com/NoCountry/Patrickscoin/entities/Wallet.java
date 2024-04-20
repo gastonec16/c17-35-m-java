@@ -1,7 +1,5 @@
 package com.NoCountry.Patrickscoin.entities;
 
-import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.Column;
