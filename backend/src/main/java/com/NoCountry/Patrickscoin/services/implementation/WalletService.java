@@ -42,7 +42,9 @@ public class WalletService implements IWalletService{
     public TicketWithdrawDtoResponse withdraw(Long walletId, WithdrawDto withdraw) throws WalletException{
         Wallet wallet = findById(walletId);
 
-        validateFound(wallet, withdraw);
+        if(!validateFound(wallet, withdraw))
+            throw new WalletException("Monto a retirar invalido");
+
         substractFounds(wallet, withdraw);
         //Envia fondos a al cvu proporcionado...
         
@@ -62,15 +64,14 @@ public class WalletService implements IWalletService{
             wallet.setLocalMoney(wallet.getLocalMoney()-withdraw.amount());
     }
 
-    private boolean validateFound(Wallet wallet, WithdrawDto withdraw) throws WalletException {
+    private boolean validateFound(Wallet wallet, WithdrawDto withdraw){
         if(withdraw.amount() <=0 )
-            throw new WalletException("Monto de retiro invalido");
+            return false;
         if(withdraw.type().equals(MoneyType.USD))
             return withdraw.amount() <= wallet.getGlobalMoney();
         if(withdraw.type().equals(MoneyType.ARS))
             return withdraw.amount() <= wallet.getLocalMoney();
-        
-        throw new WalletException("Fondos insuficientes");
+        return false;
     }
 
     @Override
