@@ -161,6 +161,10 @@ p {
         max-width: unset;
         background-image: url('/assets/img/btc-2.jpg');
 
+        & form {
+            max-width: 32rem;
+        }
+
         .elements-mobile {
             display: flex;
             align-items: center;
