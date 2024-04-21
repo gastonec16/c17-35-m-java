@@ -1,15 +1,17 @@
 .buy-sell-form {
-    width: 100%;
+    margin: 0;
+    padding: 0;
     height: 34.5rem;
     background-color: var(--green-5);
-    margin-top: 32px;
-    margin-left: 32px;
+    margin: 0;
     border-radius: 16px;
     box-shadow: var(--shadow);
     border: 2px var(--black) solid;
     display: flex;
     flex-direction: column;
     padding: 24px;
+    width: 100%;
+    max-width: unset;
 
     & label {
         color: var(--white);

@@ -54,8 +54,44 @@ h1 {
 }
 
 .bottom-container {
+    margin-top: 32px;
     width: 100%;
     max-width: 1280px;
     display: flex;
     justify-content: space-between;
+}
+
+app-account {
+    margin-top: 32px;
+    width: 100%;
+    max-width: 1280px;
+}
+
+app-all-crypto {
+    display: flex;
+    width: 100%;
+    min-width: 20rem;
+    margin-right: 16px;
+}
+
+app-buy-sell {
+    display: flex;
+    width: 100%;
+    margin-left: 16px;
+}
+
+@media (max-width: 980px) {
+    app-account {
+        flex-direction: column-reverse;
+    }
+    .bottom-container {
+        flex-direction: column-reverse;
+    }
+    app-all-crypto {
+        margin-right: 0;
+        margin-top: 32px;
+    }
+    app-buy-sell {
+        margin-left: 0;
+    }
 }

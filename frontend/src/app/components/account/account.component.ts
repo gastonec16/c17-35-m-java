@@ -3,7 +3,6 @@ import { Router } from '@angular/router'
 import { AppComponent } from '../../app.component'
 import { CryptoService } from '../../services/crypto.service'
 import { UserService } from '../../services/user.service'
-import Swal from 'sweetalert2'
 import { DashboardComponent } from '../dashboard/dashboard.component'
 
 @Component({
@@ -53,25 +52,6 @@ export class AccountComponent {
             { coin: { id: 22, name: 'Stellar Lumens', shortName: 'XLM' }, quantity: 0 }
         ],
         avatar: 0
-    }
-
-    ngOnInit() {
-        this.cryptoService.getCryptoPrices(this.coinList)
-        this.userService.getUserData().subscribe({
-            next: (data) => {
-                this.appComponent.user = data
-            },
-            error: (err) => {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'No se pudieron obtener los datos del usuario',
-                    icon: 'error',
-                    iconColor: 'var(--red)',
-                    confirmButtonText: 'Aceptar',
-                    customClass: { confirmButton: 'swal-button' }
-                })
-            }
-        })
     }
 
     logOut() {

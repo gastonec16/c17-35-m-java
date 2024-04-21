@@ -24,6 +24,7 @@ footer {
 
     & .phrase {
         margin: 0;
+        margin-bottom: 16px;
     }
 
     .patrick {
@@ -35,7 +36,7 @@ footer {
 
     & .left-column,
     .right-column {
-        width: 13rem;
+        width: 14rem;
         display: flex;
         flex-direction: column;
         align-items: center;
