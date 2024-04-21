@@ -68,7 +68,7 @@ h2 {
 .title-2 {
     padding-right: 304px;
     padding-left: 32px;
-    height: 96px;
+    height: 101px;
     margin-top: 16px;
     display: flex;
     align-items: center;
@@ -86,7 +86,7 @@ h2 {
     font-size: 16pt;
     background-color: var(--green-5);
     color: var(--white);
-    min-height: 160px;
+    min-height: 155px;
     text-align: end;
     justify-content: end;
 }
@@ -106,14 +106,10 @@ h2 {
 }
 
 @media (max-width: 768px) {
-    h2 {
-        margin-bottom: 16px;
+    .gradient-line {
+        margin-bottom: 60px;
     }
-    .container-1 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+    h2 {
         margin-bottom: 0;
     }
     .patrick-coins-logo {
@@ -126,9 +122,16 @@ h2 {
         & img {
             width: 268px;
             height: 96px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             display: block;
         }
+    }
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 0;
     }
     .img-1 {
         left: calc(50% - 120px);
@@ -143,6 +146,7 @@ h2 {
     .container-2 {
         display: flex;
         flex-direction: column;
+        margin-top: 12px;
     }
     .title-2 {
         display: none;
@@ -156,8 +160,8 @@ h2 {
     }
     .text-2 {
         padding-right: 32px;
-        margin-top: 96px;
-        padding-top: 144px;
+        margin-top: 101px;
+        padding-top: 139px;
         text-align: center;
         min-height: 0;
     }
