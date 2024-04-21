@@ -12,6 +12,7 @@ import com.NoCountry.Patrickscoin.entities.Coin;
 import com.NoCountry.Patrickscoin.entities.Wallet;
 import com.NoCountry.Patrickscoin.entities.enumeration.MoneyType;
 import com.NoCountry.Patrickscoin.exception.WalletException;
+import com.NoCountry.Patrickscoin.repositories.CoinRepository;
 import com.NoCountry.Patrickscoin.repositories.WalletRepository;
 import com.NoCountry.Patrickscoin.services.ICompraVentaService;
 
@@ -25,6 +26,9 @@ public class CompraVentaService implements ICompraVentaService{
     @Autowired
     private WalletRepository walletRepository;
 
+    @Autowired
+    private CoinRepository coinRepository;
+
     @Override
     public void compra(Long walletId, BuyCriptoDto dto) throws WalletException {
         Wallet wallet = walletService.findById(walletId);
@@ -36,7 +40,7 @@ public class CompraVentaService implements ICompraVentaService{
         Set<Coin> coins = wallet.getCoins();
         boolean coinExists = false;
         for(Coin existingCoing: coins){
-            if(dto.cripto().name().equals(existingCoing.getType().name())){
+            if(dto.cripto().name().equals(existingCoing.getCryptoName().name())){
                 existingCoing.setQuantity(existingCoing.getQuantity()+dto.quiantity());
                 coinExists = true;
             }
@@ -44,13 +48,13 @@ public class CompraVentaService implements ICompraVentaService{
         //CRIPTO NO EN WALLET. AGREGAR
         if(!coinExists){
             Coin newCoin = Coin.builder()
-                .name(dto.cripto().name())
+                
                 .quantity(dto.quiantity())
-                //ARREGLAR ENTIDADES
-                //.type(dto.moneyType)
+                .cryptoName(dto.cripto())
                 .wallet(wallet)
                 .build();
                 coins.add(newCoin);
+                coinRepository.save(newCoin);
         }
 
         wallet.setCoins(coins);
@@ -64,7 +68,7 @@ public class CompraVentaService implements ICompraVentaService{
         Wallet wallet = walletService.findById(walletId);
         
         Coin coin = wallet.getCoins().stream()
-                .filter( c -> c.getName().equals(sellCripto.cripto()))
+                .filter( c -> c.getCryptoName().equals(sellCripto.cripto()))
                 .findFirst( ).orElseThrow(() -> new WalletException("No tiene adquirida la cripto seleccionada"));
 
         if(coin.getQuantity() < sellCripto.quiantity())

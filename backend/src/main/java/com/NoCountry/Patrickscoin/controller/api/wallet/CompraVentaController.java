@@ -17,8 +17,8 @@ import com.NoCountry.Patrickscoin.exception.WalletException;
 import com.NoCountry.Patrickscoin.services.ICompraVentaService;
 
 @RestController
-//        sugerencia de endpoint para que quede mas limpia la ruta
-//              /api/wallet/{walletId}/{operacion} 
+// sugerencia de endpoint para que quede mas limpia la ruta
+// /api/wallet/{walletId}/{operacion}
 @RequestMapping("/apiCompraVenta")
 public class CompraVentaController {
 
@@ -26,16 +26,17 @@ public class CompraVentaController {
     private ICompraVentaService compraVentaService;
 
     @PostMapping("/compra/{walletId}")
-    //                                                              Create un dto para manejar mejor los datos
-public ResponseEntity<?> compraCripto(@RequestBody Long walletId, BuyCriptoDto dto) throws WalletException {
+    // Create un dto para manejar mejor los datos
+    public ResponseEntity<?> compraCripto(@PathVariable Long walletId, @RequestBody BuyCriptoDto dto) throws WalletException {
 
+        System.out.println("Controladora");
         compraVentaService.compra(walletId, dto);
 
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
     @PostMapping("/{walletID}/sell")
-    public ResponseEntity<?> ventaCripto(@RequestBody Long walletId, SellCriptoDto sellCripto){
+    public ResponseEntity<?> ventaCripto(@RequestBody Long walletId, SellCriptoDto sellCripto) {
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 

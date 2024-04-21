@@ -1,6 +1,6 @@
 package com.NoCountry.Patrickscoin.entities;
 
-import com.NoCountry.Patrickscoin.entities.enumeration.CoinType;
+import com.NoCountry.Patrickscoin.entities.enumeration.CryptoName;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -22,18 +23,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(exclude = "wallet")
 public class Coin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
-    private String name;
-    @Column(nullable = false)
+    @Column
     private double quantity;
     @Enumerated(EnumType.STRING)
-    private CoinType type;
+    private CryptoName cryptoName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wallet_id")

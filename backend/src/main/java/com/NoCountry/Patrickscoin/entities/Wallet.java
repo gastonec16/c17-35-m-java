@@ -30,9 +30,8 @@ public class Wallet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(nullable = false)
+    @Column
     private double localMoney;
-    @Column(nullable = false)
     private double globalMoney;
 
     @OneToMany(mappedBy = "wallet", fetch = FetchType.LAZY, orphanRemoval = false)
