@@ -54,10 +54,8 @@ export class LogInComponent {
             this.userService.logIn(credentials).subscribe({
                 next: (data) => {
                     if (data.email) {
-                        this.appComponent.user = data
-                        console.log(this.appComponent.user)
-
-                        this.appComponent.user = data
+                        this.userService.setToken(data.token)
+                        this.userService.setUserId(data.id)
                         this.router.navigate(['dashboard'])
                         form.reset()
                     }

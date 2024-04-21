@@ -104,8 +104,8 @@
                     maxlength="100"
                     [(ngModel)]="user.email"
                     #email="ngModel"
-                    oninput="this.value = this.value.replace(/[^a-zA-Z@\-_.]/g, '').toLowerCase()"
-                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z0-9@\-_.]/g, '').toLowerCase()"
+                    pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
                 />
 
                 @if (email.invalid && (email.dirty || email.touched)) {

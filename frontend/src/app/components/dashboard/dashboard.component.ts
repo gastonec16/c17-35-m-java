@@ -61,7 +61,7 @@ export class DashboardComponent {
     }
 
     user = {
-        id: this.appComponent.user.id,
+        id: this.userService.getUserId(),
         name: this.appComponent.user.name,
         lastName: this.appComponent.user.lastName,
         email: this.appComponent.user.email,
@@ -96,18 +96,25 @@ export class DashboardComponent {
 
     ngOnInit() {
         this.getCryptoPrices()
+        this.userService.getUserData().subscribe({
+            next: (data) => {
+                this.appComponent.user = data
+            },
+            error: (err) => {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'No se pudieron obtener los datos del usuario',
+                    icon: 'error',
+                    iconColor: 'var(--red)',
+                    confirmButtonText: 'Aceptar',
+                    customClass: { confirmButton: 'swal-button' }
+                })
+            }
+        })
     }
 
     logOut() {
-        this.userService.logOut().subscribe(
-            () => {
-                console.log('Logout exitoso')
-                this.router.navigate(['/'])
-            },
-            (error) => {
-                console.error('Error al realizar el logout:', error)
-            }
-        )
+        this.userService.logOut()
     }
 
     coinList = [
