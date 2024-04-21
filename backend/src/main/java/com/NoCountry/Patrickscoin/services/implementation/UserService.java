@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.NoCountry.Patrickscoin.dto.request.UserDto;
-import com.NoCountry.Patrickscoin.dto.response.UserLoguedDto;
+import com.NoCountry.Patrickscoin.dto.response.UserLoguedDtoResponse;
 import com.NoCountry.Patrickscoin.entities.User;
 import com.NoCountry.Patrickscoin.entities.Wallet;
 import com.NoCountry.Patrickscoin.entities.enumeration.Role;
@@ -39,7 +39,7 @@ public class UserService implements IUserService {
         User user = User.builder()
             .email(userdto.getEmail())
             .password(passwordEncoder.encode(userdto.getPassword()))
-            .lastname(userdto.getLastName())
+            .lastName(userdto.getLastName())
             .name(userdto.getName())
             .role(Role.USER)
             .build();
@@ -49,14 +49,15 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserLoguedDto login(UserDto user) {
+    public UserLoguedDtoResponse login(UserDto user) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
         User userEntity = userRepository.findByEmail(user.getEmail());
         String token = jwtservice.getToken(userEntity);
 
-        return new UserLoguedDto(
+        return new UserLoguedDtoResponse(
             userEntity.getId(),
             userEntity.getName(),
+            userEntity.getLastName(),
             userEntity.getEmail(),
             userEntity.getPassword(),
             token

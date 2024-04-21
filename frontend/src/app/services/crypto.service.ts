@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable, inject } from '@angular/core'
+import Swal from 'sweetalert2'
 
 @Injectable({
     providedIn: 'root'
@@ -7,12 +8,54 @@ import { Injectable, inject } from '@angular/core'
 export class CryptoService {
     http = inject(HttpClient)
 
-    getCryptoPrices(crypto: string, fiat: string) {
+    getCryptoPrice(crypto: string, fiat: string) {
         return this.http.get<any>(`https://criptoya.com/api/lemoncash/${crypto}/${fiat}`)
     }
 
     getUsdtPrice() {
         return this.http.get<any>(`https://criptoya.com/api/binancep2p/usdt/usd`)
+    }
+
+    getCryptoPrices(coinList: any[]) {
+        let usdtUsdPrice = 1
+        let usdArsPrice = 1
+
+        this.getUsdtPrice().subscribe({
+            next: (data) => {
+                if (data.ask) {
+                    usdtUsdPrice = data.ask
+                }
+
+                this.getCryptoPrice('usdt', 'ars').subscribe({
+                    next: (data) => {
+                        usdArsPrice = usdtUsdPrice * data.ask
+
+                        coinList.forEach((item) => {
+                            this.getCryptoPrice(item.coin.shortName, 'ars').subscribe({
+                                next: (data) => {
+                                    coinList[item.coin.id - 1].arsSell = data['bid']
+                                    coinList[item.coin.id - 1].usdSell = data['bid'] / usdArsPrice
+
+                                    coinList[item.coin.id - 1].arsBuy = data['ask']
+                                    coinList[item.coin.id - 1].usdBuy = data['ask'] / usdArsPrice
+                                }
+                            })
+                        })
+                    },
+                    error: (err) => {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'No se pudo obtener el precio de las criptomonedas',
+                            icon: 'error',
+                            iconColor: 'var(--red)',
+                            confirmButtonText: 'Aceptar',
+                            customClass: { confirmButton: 'swal-button' }
+                        })
+                    }
+                })
+            }
+        })
+        return coinList
     }
 }
 

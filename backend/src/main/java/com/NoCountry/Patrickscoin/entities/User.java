@@ -2,7 +2,6 @@ package com.NoCountry.Patrickscoin.entities;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -44,7 +43,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private String lastname;
+    private String lastName;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)

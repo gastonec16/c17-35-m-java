@@ -13,7 +13,7 @@ public class UserMapper {
 
         return User.builder()
             .name(dto.getName())
-            .lastname(dto.getLastName())
+            .lastName(dto.getLastName())
             .email(dto.getEmail())
             .password(dto.getPassword())
             .build();
@@ -22,7 +22,7 @@ public class UserMapper {
     public static UserDto entityToDto(User user){
         return UserDto.builder()
             .name(user.getName())
-            .lastName(user.getLastname())
+            .lastName(user.getLastName())
             .email(user.getEmail())
             .password(user.getPassword())
             .build();
