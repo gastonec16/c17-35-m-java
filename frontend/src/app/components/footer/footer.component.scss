@@ -41,10 +41,21 @@ footer {
         align-items: center;
     }
 
+    & .left-column {
+        margin-right: 16px;
+    }
+    & .right-column {
+        margin-left: 16px;
+    }
+
     & .social-media {
         width: 100%;
         display: flex;
         justify-content: space-between;
+
+        & img {
+            height: 60px;
+        }
     }
 
     & img {
@@ -61,5 +72,11 @@ footer {
 
     & .copyright {
         font-size: smaller;
+    }
+
+    @media (max-width: 768px) {
+        & .social-media img {
+            height: 48px;
+        }
     }
 }
