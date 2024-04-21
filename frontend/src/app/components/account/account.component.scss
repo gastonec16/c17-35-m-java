@@ -1,0 +1,133 @@
+.account-container {
+    margin-top: 24px;
+    border-radius: 16px;
+    background-color: var(--black);
+    box-shadow: var(--shadow);
+    border: 2px var(--black) solid;
+    display: flex;
+    align-items: center;
+    max-width: 1280px;
+    width: 100%;
+    overflow-x: auto;
+
+    & .profile-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 24px;
+
+        & .user-name,
+        .user-email {
+            border-radius: 1rem;
+            border: 2px solid var(--black);
+            background-color: var(--green-5);
+            color: var(--white);
+            padding: 4px 12px;
+            text-align: center;
+            max-width: 10rem;
+            overflow-x: hidden;
+            margin: 16px 0;
+        }
+
+        .user-email {
+            font-size: smaller;
+        }
+
+        & .profile-picture {
+            border-radius: 64px;
+            height: 128px;
+            width: 128px;
+        }
+    }
+
+    & .money-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 24px;
+
+        & h2 {
+            text-align: center;
+            font-family: Germania One, sans-serif;
+            font-weight: 400;
+            font-size: 24pt;
+            color: var(--white);
+            margin: 16px 0;
+            white-space: nowrap;
+        }
+
+        .money {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 32px;
+
+            & .ars,
+            & .usd {
+                font-family: Germania One, sans-serif;
+                font-weight: 400;
+                font-size: 18pt;
+                border-radius: 1rem;
+                border: 2px var(--black) solid;
+                background-image: linear-gradient(to bottom, var(--green-1), var(--green-4));
+                color: var(--black);
+                padding: 4px 12px;
+                text-align: center;
+                max-width: 10rem;
+                overflow-x: hidden;
+                margin: 8px;
+                white-space: nowrap;
+            }
+        }
+
+        & button {
+            margin-bottom: 16px;
+        }
+    }
+
+    & .crypto-container {
+        max-height: 17rem;
+        overflow-y: auto;
+        width: 100%;
+        min-width: 20rem;
+        color: var(--black);
+        margin: 24px;
+    }
+
+    & .crypto-table {
+        width: 100%;
+
+        & th {
+            font-family: Germania One, sans-serif;
+            font-weight: 400;
+            font-size: 20pt;
+            color: var(--black);
+            padding: 4px;
+            background-color: var(--lightgrey);
+            border: 1px solid var(--black);
+        }
+
+        & td {
+            background-color: var(--lightgrey);
+            color: var(--black);
+            vertical-align: middle;
+            padding: 0 4px;
+            border: 1px solid var(--black);
+
+            & .crypto-name {
+                display: flex;
+                height: 48px;
+                align-items: center;
+
+                & img {
+                    height: 32px;
+                    width: 32px;
+                }
+            }
+
+            & img {
+                margin: 0 8px;
+            }
+        }
+    }
+}
