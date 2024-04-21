@@ -55,22 +55,17 @@ export class LogInComponent {
                 next: (data) => {
                     if (data.email) {
                         this.appComponent.user = data
+                        console.log(this.appComponent.user)
+
+                        this.appComponent.user = data
                         this.router.navigate(['dashboard'])
                         form.reset()
-                    } else
-                        Swal.fire({
-                            title: 'Error',
-                            text: data.message,
-                            icon: 'error',
-                            iconColor: 'var(--red)',
-                            confirmButtonText: 'Aceptar',
-                            customClass: { confirmButton: 'swal-button' }
-                        })
+                    }
                 },
                 error: (err) => {
                     Swal.fire({
                         title: 'Error',
-                        text: err.error.message,
+                        text: err.message,
                         icon: 'error',
                         iconColor: 'var(--red)',
                         confirmButtonText: 'Aceptar',

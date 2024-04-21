@@ -78,7 +78,7 @@ export class RegisterComponent implements OnInit {
 
             this.userService.registerUser(newUser).subscribe({
                 next: (data) => {
-                    if (data.email) {
+                    if (!data) {
                         Swal.fire({
                             title: 'Éxito',
                             text: 'Ya puedes iniciar sesión',

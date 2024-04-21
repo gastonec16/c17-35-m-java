@@ -43,7 +43,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private String lastname;
+    private String lastName;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)

@@ -61,10 +61,10 @@ export class DashboardComponent {
     }
 
     user = {
-        id: 34,
-        name: 'David',
-        lastName: 'Reyes',
-        email: 'davidreyes@hotmail.com',
+        id: this.appComponent.user.id,
+        name: this.appComponent.user.name,
+        lastName: this.appComponent.user.lastName,
+        email: this.appComponent.user.email,
         ars: 95123,
         usd: 215,
         crypto: [
@@ -170,11 +170,22 @@ export class DashboardComponent {
                                     if (data.ask) {
                                         this.coinList[item.coin.id - 1].arsSell = data['bid']
                                         this.coinList[item.coin.id - 1].usdSell = data['bid'] / this.usdArsPrice
+
                                         this.coinList[item.coin.id - 1].arsBuy = data['ask']
                                         this.coinList[item.coin.id - 1].usdBuy = data['ask'] / this.usdArsPrice
                                     }
                                 }
                             })
+                        })
+                    },
+                    error: (err) => {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'No se pudo obtener el precio de las criptomonedas',
+                            icon: 'error',
+                            iconColor: 'var(--red)',
+                            confirmButtonText: 'Aceptar',
+                            customClass: { confirmButton: 'swal-button' }
                         })
                     }
                 })
