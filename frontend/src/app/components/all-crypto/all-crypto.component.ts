@@ -16,6 +16,10 @@ export class AllCryptoComponent {
 
     coinList = this.dashboardComponent.coinList
 
+    ngOnInit() {
+        this.cryptoService.getCryptoPrices(this.coinList)
+    }
+
     refresh() {
         this.cryptoService.getCryptoPrices(this.coinList)
         Swal.fire({

@@ -67,14 +67,14 @@ export class DashboardComponent {
                 this.appComponent.user = data
             },
             error: (err) => {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'No se pudieron obtener los datos del usuario',
-                    icon: 'error',
-                    iconColor: 'var(--red)',
-                    confirmButtonText: 'Aceptar',
-                    customClass: { confirmButton: 'swal-button' }
-                })
+                // Swal.fire({
+                //     title: 'Error',
+                //     text: 'No se pudieron obtener los datos del usuario',
+                //     icon: 'error',
+                //     iconColor: 'var(--red)',
+                //     confirmButtonText: 'Aceptar',
+                //     customClass: { confirmButton: 'swal-button' }
+                // })
             }
         })
     }
