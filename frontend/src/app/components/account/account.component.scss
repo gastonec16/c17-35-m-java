@@ -8,8 +8,6 @@
     display: flex;
     align-items: center;
     overflow-x: auto;
-    padding-right: 24px;
-    width: 100%;
 
     & .profile-container {
         display: flex;
@@ -92,6 +90,7 @@
         width: 100%;
         min-width: 20rem;
         color: var(--black);
+        margin-right: 24px;
     }
 
     & .crypto-table {
@@ -139,13 +138,17 @@
 @media (max-width: 980px) {
     .account-container {
         flex-direction: column;
-        padding-right: 0;
+
+        & .crypto-container {
+            margin-right: 24px;
+            margin-left: 24px;
+        }
     }
 }
 
 @media (max-width: 576px) {
     .account-container {
-        padding-right: 12px;
+        padding-right: 0;
 
         & .profile-container {
             margin: 12px;
@@ -181,19 +184,21 @@
             }
         }
 
-        & .crypto-table {
-            & th {
-                font-size: 16pt;
-            }
-            & td {
-                font-size: 14pt;
-
-                & .crypto-name {
-                    height: 40px;
+        & .crypto-container {
+            & .crypto-table {
+                & th {
+                    font-size: 16pt;
                 }
+                & td {
+                    font-size: 14pt;
 
-                & img {
-                    margin: 0 4px;
+                    & .crypto-name {
+                        height: 40px;
+                    }
+
+                    & img {
+                        margin: 0 4px;
+                    }
                 }
             }
         }
@@ -201,19 +206,21 @@
 }
 
 @media (max-width: 768px) {
-    .account-container .crypto-table {
-        & th {
-            font-size: 18pt;
-        }
-        & td {
-            font-size: 12pt;
-
-            & .crypto-name {
-                height: 44px;
+    .account-container .crypto-container {
+        & .crypto-table {
+            & th {
+                font-size: 18pt;
             }
+            & td {
+                font-size: 12pt;
 
-            & img {
-                margin: 0 6px;
+                & .crypto-name {
+                    height: 44px;
+                }
+
+                & img {
+                    margin: 0 6px;
+                }
             }
         }
     }
