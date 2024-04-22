@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core'
 import Swal from 'sweetalert2'
 import { CryptoService } from '../../services/crypto.service'
 import { DashboardComponent } from '../dashboard/dashboard.component'
+import { UserService } from '../../services/user.service'
 
 @Component({
     selector: 'app-all-crypto',

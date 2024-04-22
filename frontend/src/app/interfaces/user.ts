@@ -11,9 +11,10 @@ export interface LogInCredentials {
 }
 
 export interface User {
-    email: string
     id: number
+    email: string
     name: string
     lastName: string
     password: string
+    token: string
 }

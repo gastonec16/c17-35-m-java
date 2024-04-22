@@ -94,7 +94,7 @@ export class RegisterComponent implements OnInit {
                 error: (err) => {
                     Swal.fire({
                         title: 'Error',
-                        text: err.message ? err.message : 'No se pudo registrar',
+                        text: err.error.message ? err.error.message : 'No se pudo registrar',
                         icon: 'error',
                         iconColor: 'var(--red)',
                         confirmButtonText: 'Aceptar',

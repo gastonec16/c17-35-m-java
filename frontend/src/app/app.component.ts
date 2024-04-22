@@ -10,6 +10,4 @@ import { RouterModule } from '@angular/router'
 })
 export class AppComponent {
     title = 'frontend'
-
-    user = { id: 0, name: 'David', lastName: 'Reyes', email: 'davidsin@gmail.com' }
 }

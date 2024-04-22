@@ -4,6 +4,7 @@ import { AppComponent } from '../../app.component'
 import { CryptoService } from '../../services/crypto.service'
 import { UserService } from '../../services/user.service'
 import { DashboardComponent } from '../dashboard/dashboard.component'
+import { User } from '../../interfaces/user'
 
 @Component({
     selector: 'app-account',
@@ -20,11 +21,17 @@ export class AccountComponent {
     cryptoService = inject(CryptoService)
     isBuying = true
 
+    loggedUser = { id: 0, name: '', lastName: '', email: '' }
+
+    ngOnInit() {
+        this.loggedUser = this.dashboardComponent.user
+    }
+
     user = {
-        id: this.userService.getUserId(),
-        name: this.appComponent.user.name,
-        lastName: this.appComponent.user.lastName,
-        email: this.appComponent.user.email,
+        id: this.dashboardComponent.user.id,
+        name: this.dashboardComponent.user.name,
+        lastName: this.dashboardComponent.user.lastName,
+        email: this.dashboardComponent.user.email,
         ars: 95123,
         usd: 215,
         crypto: [

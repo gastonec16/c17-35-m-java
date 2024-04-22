@@ -54,8 +54,7 @@ export class LogInComponent {
             this.userService.logIn(credentials).subscribe({
                 next: (data) => {
                     if (data.email) {
-                        this.userService.setToken(data.token)
-                        this.userService.setUserId(data.id)
+                        this.userService.setUserData(data)
                         this.router.navigate(['dashboard'])
                         form.reset()
                     }
@@ -63,7 +62,7 @@ export class LogInComponent {
                 error: (err) => {
                     Swal.fire({
                         title: 'Error',
-                        text: err.message,
+                        text: err.error.message ? err.error.message : 'No se pudo iniciar sesión',
                         icon: 'error',
                         iconColor: 'var(--red)',
                         confirmButtonText: 'Aceptar',
