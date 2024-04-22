@@ -134,7 +134,7 @@
             id="crypto-buy"
             type="number"
             disabled
-            [value]="cryptoBuyValue ? cryptoBuyValue : null"
+            [value]="cryptoBuyValue > 0 ? cryptoBuyValue : null"
         />
     </div>
     }
@@ -159,7 +159,7 @@
             id="fiat-sell"
             type="number"
             disabled
-            [value]="cryptoSellValue ? cryptoSellValue.toFixed(2) : null"
+            [value]="cryptoSellValue > 0 ? cryptoSellValue.toFixed(2) : null"
         />
     </div>
     }

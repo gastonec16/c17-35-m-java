@@ -8,7 +8,6 @@
     display: flex;
     align-items: center;
     overflow-x: auto;
-    padding-right: 24px;
 
     & .profile-container {
         display: flex;
@@ -17,7 +16,7 @@
         margin: 24px;
 
         & .user-name,
-        .user-email {
+        & .user-email {
             border-radius: 1rem;
             border: 2px solid var(--black);
             background-color: var(--green-5);
@@ -56,7 +55,7 @@
             white-space: nowrap;
         }
 
-        .money {
+        & .money {
             display: flex;
             justify-content: space-between;
             width: 100%;
@@ -91,6 +90,7 @@
         width: 100%;
         min-width: 20rem;
         color: var(--black);
+        margin-right: 24px;
     }
 
     & .crypto-table {
@@ -138,6 +138,90 @@
 @media (max-width: 980px) {
     .account-container {
         flex-direction: column;
+
+        & .crypto-container {
+            margin-right: 24px;
+            margin-left: 24px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .account-container {
         padding-right: 0;
+
+        & .profile-container {
+            margin: 12px;
+
+            & .profile-picture {
+                height: 96px;
+                width: 96px;
+            }
+        }
+
+        & .money-container {
+            margin: 12px;
+
+            & h2 {
+                font-size: 18pt;
+                margin: 8px 0;
+            }
+
+            & .money {
+                margin-bottom: 16px;
+
+                & .ars,
+                & .usd {
+                    font-size: 12pt;
+                    border: 1.5px var(--black) solid;
+                    max-width: 8rem;
+                    margin: 4px;
+                }
+            }
+
+            & button {
+                margin-bottom: 16px;
+            }
+        }
+
+        & .crypto-container {
+            & .crypto-table {
+                & th {
+                    font-size: 16pt;
+                }
+                & td {
+                    font-size: 14pt;
+
+                    & .crypto-name {
+                        height: 40px;
+                    }
+
+                    & img {
+                        margin: 0 4px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .account-container .crypto-container {
+        & .crypto-table {
+            & th {
+                font-size: 18pt;
+            }
+            & td {
+                font-size: 12pt;
+
+                & .crypto-name {
+                    height: 44px;
+                }
+
+                & img {
+                    margin: 0 6px;
+                }
+            }
+        }
     }
 }

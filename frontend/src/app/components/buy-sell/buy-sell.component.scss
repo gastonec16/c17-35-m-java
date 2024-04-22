@@ -27,7 +27,7 @@
         justify-content: center;
         & img {
             width: 201px;
-            height: 72;
+            height: 72px;
             filter: drop-shadow(0 0 2px rgba(255, 255, 255, 1));
         }
     }
@@ -140,5 +140,24 @@
     & .form-information {
         color: var(--white);
         text-align: end;
+    }
+}
+
+@media (max-width: 576px) {
+    .buy-sell-form .button-buy,
+    .buy-sell-form .button-sell {
+        height: 3.5rem;
+        width: 10.5rem;
+    }
+
+    .buy-sell-form .logo-container img {
+        width: 176px;
+        height: 63px;
+    }
+}
+
+@media (max-width: 768px) {
+    .buy-sell-form {
+        height: unset;
     }
 }

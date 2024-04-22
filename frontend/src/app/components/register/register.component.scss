@@ -176,6 +176,23 @@ p {
     background-color: var(--black);
 }
 
+@media (max-width: 576px) {
+    .elements-mobile {
+        & .logo-container {
+            img {
+                height: 48px;
+            }
+        }
+
+        & h3 {
+            font-size: 24px;
+            text-align: center;
+            filter: drop-shadow(0 0 3px #fff);
+            -webkit-text-stroke: 2px var(--black);
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .image-side {
         display: none;
