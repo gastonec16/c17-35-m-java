@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable, inject } from '@angular/core'
-import { LogInCredentials, RegisterUser } from '../interfaces/user'
+import { LogInCredentials, RegisterUser, User } from '../interfaces/user'
 import { environment } from '../environment'
 import { CookieService } from 'ngx-cookie-service'
 import { Observable } from 'rxjs'
@@ -25,7 +25,10 @@ export class UserService {
 
     async logOut() {
         await this.cookies.delete('token')
-        await this.cookies.delete('userId')
+        await this.cookies.delete('id')
+        await this.cookies.delete('email')
+        await this.cookies.delete('name')
+        await this.cookies.delete('lastName')
         if (!this.cookies.get('token')) {
             Swal.fire({
                 title: 'Éxito',
@@ -39,20 +42,27 @@ export class UserService {
         }
     }
 
-    setToken(token: string) {
-        this.cookies.set('token', token)
+    setUserData(user: User) {
+        this.cookies.set('id', user.id.toString())
+        this.cookies.set('email', user.email)
+        this.cookies.set('name', user.name)
+        this.cookies.set('lastName', user.lastName)
+        this.cookies.set('token', user.token)
     }
     getToken() {
         return this.cookies.get('token')
     }
-    setUserId(userId: number) {
-        this.cookies.set('userId', userId.toString())
-    }
-    getUserId() {
-        return this.cookies.get('userId')
-    }
 
-    getUserData(): Observable<any> {
-        return this.http.get<any>(`${environment.apiBaseUrl}/api/users/${this.cookies.get('userId')}`)
+    getUserId() {
+        return this.cookies.get('id')
+    }
+    getUserData() {
+        const user = {
+            id: parseInt(this.cookies.get('id')),
+            email: this.cookies.get('email'),
+            name: this.cookies.get('name'),
+            lastName: this.cookies.get('lastName')
+        }
+        return user
     }
 }

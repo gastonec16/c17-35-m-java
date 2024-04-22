@@ -28,10 +28,10 @@ export class DashboardComponent {
     userService = inject(UserService)
 
     user = {
-        id: this.userService.getUserId(),
-        name: this.appComponent.user.name,
-        lastName: this.appComponent.user.lastName,
-        email: this.appComponent.user.email,
+        id: 0,
+        name: '',
+        lastName: '',
+        email: '',
         ars: 95123,
         usd: 215,
         crypto: [
@@ -62,21 +62,12 @@ export class DashboardComponent {
     }
 
     ngOnInit() {
-        this.userService.getUserData().subscribe({
-            next: (data) => {
-                this.appComponent.user = data
-            },
-            error: (err) => {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'No se pudieron obtener los datos del usuario',
-                    icon: 'error',
-                    iconColor: 'var(--red)',
-                    confirmButtonText: 'Aceptar',
-                    customClass: { confirmButton: 'swal-button' }
-                })
-            }
-        })
+        let user = this.userService.getUserData()
+
+        this.user.id = user.id
+        this.user.email = user.email
+        this.user.name = user.name
+        this.user.lastName = user.lastName
     }
 
     logOut() {

@@ -83,3 +83,61 @@
         }
     }
 }
+
+@media (max-width: 576px) {
+    .all-crypto-container {
+        & .all-crypto-table {
+            & th {
+                font-size: 16pt;
+            }
+            & td {
+                font-size: 14pt;
+
+                & .crypto-name {
+                    height: 40px;
+                }
+
+                & img {
+                    margin: 0 4px;
+                }
+            }
+        }
+
+        & .all-crypto-title h2 {
+            font-size: 17pt;
+        }
+
+        & .table-container {
+            margin: 0 12px 12px 12px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .all-crypto-container {
+        & .all-crypto-table {
+            & th {
+                font-size: 18pt;
+            }
+            & td {
+                font-size: 12pt;
+
+                & .crypto-name {
+                    height: 44px;
+                }
+
+                & img {
+                    margin: 0 6px;
+                }
+            }
+        }
+
+        & .all-crypto-title h2 {
+            font-size: 21pt;
+        }
+
+        & .table-container {
+            margin: 0 18px 18px 18px;
+        }
+    }
+}
