@@ -1,0 +1,144 @@
+.buy-sell-form {
+    margin: 0;
+    padding: 0;
+    height: 34.5rem;
+    background-color: var(--green-5);
+    margin: 0;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 2px var(--black) solid;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    width: 100%;
+    max-width: unset;
+
+    & label {
+        color: var(--white);
+        margin: 8px 0;
+    }
+
+    & input {
+        width: 100%;
+    }
+    & .logo-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        & img {
+            width: 201px;
+            height: 72;
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 1));
+        }
+    }
+    & .arrow-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 12px;
+        & svg {
+            height: 40px;
+            width: 40px;
+            color: var(--green-2);
+            color: var(--yellow);
+        }
+    }
+
+    & .button-container {
+        display: flex;
+        justify-content: center;
+        margin: 24px 0;
+    }
+
+    & .button-buy,
+    & .button-sell {
+        background-image: url('/assets/img/golden-background.jpg');
+        background-size: cover;
+        height: 4rem;
+        width: 12rem;
+        border: none;
+        box-shadow: var(--shadow);
+        display: flex;
+        justify-content: center;
+
+        &:disabled {
+            color: var(--black);
+            opacity: 1;
+        }
+
+        &:hover {
+            filter: unset;
+        }
+
+        &:not([disabled]) {
+            filter: grayscale(100%);
+            color: var(--grey);
+
+            &:hover {
+                filter: brightness(1.2);
+            }
+        }
+    }
+
+    & .button-buy {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    & .button-sell {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        background-position: right;
+    }
+
+    & .operation-container {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--green-2);
+        background-image: url('/assets/img/golden-background-h.jpg');
+        border-radius: 1rem;
+        box-shadow: var(--shadow);
+
+        & input,
+        & select {
+            margin: 8px 10px 8px 0;
+            background-color: var(--white);
+            color: var(--black);
+            border-radius: 1rem;
+            font-size: larger;
+
+            &:focus {
+                outline: none;
+                background-color: #eff29e;
+                filter: drop-shadow(0 0 6px #eff29e);
+            }
+        }
+
+        & select,
+        & option {
+            width: 10rem;
+            margin-left: 10px;
+            font-family: Germania One, sans-serif;
+            font-weight: 400;
+        }
+    }
+
+    & .div-crypto {
+        background-position: right;
+    }
+
+    & .accept-button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 32px;
+    }
+
+    & .form-error {
+        color: var(--yellow);
+    }
+
+    & .form-information {
+        color: var(--white);
+        text-align: end;
+    }
+}

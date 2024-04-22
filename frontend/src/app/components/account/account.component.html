@@ -1,0 +1,49 @@
+<div class="account-container">
+    <div class="data-container">
+        <div class="profile-container">
+            <div class="user-name">{{ user.name + ' ' + user.lastName }}</div>
+            <img class="profile-picture" src="assets/img/user-icon.png" alt="profile-picture" />
+            <div class="user-email">{{ user.email }}</div>
+        </div>
+
+        <div class="money-container">
+            <h2>Saldo de cuenta</h2>
+
+            <div class="money">
+                <div class="ars">{{ user.ars + ' ARS' }}</div>
+                <div class="usd">{{ user.usd + ' USD' }}</div>
+            </div>
+
+            <button type="button" (click)="goToDeposit()">Depositar</button>
+            <button type="button" (click)="goToWithdraw()">Retirar</button>
+        </div>
+    </div>
+
+    <div class="crypto-container">
+        <table class="crypto-table">
+            <thead>
+                <tr>
+                    <th>Criptos adquiridas</th>
+                    <th>Cantidad</th>
+                    <th>USD</th>
+                    <th>ARS</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of user.crypto; track $index) { @if (item.quantity > 0) {
+                <tr class="crypto-element">
+                    <td>
+                        <div class="crypto-name">
+                            <img src="{{ 'assets/img/crypto-icons/' + item.coin.shortName.toLowerCase() + '.png' }}" />
+                            <p>{{ item.coin.shortName + ' - ' + item.coin.name }}</p>
+                        </div>
+                    </td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ (coinList[item.coin.id - 1].usdSell * item.quantity).toFixed(2) }}</td>
+                    <td>{{ (coinList[item.coin.id - 1].arsSell * item.quantity).toFixed(2) }}</td>
+                </tr>
+                } }
+            </tbody>
+        </table>
+    </div>
+</div>

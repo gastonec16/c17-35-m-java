@@ -89,20 +89,12 @@ export class RegisterComponent implements OnInit {
                         })
                         this.router.navigate(['/log-in'])
                         form.reset()
-                    } else
-                        Swal.fire({
-                            title: 'Error',
-                            text: data.message,
-                            icon: 'error',
-                            iconColor: 'var(--red)',
-                            confirmButtonText: 'Aceptar',
-                            customClass: { confirmButton: 'swal-button' }
-                        })
+                    }
                 },
                 error: (err) => {
                     Swal.fire({
                         title: 'Error',
-                        text: err.error.message,
+                        text: err.message ? err.message : 'No se pudo registrar',
                         icon: 'error',
                         iconColor: 'var(--red)',
                         confirmButtonText: 'Aceptar',

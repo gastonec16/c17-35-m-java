@@ -110,6 +110,7 @@
     color: #fff;
     margin: 12px 0;
     box-shadow: var(--shadow);
+    white-space: nowrap;
 
     &:hover {
         cursor: pointer;
@@ -173,4 +174,47 @@ p {
 }
 #apple-button {
     background-color: var(--black);
+}
+
+@media (max-width: 768px) {
+    .image-side {
+        display: none;
+    }
+    .triangle {
+        display: none;
+    }
+
+    .form-side {
+        max-width: unset;
+        background-image: url('/assets/img/btc-2.jpg');
+
+        & form {
+            max-width: 32rem;
+        }
+
+        .elements-mobile {
+            display: flex;
+            align-items: center;
+
+            & .logo-container {
+                margin: 16px 0;
+
+                & img {
+                    height: 64px;
+                }
+            }
+
+            & h3 {
+                margin: 0;
+                margin-bottom: 16px;
+                color: var(--yellow);
+                font-family: 'Germania One', sans-serif;
+                font-weight: 400;
+                font-size: 36px;
+                text-align: center;
+                filter: drop-shadow(0 0 3px #fff);
+                -webkit-text-stroke: 2px var(--black);
+            }
+        }
+    }
 }

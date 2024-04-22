@@ -35,9 +35,12 @@ h2 {
 .img-1 {
     position: absolute;
     left: 32px;
+    top: 0;
 }
 
 .patrick-coins-logo {
+    width: 268px;
+    height: 96px;
     margin-left: 304px;
 }
 
@@ -59,12 +62,13 @@ h2 {
 .img-2 {
     position: absolute;
     right: 32px;
+    top: 0;
 }
 
 .title-2 {
     padding-right: 304px;
     padding-left: 32px;
-    height: 96px;
+    height: 101px;
     margin-top: 16px;
     display: flex;
     align-items: center;
@@ -82,7 +86,7 @@ h2 {
     font-size: 16pt;
     background-color: var(--green-5);
     color: var(--white);
-    min-height: 160px;
+    min-height: 155px;
     text-align: end;
     justify-content: end;
 }
@@ -90,6 +94,75 @@ h2 {
 .start-button-container {
     display: flex;
     width: 100%;
-    margin: 48px;
+    margin: 48px 0;
     justify-content: center;
+}
+
+.patrick-coins-logo-mobile {
+    display: none;
+}
+.title-2-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .gradient-line {
+        margin-bottom: 60px;
+    }
+    h2 {
+        margin-bottom: 0;
+    }
+    .patrick-coins-logo {
+        display: none;
+    }
+    .patrick-coins-logo-mobile {
+        display: flex;
+        justify-content: center;
+
+        & img {
+            width: 268px;
+            height: 96px;
+            margin-bottom: 12px;
+            display: block;
+        }
+    }
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+    .img-1 {
+        left: calc(50% - 120px);
+    }
+    .text-1 {
+        margin-top: 101px;
+        padding-top: 139px;
+        padding-left: 32px;
+        text-align: center;
+        min-height: 0;
+    }
+    .container-2 {
+        display: flex;
+        flex-direction: column;
+        margin-top: 12px;
+    }
+    .title-2 {
+        display: none;
+    }
+    .title-2-mobile {
+        display: block;
+        text-align: center;
+    }
+    .img-2 {
+        right: calc(50% - 120px);
+    }
+    .text-2 {
+        padding-right: 32px;
+        margin-top: 101px;
+        padding-top: 139px;
+        text-align: center;
+        min-height: 0;
+    }
 }

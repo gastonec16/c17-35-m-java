@@ -7,61 +7,28 @@ import { FormsModule } from '@angular/forms'
 import { UserService } from '../../services/user.service'
 import { AppComponent } from '../../app.component'
 
+import { AllCryptoComponent } from '../all-crypto/all-crypto.component'
+import { AccountComponent } from '../account/account.component'
+import { BuySellComponent } from '../buy-sell/buy-sell.component'
+
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [FooterComponent, FormsModule, RouterModule],
+    imports: [AccountComponent, AllCryptoComponent, BuySellComponent, FooterComponent, FormsModule, RouterModule],
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
     appComponent = inject(AppComponent)
+    // accountComponent = inject(AccountComponent)
+    // allCryptoComponent = inject(AllCryptoComponent)
+    // buySellComponent = inject(BuySellComponent)
     router = inject(Router)
     cryptoService = inject(CryptoService)
-    isBuying = true
-
     userService = inject(UserService)
 
-    operationBuy = {
-        fiat: '',
-        fiatQuantity: null,
-        crypto: 0,
-        cryptoQuantity: null
-    }
-    operationSell = {
-        crypto: 0,
-        cryptoQuantity: null,
-        fiat: '',
-        fiatQuantity: null
-    }
-
-    cryptoBuyValue = 0
-    cryptoSellValue = 0
-
-    getCryptoBuyValue() {
-        if (this.operationBuy.fiat == '' || this.operationBuy.crypto == 0) {
-            this.cryptoBuyValue = 0
-        } else if (this.operationBuy.fiat == 'ARS' && this.operationBuy.fiatQuantity) {
-            this.cryptoBuyValue = this.operationBuy.fiatQuantity / this.coinList[this.operationBuy.crypto - 1].arsBuy
-        } else if (this.operationBuy.fiat == 'USD' && this.operationBuy.fiatQuantity) {
-            this.cryptoBuyValue = this.operationBuy.fiatQuantity / this.coinList[this.operationBuy.crypto - 1].usdBuy
-        }
-    }
-
-    getCryptoSellValue() {
-        if (this.operationSell.fiat == '' || this.operationSell.crypto == 0) {
-            this.cryptoSellValue = 0
-        } else if (this.operationSell.fiat == 'ARS' && this.operationSell.cryptoQuantity) {
-            this.cryptoSellValue =
-                this.operationSell.cryptoQuantity * this.coinList[this.operationSell.crypto - 1].arsSell
-        } else if (this.operationSell.fiat == 'USD' && this.operationSell.cryptoQuantity) {
-            this.cryptoSellValue =
-                this.operationSell.cryptoQuantity * this.coinList[this.operationSell.crypto - 1].usdSell
-        }
-    }
-
     user = {
-        id: this.appComponent.user.id,
+        id: this.userService.getUserId(),
         name: this.appComponent.user.name,
         lastName: this.appComponent.user.lastName,
         email: this.appComponent.user.email,
@@ -95,19 +62,25 @@ export class DashboardComponent {
     }
 
     ngOnInit() {
-        this.getCryptoPrices()
+        this.userService.getUserData().subscribe({
+            next: (data) => {
+                this.appComponent.user = data
+            },
+            error: (err) => {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'No se pudieron obtener los datos del usuario',
+                    icon: 'error',
+                    iconColor: 'var(--red)',
+                    confirmButtonText: 'Aceptar',
+                    customClass: { confirmButton: 'swal-button' }
+                })
+            }
+        })
     }
 
     logOut() {
-        this.userService.logOut().subscribe(
-            () => {
-                console.log('Logout exitoso')
-                this.router.navigate(['/'])
-            },
-            (error) => {
-                console.error('Error al realizar el logout:', error)
-            }
-        )
+        this.userService.logOut()
     }
 
     coinList = [
@@ -136,113 +109,4 @@ export class DashboardComponent {
     ]
     // AAVE , ADA , ALGO , AVAX , AXS , BNB , BTC , DAI , DOT , ETH , FTM , LTC ,
     // MANA , MATIC , PAXG , SAND , SLP , SOL , UNI , USDC , USDT , XLM
-
-    refresh() {
-        this.getCryptoPrices()
-        Swal.fire({
-            title: 'Éxito',
-            text: 'Se ha actualizado la cotización de todas las criptomonedas',
-            icon: 'success',
-            iconColor: 'var(--green-3)',
-            confirmButtonText: 'Aceptar',
-            customClass: { confirmButton: 'swal-button' }
-        })
-    }
-
-    usdArsPrice = 0
-
-    getCryptoPrices() {
-        let usdtUsdPrice = 1
-
-        this.cryptoService.getUsdtPrice().subscribe({
-            next: (data) => {
-                if (data.ask) {
-                    usdtUsdPrice = data.ask
-                }
-
-                this.cryptoService.getCryptoPrices('usdt', 'ars').subscribe({
-                    next: (data) => {
-                        this.usdArsPrice = usdtUsdPrice * data.ask
-
-                        this.coinList.forEach((item) => {
-                            this.cryptoService.getCryptoPrices(item.coin.shortName, 'ars').subscribe({
-                                next: (data) => {
-                                    if (data.ask) {
-                                        this.coinList[item.coin.id - 1].arsSell = data['bid']
-                                        this.coinList[item.coin.id - 1].usdSell = data['bid'] / this.usdArsPrice
-
-                                        this.coinList[item.coin.id - 1].arsBuy = data['ask']
-                                        this.coinList[item.coin.id - 1].usdBuy = data['ask'] / this.usdArsPrice
-                                    }
-                                }
-                            })
-                        })
-                    },
-                    error: (err) => {
-                        Swal.fire({
-                            title: 'Error',
-                            text: 'No se pudo obtener el precio de las criptomonedas',
-                            icon: 'error',
-                            iconColor: 'var(--red)',
-                            confirmButtonText: 'Aceptar',
-                            customClass: { confirmButton: 'swal-button' }
-                        })
-                    }
-                })
-            }
-        })
-    }
-
-    goToDeposit() {
-        this.router.navigate(['/deposit'])
-    }
-    goToWithdraw() {
-        this.router.navigate(['/withdraw'])
-    }
-    activeButton(button: boolean) {
-        this.isBuying = button
-
-        this.operationBuy = {
-            fiat: '',
-            fiatQuantity: null,
-            crypto: 0,
-            cryptoQuantity: null
-        }
-        this.operationSell = {
-            crypto: 0,
-            cryptoQuantity: null,
-            fiat: '',
-            fiatQuantity: null
-        }
-        this.cryptoBuyValue = 0
-        this.cryptoSellValue = 0
-    }
-
-    openDialog(event: SubmitEvent): void {
-        event.preventDefault()
-
-        Swal.fire({
-            title: '¡Gracias por tu confianza y por elegirnos!',
-            text: 'Al aceptar la compra, estás aceptando todos los términos y condiciones de nuestra plataforma.',
-            icon: 'warning',
-            iconColor: 'var(--yellow)',
-            confirmButtonText: 'Aceptar',
-            showCancelButton: true,
-            cancelButtonText: 'Cancelar',
-            customClass: { confirmButton: 'swal-button', cancelButton: 'swal-button' }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: '¡Compra realizada con éxito!',
-                    text: 'Tu saldo se actualizará en breve. ¡Gracias por confiar en nuestro servicio!',
-                    icon: 'success',
-                    iconColor: 'var(--green-3)',
-                    confirmButtonText: 'Aceptar',
-                    customClass: { confirmButton: 'swal-button' }
-                }).then((result) => {
-                    this.router.navigate(['/dashboard'])
-                })
-            }
-        })
-    }
 }
