@@ -1,9 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { Injectable, inject } from '@angular/core'
 import { LogInCredentials, RegisterUser, User } from '../interfaces/user'
 import { environment } from '../environment'
-import { CookieService } from 'ngx-cookie-service'
-import { Observable } from 'rxjs'
+
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router'
 
@@ -12,7 +11,7 @@ import { Router } from '@angular/router'
 })
 export class UserService {
     http = inject(HttpClient)
-    cookies = inject(CookieService)
+
     router = inject(Router)
 
     registerUser(user: RegisterUser) {
@@ -24,12 +23,8 @@ export class UserService {
     }
 
     async logOut() {
-        await this.cookies.delete('token')
-        await this.cookies.delete('id')
-        await this.cookies.delete('email')
-        await this.cookies.delete('name')
-        await this.cookies.delete('lastName')
-        if (!this.cookies.get('token')) {
+        await localStorage.clear()
+        if (!localStorage.getItem('token')) {
             Swal.fire({
                 title: 'Éxito',
                 text: 'Se ha cerrado tu sesión',
@@ -43,25 +38,31 @@ export class UserService {
     }
 
     setUserData(user: User) {
-        this.cookies.set('id', user.id.toString())
-        this.cookies.set('email', user.email)
-        this.cookies.set('name', user.name)
-        this.cookies.set('lastName', user.lastName)
-        this.cookies.set('token', user.token)
+        localStorage.setItem('id', user.id.toString())
+        localStorage.setItem('email', user.email)
+        localStorage.setItem('name', user.name)
+        localStorage.setItem('lastName', user.lastName)
+        localStorage.setItem('token', user.token)
+        localStorage.setItem('token', user.token)
     }
     getToken() {
-        return this.cookies.get('token')
+        return localStorage.getItem('token')
     }
 
     getUserId() {
-        return this.cookies.get('id')
+        return localStorage.getItem('id')
     }
     getUserData() {
+        const idString = localStorage.getItem('id')
+        const email = localStorage.getItem('email')
+        const name = localStorage.getItem('name')
+        const lastName = localStorage.getItem('lastName')
+
         const user = {
-            id: parseInt(this.cookies.get('id')),
-            email: this.cookies.get('email'),
-            name: this.cookies.get('name'),
-            lastName: this.cookies.get('lastName')
+            id: idString ? parseInt(idString) : 0,
+            email: email ? email : '',
+            name: name ? name : '',
+            lastName: lastName ? lastName : ''
         }
         return user
     }

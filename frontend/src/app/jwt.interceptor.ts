@@ -18,7 +18,7 @@ export class JwtInterceptor implements HttpInterceptor {
             request = request.clone({
                 setHeaders: { Authorization: `Bearer ${token}` }
             })
-            console.log(request.headers, 'asdasdasd')
+            console.log('Los headers del request: ', request.headers)
         }
         return next.handle(request)
     }
