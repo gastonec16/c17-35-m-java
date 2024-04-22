@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.NoCountry.Patrickscoin.repositories.UserRepository;
 
@@ -18,9 +19,15 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfig {
+    private final String BASE_URL_CRYPTO = "https://criptoya.com/api";
 
     @Autowired
     private UserRepository userRepository;
+
+    @Bean
+    WebClient webClient(){
+        return WebClient.create(BASE_URL_CRYPTO);
+    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
