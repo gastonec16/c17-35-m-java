@@ -81,7 +81,9 @@ export class BuySellComponent {
 
         Swal.fire({
             title: '¡Gracias por tu confianza y por elegirnos!',
-            text: 'Al aceptar la compra, estás aceptando todos los términos y condiciones de nuestra plataforma.',
+            text: `Al aceptar la ${
+                this.isBuying ? 'compra' : 'venta'
+            }, estás aceptando todos los términos y condiciones de nuestra plataforma.`,
             icon: 'warning',
             iconColor: 'var(--yellow)',
             confirmButtonText: 'Aceptar',
@@ -91,7 +93,7 @@ export class BuySellComponent {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: '¡Compra realizada con éxito!',
+                    title: `¡${this.isBuying ? 'Compra' : 'Venta'} realizada con éxito!`,
                     text: 'Tu saldo se actualizará en breve. ¡Gracias por confiar en nuestro servicio!',
                     icon: 'success',
                     iconColor: 'var(--green-3)',
