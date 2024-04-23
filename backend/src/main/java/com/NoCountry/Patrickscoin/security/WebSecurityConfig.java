@@ -33,7 +33,7 @@ public class WebSecurityConfig {
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/public/**", configuration);
+        source.registerCorsConfiguration("/**", configuration);
         return source;
     }
 
