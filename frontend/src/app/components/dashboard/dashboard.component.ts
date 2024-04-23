@@ -2,14 +2,12 @@ import { Component, inject } from '@angular/core'
 import { FooterComponent } from '../footer/footer.component'
 import { Router, RouterModule } from '@angular/router'
 import { CryptoService } from '../../services/crypto.service'
-import Swal from 'sweetalert2'
 import { FormsModule } from '@angular/forms'
 import { UserService } from '../../services/user.service'
-import { AppComponent } from '../../app.component'
-
 import { AllCryptoComponent } from '../all-crypto/all-crypto.component'
 import { AccountComponent } from '../account/account.component'
 import { BuySellComponent } from '../buy-sell/buy-sell.component'
+import { WalletService } from '../../services/wallet.service'
 
 @Component({
     selector: 'app-dashboard',
@@ -19,13 +17,10 @@ import { BuySellComponent } from '../buy-sell/buy-sell.component'
     styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-    appComponent = inject(AppComponent)
-    // accountComponent = inject(AccountComponent)
-    // allCryptoComponent = inject(AllCryptoComponent)
-    // buySellComponent = inject(BuySellComponent)
     router = inject(Router)
     cryptoService = inject(CryptoService)
     userService = inject(UserService)
+    walletService = inject(WalletService)
 
     user = {
         id: 0,
@@ -68,6 +63,12 @@ export class DashboardComponent {
         this.user.email = user.email
         this.user.name = user.name
         this.user.lastName = user.lastName
+
+        this.walletService.getWallet().subscribe({
+            next: (data) => {
+                console.log('mi wallet: ', data)
+            }
+        })
     }
 
     logOut() {
