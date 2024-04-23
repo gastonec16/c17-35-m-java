@@ -32,6 +32,7 @@ public class Coin {
 
     @Column
     private double quantity;
+    private String name;
     @Enumerated(EnumType.STRING)
     private CryptoName cryptoName;
 
