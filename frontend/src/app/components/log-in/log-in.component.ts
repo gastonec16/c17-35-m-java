@@ -60,7 +60,7 @@ export class LogInComponent {
                 error: (err) => {
                     Swal.fire({
                         title: 'Error',
-                        text: err.error.message ? err.error.message : 'No se pudo iniciar sesión',
+                        text: err.error ? err.error.message : 'No se pudo iniciar sesión',
                         icon: 'error',
                         iconColor: 'var(--red)',
                         confirmButtonText: 'Aceptar',

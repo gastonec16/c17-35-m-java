@@ -15,7 +15,7 @@ export class BuySellComponent {
     dashboardComponent = inject(DashboardComponent)
     router = inject(Router)
     isBuying = true
-    user = this.dashboardComponent.user
+    wallet = this.dashboardComponent.wallet
 
     coinList = this.dashboardComponent.coinList
 

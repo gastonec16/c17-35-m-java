@@ -8,6 +8,8 @@ import { AllCryptoComponent } from '../all-crypto/all-crypto.component'
 import { AccountComponent } from '../account/account.component'
 import { BuySellComponent } from '../buy-sell/buy-sell.component'
 import { WalletService } from '../../services/wallet.service'
+import { Wallet } from '../../interfaces/wallet'
+import Swal from 'sweetalert2'
 
 @Component({
     selector: 'app-dashboard',
@@ -26,34 +28,14 @@ export class DashboardComponent {
         id: 0,
         name: '',
         lastName: '',
-        email: '',
-        ars: 95123,
-        usd: 215,
-        crypto: [
-            { coin: { id: 1, name: 'Aave', shortName: 'AAVE' }, quantity: 0 },
-            { coin: { id: 2, name: 'Cardano', shortName: 'ADA' }, quantity: 0 },
-            { coin: { id: 3, name: 'Algorand', shortName: 'ALGO' }, quantity: 0 },
-            { coin: { id: 4, name: 'Avalanche', shortName: 'AVAX' }, quantity: 0 },
-            { coin: { id: 5, name: 'Axie Infinity', shortName: 'AXS' }, quantity: 0 },
-            { coin: { id: 6, name: 'BNB', shortName: 'BNB' }, quantity: 0 },
-            { coin: { id: 7, name: 'Bitcoin', shortName: 'BTC' }, quantity: 0.26 },
-            { coin: { id: 8, name: 'Dai', shortName: 'DAI' }, quantity: 0 },
-            { coin: { id: 9, name: 'Polkadot', shortName: 'DOT' }, quantity: 0.67 },
-            { coin: { id: 10, name: 'Ethereum', shortName: 'ETH' }, quantity: 0.65 },
-            { coin: { id: 11, name: 'Fantom', shortName: 'FTM' }, quantity: 0 },
-            { coin: { id: 12, name: 'Litecoin', shortName: 'LTC' }, quantity: 0 },
-            { coin: { id: 13, name: 'Decentraland', shortName: 'MANA' }, quantity: 21 },
-            { coin: { id: 14, name: 'Polygon', shortName: 'MATIC' }, quantity: 42.5 },
-            { coin: { id: 15, name: 'PAX Gold', shortName: 'PAXG' }, quantity: 0 },
-            { coin: { id: 16, name: 'The Sandbox', shortName: 'SAND' }, quantity: 0 },
-            { coin: { id: 17, name: 'SLP', shortName: 'SLP' }, quantity: 0 },
-            { coin: { id: 18, name: 'Solana', shortName: 'SOL' }, quantity: 2.6 },
-            { coin: { id: 19, name: 'Uniswap', shortName: 'UNI' }, quantity: 0 },
-            { coin: { id: 20, name: 'USD Coin', shortName: 'USDC' }, quantity: 0 },
-            { coin: { id: 21, name: 'TetherUS', shortName: 'USDT' }, quantity: 125 },
-            { coin: { id: 22, name: 'Stellar Lumens', shortName: 'XLM' }, quantity: 0 }
-        ],
-        avatar: 0
+        email: ''
+    }
+
+    wallet: Wallet = {
+        id: 0,
+        ars: 0,
+        usd: 0,
+        coins: []
     }
 
     ngOnInit() {
@@ -66,7 +48,21 @@ export class DashboardComponent {
 
         this.walletService.getWallet().subscribe({
             next: (data) => {
-                console.log('mi wallet: ', data)
+                this.wallet.id = data.id
+                this.wallet.ars = data.localMoney
+                this.wallet.usd = data.globalMoney
+                this.wallet.coins = data.coins
+                console.log('mi wallet: ', this.wallet)
+            },
+            error: (err) => {
+                Swal.fire({
+                    title: 'Error',
+                    text: err.error ? err.error.message : 'No se pudo obtener tu billetera',
+                    icon: 'error',
+                    iconColor: 'var(--red)',
+                    confirmButtonText: 'Aceptar',
+                    customClass: { confirmButton: 'swal-button' }
+                })
             }
         })
     }
