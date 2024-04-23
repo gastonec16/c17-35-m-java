@@ -176,6 +176,10 @@ p {
     background-color: var(--black);
 }
 
+.elements-mobile {
+    display: none;
+}
+
 @media (max-width: 576px) {
     .elements-mobile {
         & .logo-container {

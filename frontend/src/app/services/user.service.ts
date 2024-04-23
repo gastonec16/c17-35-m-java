@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable, inject } from '@angular/core'
 import { LogInCredentials, RegisterUser, User } from '../interfaces/user'
-import { environment } from '../environment'
+import { environment } from '../../environments/environment'
 
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router'
