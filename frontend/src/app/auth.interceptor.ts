@@ -1,5 +1,5 @@
 import { HttpInterceptorFn } from '@angular/common/http'
-import { environment } from './environment'
+import { environment } from '../environments/environment'
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
     const token = localStorage.getItem('token')
