@@ -52,7 +52,6 @@ export class DashboardComponent {
                 this.wallet.ars = data.localMoney
                 this.wallet.usd = data.globalMoney
                 this.wallet.coins = data.coins
-                console.log('mi wallet: ', this.wallet)
             },
             error: (err) => {
                 Swal.fire({

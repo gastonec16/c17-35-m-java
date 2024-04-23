@@ -1,5 +1,5 @@
-import { Component, OnInit, inject, signal } from '@angular/core'
-import { FormsModule, Validators } from '@angular/forms'
+import { Component, OnInit, inject } from '@angular/core'
+import { FormsModule } from '@angular/forms'
 import { Router, RouterModule } from '@angular/router'
 import Swal from 'sweetalert2'
 import { RegisterUser } from '../../interfaces/user'
@@ -94,7 +94,7 @@ export class RegisterComponent implements OnInit {
                 error: (err) => {
                     Swal.fire({
                         title: 'Error',
-                        text: err.error ? err.error.message : 'No se pudo registrar',
+                        text: err.error && err.error.message ? err.error.message : 'No se pudo registrar',
                         icon: 'error',
                         iconColor: 'var(--red)',
                         confirmButtonText: 'Aceptar',

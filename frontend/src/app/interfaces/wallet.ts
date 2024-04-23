@@ -6,6 +6,7 @@ export interface Wallet {
 }
 
 export interface Coin {
+    id: number
     name: string
     cryptoName: string
     quantity: number

@@ -34,9 +34,7 @@
                 <tr class="crypto-element">
                     <td>
                         <div class="crypto-name">
-                            <img
-                                src="{{ 'assets/img/crypto-icons/' + item.cryptoName.toLowerCase() + '.png' + $index }}"
-                            />
+                            <img src="{{ 'assets/img/crypto-icons/' + item.cryptoName.toLowerCase() + '.png' }}" />
                             <p>{{ item.cryptoName + ' - ' + item.name }}</p>
                         </div>
                     </td>
@@ -44,7 +42,11 @@
                     <td>{{ (coinList[$index - 1].usdSell * item.quantity).toFixed(2) }}</td>
                     <td>{{ (coinList[$index - 1].arsSell * item.quantity).toFixed(2) }}</td>
                 </tr>
-                } }
+                } } @empty {
+                <tr>
+                    <td class="empty-table" colspan="4"><span>Todavía no has adquirido criptomonedas</span></td>
+                </tr>
+                }
             </tbody>
         </table>
     </div>
