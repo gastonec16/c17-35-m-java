@@ -5,35 +5,37 @@
     principiantes como expertos que deseen invertir en
     criptomonedas de manera segura y transparente.
     
-## Authors
+## Authors & Contributors
 
-| Nombre | Linkedin | GitHub |
-| :---:         |     :---:      |          :---: |
-| @Gaston |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/gastonec16) |
-| @Franco |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/franco-nordinelli//)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/FrancoNordinelli) |
-| @Alan |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](http://linkedin.com/in/alankennedyy)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/Alankke) |
-| @Lucas |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/VillalbaLucas) |
-| @Leila |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/Leila-ibz) |
-| @David |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/davidirs/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/Davidirs) |
+| Nombre | LinkedIn | GitHub | Rol |
+| :---:  |  :---:   | :---:  | :---:  |
+| Gaston Cuello |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gastonec16/) | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/gastonec16) | Frontend |
+| David Reyes |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/davidirs/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/Davidirs) | Frontend |
+| Franco Nordinelli |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/franco-nordinelli/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/FrancoNordinelli) | Backend |
+| Alan Kennedy |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](http://linkedin.com/in/alankennedyy/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/Alankke) | Backend |
+| Lucas Villalba |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucas-villalba-web-developer/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/VillalbaLucas) | Backend |
+| Leila Ibañez |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leila-iba%C3%B1ez-380836258/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/Leila-ibz) | QA |
+
+
 
 ## **Links del proyecto**
 
 
- +  ♻️ [Patrick Coins - Sitio Web]()
+ +  ♻️ [Patrick Coins - Sitio Web](https://c17-35-m-java.vercel.app/)
 
  +  🖌 [Diseño en Figma](https://www.figma.com/file/EGKXod1KGBD1WF5LWibxnG/Patrick-coins--c17-35-m-java?type=design&node-id=0-1&mode=design&t=U55H1bggbGFTrVmb-0)
 
- +  ✅ [Swagger]()
+ +  ✅ [Swagger (En progreso)]()
 
- +  📈 [Documentación de QA]()
+ +  📈 [Documentación de QA (En progreso)]()
 
- +  🎬 [Video de presentación]()
+ +  🎬 [Video de presentación](https://drive.google.com/file/d/13wwXflHHL6fHkLDY8cnsVBIplwaa-dSJ/view)
 
 ## **Tecnologías utilizadas**
 
 - **Back End**
 
-<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java" title="Java" height=60/> <img src="https://user-images.githubusercontent.com/25181517/117201470-f6d56780-adec-11eb-8f7c-e70e376cfd07.png" alt="Spring" title="Spring" height=60/> <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="SpringBoot"  title="SpringBoot" height=60/> <img src="https://user-images.githubusercontent.com/25181517/186711335-a3729606-5a78-4496-9a36-06efcc74f800.png" alt="Swagger" title="Swagger" height=60 /> 
+<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java" title="Java" height=60/> <img src="https://user-images.githubusercontent.com/25181517/117201470-f6d56780-adec-11eb-8f7c-e70e376cfd07.png" alt="Spring" title="Spring" height=60/> <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="SpringBoot"  title="SpringBoot" height=60/> <img src="https://user-images.githubusercontent.com/25181517/186711335-a3729606-5a78-4496-9a36-06efcc74f800.png" alt="Swagger" title="Swagger" height=60 /> <img src= "https://github.com/No-Country/c17-35-m-java/assets/101530380/d46cb73f-fe11-4874-84b1-28ad73bff097" alt="MySQL" title= "MySQL" height=60/>
 
  - **Front End**
    
@@ -53,6 +55,4 @@
 
 Queremos agradecer a nuestro Team Leader 🚀 **Gustavo**, quién nos guió, aconsejó y acompañó durante el desarrollo del proyecto Patrick coins. Gracias Gustavo!
 
-Y a **No Country** por brindarnos esta posibilidad de generar experiencia, validar e incrementar nuestros conocimientos técnicos, potenciar las habilidades blandas (Soft-Skill y conocer personas de diversas culturas. 
-
-
+Y a **No Country** por brindarnos esta posibilidad de generar experiencia, validar e incrementar nuestros conocimientos técnicos, potenciar las habilidades blandas (Soft-Skill) y conocer personas de diversas culturas.

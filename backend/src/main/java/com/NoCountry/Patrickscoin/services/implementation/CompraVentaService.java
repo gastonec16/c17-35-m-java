@@ -33,8 +33,14 @@ public class CompraVentaService implements ICompraVentaService{
     public void compra(Long walletId, BuyCriptoDto dto) throws WalletException {
         Wallet wallet = walletService.findById(walletId);
 
-        if(dto.moneyType().name().equals(MoneyType.USD.name())) wallet.setLocalMoney(wallet.getGlobalMoney()-dto.quantityFiat());
-        if(dto.moneyType().name().equals(MoneyType.ARS.name())) wallet.setLocalMoney(wallet.getLocalMoney()-dto.quantityFiat());
+
+        System.out.println(dto);
+        // if(!validFounds(wallet, dto) || dto.quiantity() <= 0)
+        //     throw new WalletException("monto invalido!");
+                        
+
+        if(dto.moneyType().equals(MoneyType.USD)) wallet.setGlobalMoney(wallet.getGlobalMoney()-dto.quantityFiat());
+        if(dto.moneyType().equals(MoneyType.ARS)) wallet.setLocalMoney(wallet.getLocalMoney()-dto.quantityFiat());
         
         //CRIPTO EN WALLET. ACTUALIZAR
         Set<Coin> coins = wallet.getCoins();
@@ -42,6 +48,7 @@ public class CompraVentaService implements ICompraVentaService{
         for(Coin existingCoing: coins){
             if(dto.cripto().name().equals(existingCoing.getCryptoName().name())){
                 existingCoing.setQuantity(existingCoing.getQuantity()+dto.quiantity());
+                System.out.println(dto.quiantity());
                 coinExists = true;
             }
         }
@@ -55,11 +62,24 @@ public class CompraVentaService implements ICompraVentaService{
                 .build();
                 coins.add(newCoin);
                 coinRepository.save(newCoin);
+                System.out.println(dto.quiantity());
+                System.out.println(dto.cripto());
         }
 
         wallet.setCoins(coins);
         walletRepository.save(wallet);
 
+    }
+
+    private boolean validFounds(Wallet wallet, BuyCriptoDto dto) {
+        if(dto.quantityFiat() <=0)
+            return false;
+
+        if(dto.moneyType().equals(MoneyType.USD))
+            return wallet.getGlobalMoney() >= dto.quantityFiat();
+        if(dto.moneyType().equals(MoneyType.ARS))
+            return wallet.getLocalMoney() >= dto.quantityFiat();
+        return false;
     }
 
     @Transactional
