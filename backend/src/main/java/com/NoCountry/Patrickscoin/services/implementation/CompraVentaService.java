@@ -71,12 +71,15 @@ public class CompraVentaService implements ICompraVentaService{
                 .filter( c -> c.getCryptoName().equals(sellCripto.cripto()))
                 .findFirst( ).orElseThrow(() -> new WalletException("No tiene adquirida la cripto seleccionada"));
 
-        if(coin.getQuantity() < sellCripto.quiantity())
+        if(coin.getQuantity() < sellCripto.quantityCrypto())
             throw new WalletException("Cantidad seleccionada invalida");
-        
-        //traer el precio de la api de https://criptoya.com/api y hacer la operacion
-        
-        
+
+        if(sellCripto.moneyType().equals(MoneyType.USD))
+            wallet.setGlobalMoney(wallet.getGlobalMoney() + sellCripto.quantityFiat());
+        if(sellCripto.moneyType().equals(MoneyType.ARS))
+            wallet.setLocalMoney(wallet.getLocalMoney() + sellCripto.quantityFiat());
+
+        coin.setQuantity(coin.getQuantity() - sellCripto.quantityCrypto());
     }
 
     
