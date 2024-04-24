@@ -5,22 +5,23 @@ import Swal from 'sweetalert2'
 import { Router } from '@angular/router'
 import { BuySellService } from '../../services/buy-sell.service'
 import { BuyCrypto, SellCrypto } from '../../interfaces/buy-sell'
+import { AppComponent } from '../../app.component'
 
 @Component({
     selector: 'app-buy-sell',
     standalone: true,
-    imports: [DashboardComponent, FormsModule],
+    imports: [FormsModule],
     templateUrl: './buy-sell.component.html',
     styleUrl: './buy-sell.component.scss'
 })
 export class BuySellComponent {
-    dashboardComponent = inject(DashboardComponent)
+    appComponent = inject(AppComponent)
     router = inject(Router)
     isBuying = true
     buySellService = inject(BuySellService)
 
-    wallet = this.dashboardComponent.wallet
-    coinList = this.dashboardComponent.coinList
+    wallet = this.appComponent.wallet
+    coinList = this.appComponent.coinList
 
     operationBuy = {
         fiat: '',
