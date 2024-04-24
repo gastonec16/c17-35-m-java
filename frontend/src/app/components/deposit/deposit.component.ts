@@ -82,7 +82,7 @@ export class DepositComponent {
                                 })
                         },
                         error: (err) => {
-                            this.appComponent.error(err, 'No se pudo realizar el depósito')
+                            this.appComponent.error('No se pudo realizar el depósito', err)
                         }
                     })
                 }

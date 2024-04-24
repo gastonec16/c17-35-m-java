@@ -64,10 +64,10 @@ export class AppComponent {
         }
     }
 
-    error(err: any, message: string) {
+    error(message: string, err?: any) {
         Swal.fire({
             title: 'Error',
-            text: err.error && err.error.message ? err.error.message : message,
+            text: err && err.error && err.error.message ? err.error.message : message,
             icon: 'error',
             iconColor: 'var(--red)',
             confirmButtonText: 'Aceptar',

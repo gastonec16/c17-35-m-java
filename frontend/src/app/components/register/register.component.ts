@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import { RegisterUser } from '../../interfaces/user'
 import { UserService } from '../../services/user.service'
 import { TermsAndConditions } from './terms-and-conditions.component'
+import { AppComponent } from '../../app.component'
 
 @Component({
     selector: 'app-register',
@@ -13,12 +14,11 @@ import { TermsAndConditions } from './terms-and-conditions.component'
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss'
 })
-
-//TODO PARA CONFIGURAR ENDPOINT Y SOLUCIONAR CORS
 export class RegisterComponent implements OnInit {
     ngOnInit(): void {}
     userService = inject(UserService)
     router = inject(Router)
+    appComponent = inject(AppComponent)
 
     continueWithFacebook() {
         window.open('https://www.facebook.com', '_blank')
@@ -92,34 +92,13 @@ export class RegisterComponent implements OnInit {
                     }
                 },
                 error: (err) => {
-                    Swal.fire({
-                        title: 'Error',
-                        text: err.error && err.error.message ? err.error.message : 'No se pudo registrar',
-                        icon: 'error',
-                        iconColor: 'var(--red)',
-                        confirmButtonText: 'Aceptar',
-                        customClass: { confirmButton: 'swal-button' }
-                    })
+                    this.appComponent.error('No se pudo registrar', err)
                 }
             })
         } else if (!/[^ ][^ ][^ ]@[^ ]/.test(email)) {
-            Swal.fire({
-                title: 'Error',
-                text: 'Por favor, ingresa una dirección de correo válida.',
-                icon: 'error',
-                iconColor: 'var(--red)',
-                confirmButtonText: 'Aceptar',
-                customClass: { confirmButton: 'swal-button' }
-            })
+            this.appComponent.error('Por favor, ingresa una dirección de correo válida')
         } else {
-            Swal.fire({
-                title: 'Error',
-                text: 'Por favor, ingresa los datos faltantes',
-                icon: 'error',
-                iconColor: 'var(--red)',
-                confirmButtonText: 'Aceptar',
-                customClass: { confirmButton: 'swal-button' }
-            })
+            this.appComponent.error('Por favor, ingresa los datos faltantes')
         }
     }
 
