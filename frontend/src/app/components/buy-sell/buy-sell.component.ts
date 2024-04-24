@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core'
-import { DashboardComponent } from '../dashboard/dashboard.component'
 import { FormsModule } from '@angular/forms'
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router'
@@ -96,73 +95,84 @@ export class BuySellComponent {
             customClass: { confirmButton: 'swal-button', cancelButton: 'swal-button' }
         }).then((result) => {
             if (result.isConfirmed) {
-                this.isBuying ? this.buyCrypto() : this.sellCrypto()
-            }
-        })
-    }
+                const form = event.target as HTMLFormElement
 
-    buyCrypto() {
-        const buyCryptoDto: BuyCrypto = {
-            cripto: this.coinList[this.operationBuy.crypto - 1].coin.shortName,
-            quiantity: this.operationBuy.cryptoQuantity ? this.operationBuy.cryptoQuantity : 0,
-            moneyType: this.operationBuy.fiat,
-            quantityFiat: this.operationBuy.fiatQuantity ? this.operationBuy.fiatQuantity : 0
-        }
-        this.buySellService.buyCrypto(buyCryptoDto).subscribe({
-            next: (data) => {
-                Swal.fire({
-                    title: '¡Compra realizada con éxito!',
-                    text: 'Tu saldo se actualizará en breve. ¡Gracias por confiar en nuestro servicio!',
-                    icon: 'success',
-                    iconColor: 'var(--green-3)',
-                    confirmButtonText: 'Aceptar',
-                    customClass: { confirmButton: 'swal-button' }
-                }).then((result) => {
-                    this.router.navigate(['/dashboard'])
-                })
-            },
-            error: (err) => {
-                Swal.fire({
-                    title: 'Error',
-                    text: err.error && err.error.message ? err.error.message : 'No se pudo iniciar sesión',
-                    icon: 'error',
-                    iconColor: 'var(--red)',
-                    confirmButtonText: 'Aceptar',
-                    customClass: { confirmButton: 'swal-button' }
-                })
-            }
-        })
-    }
+                // compra de cripto
+                if (this.isBuying) {
+                    const cripto =
+                        this.coinList[parseInt((form.elements.namedItem('crypto') as HTMLInputElement).value) - 1].coin
+                            .shortName
+                    const quiantity = parseFloat((form.elements.namedItem('crypto-buy') as HTMLInputElement).value)
+                    const moneyType = (form.elements.namedItem('fiat') as HTMLInputElement).value
+                    const quantityFiat = parseFloat((form.elements.namedItem('fiat-buy') as HTMLInputElement).value)
 
-    sellCrypto() {
-        const sellCryptoDto: SellCrypto = {
-            cripto: this.coinList[this.operationSell.crypto - 1].coin.shortName,
-            quantityFiat: this.operationSell.fiatQuantity ? this.operationSell.fiatQuantity : 0,
-            quantityCrypto: this.operationSell.cryptoQuantity ? this.operationSell.cryptoQuantity : 0,
-            moneyType: this.operationSell.fiat
-        }
-        this.buySellService.sellCrypto(sellCryptoDto).subscribe({
-            next: (data) => {
-                Swal.fire({
-                    title: 'Venta realizada con éxito!',
-                    text: 'Tu saldo se actualizará en breve. ¡Gracias por confiar en nuestro servicio!',
-                    icon: 'success',
-                    iconColor: 'var(--green-3)',
-                    confirmButtonText: 'Aceptar',
-                    customClass: { confirmButton: 'swal-button' }
-                }).then((result) => {
-                    this.router.navigate(['/dashboard'])
-                })
-            },
-            error: (err) => {
-                Swal.fire({
-                    title: 'Error',
-                    text: err.error && err.error.message ? err.error.message : 'No se pudo iniciar sesión',
-                    icon: 'error',
-                    iconColor: 'var(--red)',
-                    confirmButtonText: 'Aceptar',
-                    customClass: { confirmButton: 'swal-button' }
-                })
+                    const newBuyCryptoDto: BuyCrypto = {
+                        cripto,
+                        quiantity,
+                        moneyType,
+                        quantityFiat
+                    }
+
+                    console.log('asdasd', this.operationBuy.cryptoQuantity)
+
+                    console.log('buycrypto', newBuyCryptoDto)
+
+                    this.buySellService.buyCrypto(newBuyCryptoDto).subscribe({
+                        next: (data) => {
+                            Swal.fire({
+                                title: '¡Compra realizada con éxito!',
+                                text: 'Tu saldo se actualizará en breve. ¡Gracias por confiar en nuestro servicio!',
+                                icon: 'success',
+                                iconColor: 'var(--green-3)',
+                                confirmButtonText: 'Aceptar',
+                                customClass: { confirmButton: 'swal-button' }
+                            }).then((result) => {
+                                this.router.navigate(['/dashboard'])
+                            })
+                        },
+                        error: (err) => {
+                            this.appComponent.error('No se pudo realizar la compra', err)
+                        }
+                    })
+                }
+                // venta de cripto
+                else {
+                    const cripto =
+                        this.coinList[parseInt((form.elements.namedItem('crypto') as HTMLInputElement).value) - 1].coin
+                            .shortName
+                    const quantityFiat = parseFloat((form.elements.namedItem('fiat-sell') as HTMLInputElement).value)
+                    const quantityCrypto = parseFloat(
+                        (form.elements.namedItem('crypto-sell') as HTMLInputElement).value
+                    )
+                    const moneyType = (form.elements.namedItem('fiat') as HTMLInputElement).value
+
+                    const newSellCryptoDto: SellCrypto = {
+                        cripto,
+                        quantityFiat,
+                        quantityCrypto,
+                        moneyType
+                    }
+
+                    console.log('sellcrypto', newSellCryptoDto)
+
+                    this.buySellService.sellCrypto(newSellCryptoDto).subscribe({
+                        next: (data) => {
+                            Swal.fire({
+                                title: 'Venta realizada con éxito!',
+                                text: 'Tu saldo se actualizará en breve. ¡Gracias por confiar en nuestro servicio!',
+                                icon: 'success',
+                                iconColor: 'var(--green-3)',
+                                confirmButtonText: 'Aceptar',
+                                customClass: { confirmButton: 'swal-button' }
+                            }).then((result) => {
+                                this.router.navigate(['/dashboard'])
+                            })
+                        },
+                        error: (err) => {
+                            this.appComponent.error('No se pudo realizar la venta', err)
+                        }
+                    })
+                }
             }
         })
     }
