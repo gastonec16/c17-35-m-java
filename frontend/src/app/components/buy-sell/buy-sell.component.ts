@@ -3,6 +3,8 @@ import { DashboardComponent } from '../dashboard/dashboard.component'
 import { FormsModule } from '@angular/forms'
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router'
+import { BuySellService } from '../../services/buy-sell.service'
+import { BuyCrypto, SellCrypto } from '../../interfaces/buy-sell'
 
 @Component({
     selector: 'app-buy-sell',
@@ -15,8 +17,9 @@ export class BuySellComponent {
     dashboardComponent = inject(DashboardComponent)
     router = inject(Router)
     isBuying = true
-    wallet = this.dashboardComponent.wallet
+    buySellService = inject(BuySellService)
 
+    wallet = this.dashboardComponent.wallet
     coinList = this.dashboardComponent.coinList
 
     operationBuy = {
@@ -92,8 +95,22 @@ export class BuySellComponent {
             customClass: { confirmButton: 'swal-button', cancelButton: 'swal-button' }
         }).then((result) => {
             if (result.isConfirmed) {
+                this.isBuying ? this.buyCrypto() : this.sellCrypto()
+            }
+        })
+    }
+
+    buyCrypto() {
+        const buyCryptoDto: BuyCrypto = {
+            cripto: this.coinList[this.operationBuy.crypto - 1].coin.shortName,
+            quiantity: this.operationBuy.cryptoQuantity ? this.operationBuy.cryptoQuantity : 0,
+            moneyType: this.operationBuy.fiat,
+            quantityFiat: this.operationBuy.fiatQuantity ? this.operationBuy.fiatQuantity : 0
+        }
+        this.buySellService.buyCrypto(buyCryptoDto).subscribe({
+            next: (data) => {
                 Swal.fire({
-                    title: `¡${this.isBuying ? 'Compra' : 'Venta'} realizada con éxito!`,
+                    title: '¡Compra realizada con éxito!',
                     text: 'Tu saldo se actualizará en breve. ¡Gracias por confiar en nuestro servicio!',
                     icon: 'success',
                     iconColor: 'var(--green-3)',
@@ -101,6 +118,49 @@ export class BuySellComponent {
                     customClass: { confirmButton: 'swal-button' }
                 }).then((result) => {
                     this.router.navigate(['/dashboard'])
+                })
+            },
+            error: (err) => {
+                Swal.fire({
+                    title: 'Error',
+                    text: err.error && err.error.message ? err.error.message : 'No se pudo iniciar sesión',
+                    icon: 'error',
+                    iconColor: 'var(--red)',
+                    confirmButtonText: 'Aceptar',
+                    customClass: { confirmButton: 'swal-button' }
+                })
+            }
+        })
+    }
+
+    sellCrypto() {
+        const sellCryptoDto: SellCrypto = {
+            cripto: this.coinList[this.operationSell.crypto - 1].coin.shortName,
+            quantityFiat: this.operationSell.fiatQuantity ? this.operationSell.fiatQuantity : 0,
+            quantityCrypto: this.operationSell.cryptoQuantity ? this.operationSell.cryptoQuantity : 0,
+            moneyType: this.operationSell.fiat
+        }
+        this.buySellService.sellCrypto(sellCryptoDto).subscribe({
+            next: (data) => {
+                Swal.fire({
+                    title: 'Venta realizada con éxito!',
+                    text: 'Tu saldo se actualizará en breve. ¡Gracias por confiar en nuestro servicio!',
+                    icon: 'success',
+                    iconColor: 'var(--green-3)',
+                    confirmButtonText: 'Aceptar',
+                    customClass: { confirmButton: 'swal-button' }
+                }).then((result) => {
+                    this.router.navigate(['/dashboard'])
+                })
+            },
+            error: (err) => {
+                Swal.fire({
+                    title: 'Error',
+                    text: err.error && err.error.message ? err.error.message : 'No se pudo iniciar sesión',
+                    icon: 'error',
+                    iconColor: 'var(--red)',
+                    confirmButtonText: 'Aceptar',
+                    customClass: { confirmButton: 'swal-button' }
                 })
             }
         })

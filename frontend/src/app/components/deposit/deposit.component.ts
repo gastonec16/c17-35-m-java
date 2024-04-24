@@ -5,11 +5,12 @@ import { Router, RouterModule } from '@angular/router'
 import { FooterComponent } from '../footer/footer.component'
 import Swal from 'sweetalert2'
 import { MoneyService } from '../../services/money.service'
+import { FormsModule } from '@angular/forms'
 
 @Component({
     selector: 'app-deposit',
     standalone: true,
-    imports: [FooterComponent, RouterModule],
+    imports: [FooterComponent, FormsModule, RouterModule],
     templateUrl: './deposit.component.html',
     styleUrl: './deposit.component.scss'
 })
