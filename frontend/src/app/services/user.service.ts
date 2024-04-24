@@ -43,7 +43,6 @@ export class UserService {
         localStorage.setItem('name', user.name)
         localStorage.setItem('lastName', user.lastName)
         localStorage.setItem('token', user.token)
-        localStorage.setItem('token', user.token)
     }
     getToken() {
         return localStorage.getItem('token')

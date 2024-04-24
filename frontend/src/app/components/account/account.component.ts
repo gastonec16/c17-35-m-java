@@ -19,13 +19,6 @@ export class AccountComponent {
     router = inject(Router)
     cryptoService = inject(CryptoService)
     isBuying = true
-
-    loggedUser = { id: 0, name: '', lastName: '', email: '' }
-
-    ngOnInit() {
-        this.loggedUser = this.dashboardComponent.user
-    }
-
     user = this.dashboardComponent.user
     wallet = this.dashboardComponent.wallet
 

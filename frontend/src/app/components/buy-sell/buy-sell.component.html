@@ -87,7 +87,7 @@
     @if ( operationSell.crypto > 0 ) {
     <div class="form-information">
         Saldo: {{ wallet.coins[operationSell.crypto - 1].quantity }}
-        {{ wallet.coins[operationSell.crypto - 1].cryptoName }}
+        {{ wallet.coins[operationSell.crypto - 1].coin.shortName }}
     </div>
 
     @if (cryptoQuantity.errors?.['max']) {

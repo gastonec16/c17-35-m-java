@@ -10,6 +10,7 @@ import { BuySellComponent } from '../buy-sell/buy-sell.component'
 import { WalletService } from '../../services/wallet.service'
 import { Wallet } from '../../interfaces/wallet'
 import Swal from 'sweetalert2'
+import { User } from '../../interfaces/user'
 
 @Component({
     selector: 'app-dashboard',
@@ -24,11 +25,12 @@ export class DashboardComponent {
     userService = inject(UserService)
     walletService = inject(WalletService)
 
-    user = {
+    user: User = {
         id: 0,
         name: '',
         lastName: '',
-        email: ''
+        email: '',
+        token: ''
     }
 
     wallet: Wallet = {
@@ -37,6 +39,7 @@ export class DashboardComponent {
         usd: 0,
         coins: []
     }
+    walletCoins = []
 
     ngOnInit() {
         let user = this.userService.getUserData()
@@ -48,15 +51,20 @@ export class DashboardComponent {
 
         this.walletService.getWallet().subscribe({
             next: (data) => {
+                console.log('data get wallet', data)
+
                 this.wallet.id = data.id
+                localStorage.setItem('walletId', data.id)
                 this.wallet.ars = data.localMoney
                 this.wallet.usd = data.globalMoney
-                this.wallet.coins = data.coins
+                this.walletCoins = data.coin
+
+                console.log('dadad', data.coins)
             },
             error: (err) => {
                 Swal.fire({
                     title: 'Error',
-                    text: err.error ? err.error.message : 'No se pudo obtener tu billetera',
+                    text: err.error && err.error.message ? err.error.message : 'No se pudo obtener tu billetera',
                     icon: 'error',
                     iconColor: 'var(--red)',
                     confirmButtonText: 'Aceptar',

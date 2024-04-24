@@ -34,13 +34,13 @@
                 <tr class="crypto-element">
                     <td>
                         <div class="crypto-name">
-                            <img src="{{ 'assets/img/crypto-icons/' + item.cryptoName.toLowerCase() + '.png' }}" />
-                            <p>{{ item.cryptoName + ' - ' + item.name }}</p>
+                            <img src="{{ 'assets/img/crypto-icons/' + item.coin.shortName.toLowerCase() + '.png' }}" />
+                            <p>{{ item.coin.shortName + ' - ' + item.coin.name }}</p>
                         </div>
                     </td>
                     <td>{{ item.quantity }}</td>
-                    <td>{{ (coinList[$index - 1].usdSell * item.quantity).toFixed(2) }}</td>
-                    <td>{{ (coinList[$index - 1].arsSell * item.quantity).toFixed(2) }}</td>
+                    <td>{{ (coinList[item.coin.id - 1].usdSell * item.quantity).toFixed(2) }}</td>
+                    <td>{{ (coinList[item.coin.id - 1].arsSell * item.quantity).toFixed(2) }}</td>
                 </tr>
                 } } @empty {
                 <tr>
