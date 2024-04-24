@@ -33,8 +33,13 @@ public class CompraVentaService implements ICompraVentaService{
     public void compra(Long walletId, BuyCriptoDto dto) throws WalletException {
         Wallet wallet = walletService.findById(walletId);
 
-        if(dto.moneyType().name().equals(MoneyType.USD.name())) wallet.setLocalMoney(wallet.getGlobalMoney()-dto.quantityFiat());
-        if(dto.moneyType().name().equals(MoneyType.ARS.name())) wallet.setLocalMoney(wallet.getLocalMoney()-dto.quantityFiat());
+
+        if(!validFounds(wallet, dto) || dto.quiantity() <= 0)
+            throw new WalletException("monto invalido!");
+                        
+
+        if(dto.moneyType().equals(MoneyType.USD)) wallet.setGlobalMoney(wallet.getGlobalMoney()-dto.quantityFiat());
+        if(dto.moneyType().equals(MoneyType.ARS)) wallet.setLocalMoney(wallet.getLocalMoney()-dto.quantityFiat());
         
         //CRIPTO EN WALLET. ACTUALIZAR
         Set<Coin> coins = wallet.getCoins();
@@ -60,6 +65,17 @@ public class CompraVentaService implements ICompraVentaService{
         wallet.setCoins(coins);
         walletRepository.save(wallet);
 
+    }
+
+    private boolean validFounds(Wallet wallet, BuyCriptoDto dto) {
+        if(dto.quantityFiat() <=0)
+            return false;
+
+        if(dto.moneyType().equals(MoneyType.USD))
+            return wallet.getGlobalMoney() >= dto.quantityFiat();
+        if(dto.moneyType().equals(MoneyType.ARS))
+            return wallet.getLocalMoney() >= dto.quantityFiat();
+        return false;
     }
 
     @Transactional
