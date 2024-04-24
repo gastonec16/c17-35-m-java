@@ -57,8 +57,7 @@ export class WithdrawComponent {
             { coin: { id: 16, name: 'USD Coin', shortName: 'USDC' }, quantity: 0 },
             { coin: { id: 17, name: 'TetherUS', shortName: 'USDT' }, quantity: 125 },
             { coin: { id: 18, name: 'Ripple', shortName: 'XRP' }, quantity: 3.6 }
-        ],
-        avatar: 0
+        ]
     }
 
     openDialog(): void {
