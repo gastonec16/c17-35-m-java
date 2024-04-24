@@ -21,6 +21,7 @@ export class AccountComponent {
     isBuying = true
     user = this.dashboardComponent.user
     wallet = this.dashboardComponent.wallet
+    walletCoins = this.dashboardComponent.allWalletCoins
 
     logOut() {
         this.userService.logOut()
