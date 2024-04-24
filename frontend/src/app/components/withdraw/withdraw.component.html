@@ -14,8 +14,8 @@
                 <h2>Monedas adquiridas</h2>
 
                 <div class="money">
-                    <div class="ars">{{ user.ars + ' ARS' }}</div>
-                    <div class="usd">{{ user.usd + ' USD' }}</div>
+                    <div class="ars">{{ wallet.ars + ' ARS' }}</div>
+                    <div class="usd">{{ wallet.usd + ' USD' }}</div>
                 </div>
             </div>
 
@@ -23,8 +23,8 @@
                 <p>Ingrese la cantidad que desea retirar</p>
                 <div class="operation-container centrado flex-row">
                     <h4>Total:</h4>
-                    <input type="number" min="0" />
-                    <select name="" id="">
+                    <input type="number" min="0" id="cantidad"/>
+                    <select name="" id="selectMoney">
                         <option value="ARS" selected>ARS</option>
                         <option value="USD">USD</option>
                     </select>

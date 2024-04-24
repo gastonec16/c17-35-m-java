@@ -17,6 +17,11 @@ import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import Swal from 'sweetalert2'
 import { HtmlWithdraw } from './html-withdraw'
+import { MoneyService } from '../../services/money.service'
+import { UserService } from '../../services/user.service'
+import { WalletService } from '../../services/wallet.service'
+import { AppComponent } from '../../app.component'
+import { WithdrawMoney } from '../../interfaces/money'
 
 @Component({
     selector: 'app-withdraw',
@@ -27,40 +32,18 @@ import { HtmlWithdraw } from './html-withdraw'
 })
 export class WithdrawComponent {
     router = inject(Router)
+    money = inject(MoneyService)
+    appComponent = inject(AppComponent)
     logOut() {
         this.router.navigate(['/'])
     }
-    // TODO: obtener del backend
-    user = {
-        id: 34,
-        name: 'David',
-        lastName: 'Reyes',
-        email: 'davidreyes@hotmail.com',
-        ars: 95123,
-        usd: 215,
-        crypto: [
-            { coin: { id: 1, name: 'Cardano', shortName: 'ADA' }, quantity: 0 },
-            { coin: { id: 2, name: 'Basic Attention Token', shortName: 'BAT' }, quantity: 0 },
-            { coin: { id: 3, name: 'Bitcoin Cash', shortName: 'BCH' }, quantity: 0 },
-            { coin: { id: 4, name: 'Bitcoin', shortName: 'BTC' }, quantity: 0.26 },
-            { coin: { id: 5, name: 'Dai', shortName: 'DAI' }, quantity: 0 },
-            { coin: { id: 6, name: 'Dogecoin', shortName: 'DOGE' }, quantity: 666 },
-            { coin: { id: 7, name: 'Polkadot', shortName: 'DOT' }, quantity: 0 },
-            { coin: { id: 8, name: 'Ethereum', shortName: 'ETH' }, quantity: 0.65 },
-            { coin: { id: 9, name: 'ChainLink', shortName: 'LINK' }, quantity: 0 },
-            { coin: { id: 10, name: 'Litecoin', shortName: 'LTC' }, quantity: 0 },
-            { coin: { id: 11, name: 'Decentraland', shortName: 'MANA' }, quantity: 0 },
-            { coin: { id: 12, name: 'Polygon', shortName: 'MATIC' }, quantity: 0 },
-            { coin: { id: 13, name: 'SHIBA INU', shortName: 'SHIB' }, quantity: 245 },
-            { coin: { id: 14, name: 'Solana', shortName: 'SOL' }, quantity: 2.6 },
-            { coin: { id: 15, name: 'TRON', shortName: 'TRX' }, quantity: 0 },
-            { coin: { id: 16, name: 'USD Coin', shortName: 'USDC' }, quantity: 0 },
-            { coin: { id: 17, name: 'TetherUS', shortName: 'USDT' }, quantity: 125 },
-            { coin: { id: 18, name: 'Ripple', shortName: 'XRP' }, quantity: 3.6 }
-        ]
-    }
+    //Franco
+    wallet = this.appComponent.wallet
+
+    //DATOS DEL FORM DE RETIRO
 
     openDialog(): void {
+
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success',
@@ -71,16 +54,31 @@ export class WithdrawComponent {
         swalWithBootstrapButtons
             .fire({
                 html: HtmlWithdraw.withdrawForm,
+                //RECUPERAR DATOS DEL FORM DE TARJETA
                 preConfirm: () => {
-                    var inputValue1 = (<HTMLInputElement>document.getElementById('swal-input1')).value
-                    var inputValue2 = (<HTMLInputElement>document.getElementById('swal-input2')).value
-                    return [inputValue1, inputValue2]
+                    const amount = parseFloat((<HTMLInputElement>document.getElementById('cantidad')).value);
+                    var type1 = document.querySelector('#selectMoney') as HTMLSelectElement;
+                    const type = type1.options[type1.selectedIndex].value
+                    const keyTransfer= (<HTMLInputElement>document.getElementById('swal-input1')).value
+                    
+                    const cuil = (<HTMLInputElement>document.getElementById('swal-input1')).value
+
+                    const setFiatWallet: WithdrawMoney = {
+                        amount: amount,
+                        type: type,
+                        keyTransfer: keyTransfer,
+                        cuil: cuil
+                    };
+                    this.money.withdraw(setFiatWallet).subscribe()
+                    //if(type === 'ARS') this.wallet.ars = this.wallet.ars - amount
+                    //if(type === 'USD') this.wallet.usd = this.wallet.usd - amount
                 },
                 confirmButtonText: 'Aceptar',
                 background: 'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
             })
             .then((result) => {
                 if (result.isConfirmed) {
+                    
                     swalWithBootstrapButtons
                         .fire({
                             html: HtmlWithdraw.withdrawConfirmation,
@@ -103,6 +101,7 @@ export class WithdrawComponent {
                                         icon: 'warning',
                                         confirmButtonText: 'Aceptar'
                                     })
+
                                     .then((result) => {
                                         if (result.isConfirmed) {
                                             swalWithBootstrapButtons
@@ -113,20 +112,13 @@ export class WithdrawComponent {
                                                     background:
                                                         'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
                                                 })
+
                                                 .then((result) => {
-                                                    this.router.navigate(['/dashboard'])
-                                                })
+                                                this.router.navigate(['/dashboard'])
+                                            })
                                         }
                                     })
-                            } /* else if (
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire({
-            title: "Cancelled",
-            text: "Your imaginary file is safe :)",
-            icon: "error"
-          });
-        } */
+                            }
                         })
                 }
             })
@@ -157,7 +149,7 @@ export class DialogOverviewExampleDialog {
     constructor(
         public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
         @Inject(MAT_DIALOG_DATA) public data: DialogData
-    ) {}
+    ) { }
 
     onNoClick(): void {
         this.dialogRef.close()
