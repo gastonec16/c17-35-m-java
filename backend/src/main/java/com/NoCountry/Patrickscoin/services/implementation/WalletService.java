@@ -1,6 +1,7 @@
 package com.NoCountry.Patrickscoin.services.implementation;
 
 import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,16 +25,15 @@ public class WalletService implements IWalletService{
 
     @Transactional
     @Override
-    public void deposit(Long walletId, DepositDto depositDto /*, CardDto card*/) throws WalletException {
+    public void deposit(Long walletId, DepositDto depositDto) throws WalletException {
         Wallet wallet = findById(walletId);
 
         validateDeposit(depositDto);
-        //TODO hacer validacion de la tarjeta
 
         if(depositDto.type().equals(MoneyType.ARS))
-            wallet.setLocalMoney(depositDto.amount());
-        if(depositDto.type().equals(MoneyType.ARS))
-            wallet.setGlobalMoney(depositDto.amount());
+            wallet.setLocalMoney(wallet.getLocalMoney() + depositDto.amount());
+        if(depositDto.type().equals(MoneyType.USD))
+            wallet.setGlobalMoney(wallet.getGlobalMoney() + depositDto.amount());
 
     }
 
@@ -76,7 +76,12 @@ public class WalletService implements IWalletService{
 
     @Override
     public Wallet findById(Long walletId) throws WalletException {
-        return walletRepository.findById(walletId).orElseThrow(()-> new WalletException("Wallet no encontrada"));
+        Wallet wallet = walletRepository.findById(walletId).orElseThrow(()-> new WalletException("Wallet no encontrada"));
+        wallet.setCoins(wallet.getCoins().stream()
+            .sorted((a,b) -> a.getCryptoName().name().compareTo(b.getCryptoName().name()))
+            .filter(c -> c.getQuantity() > 0)
+            .collect(Collectors.toSet()));
+        return wallet;
     }
 
     @Override
