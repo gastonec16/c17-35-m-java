@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import Swal from 'sweetalert2'
 import { HtmlWithdraw } from './html-withdraw'
+import { AppComponent } from '../../app.component'
 
 @Component({
     selector: 'app-withdraw',
@@ -27,6 +28,8 @@ import { HtmlWithdraw } from './html-withdraw'
 })
 export class WithdrawComponent {
     router = inject(Router)
+    appComponent = inject(AppComponent)
+
     logOut() {
         this.router.navigate(['/'])
     }
@@ -58,6 +61,10 @@ export class WithdrawComponent {
             { coin: { id: 17, name: 'TetherUS', shortName: 'USDT' }, quantity: 125 },
             { coin: { id: 18, name: 'Ripple', shortName: 'XRP' }, quantity: 3.6 }
         ]
+    }
+
+    ngOnInit() {
+        this.appComponent.obtainWallet()
     }
 
     openDialog(): void {

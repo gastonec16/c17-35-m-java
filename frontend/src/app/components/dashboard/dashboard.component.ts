@@ -6,6 +6,7 @@ import { UserService } from '../../services/user.service'
 import { AllCryptoComponent } from '../all-crypto/all-crypto.component'
 import { AccountComponent } from '../account/account.component'
 import { BuySellComponent } from '../buy-sell/buy-sell.component'
+import { AppComponent } from '../../app.component'
 
 @Component({
     selector: 'app-dashboard',
@@ -16,6 +17,11 @@ import { BuySellComponent } from '../buy-sell/buy-sell.component'
 })
 export class DashboardComponent {
     userService = inject(UserService)
+    appComponent = inject(AppComponent)
+
+    ngOnInit() {
+        this.appComponent.obtainWallet()
+    }
 
     logOut() {
         this.userService.logOut()

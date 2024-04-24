@@ -43,26 +43,35 @@ export class AppComponent {
         this.user.email = user.email
         this.user.name = user.name
         this.user.lastName = user.lastName
+    }
 
-        this.walletService.getWallet().subscribe({
-            next: (data) => {
-                this.wallet.id = data.id
-                localStorage.setItem('walletId', data.id)
-                this.wallet.ars = data.localMoney
-                this.wallet.usd = data.globalMoney
-                this.walletCoins = data.coins
-                this.walletService.setCryptoQuantity(this.allWalletCoins, this.walletCoins)
-            },
-            error: (err) => {
-                Swal.fire({
-                    title: 'Error',
-                    text: err.error && err.error.message ? err.error.message : 'No se pudo obtener tu billetera',
-                    icon: 'error',
-                    iconColor: 'var(--red)',
-                    confirmButtonText: 'Aceptar',
-                    customClass: { confirmButton: 'swal-button' }
-                })
-            }
+    obtainWallet() {
+        if (this.user.id > 0) {
+            this.walletService.getWallet().subscribe({
+                next: (data) => {
+                    this.wallet.id = data.id
+                    localStorage.setItem('walletId', data.id)
+                    this.wallet.ars = data.localMoney
+                    this.wallet.usd = data.globalMoney
+                    this.walletCoins = data.coins
+                    this.walletService.setCryptoQuantity(this.allWalletCoins, this.walletCoins)
+                },
+                error: (err) => {
+                    this.userService.logOut()
+                    this.error(err, 'No se pudo obtener tu billetera')
+                }
+            })
+        }
+    }
+
+    error(err: any, message: string) {
+        Swal.fire({
+            title: 'Error',
+            text: err.error && err.error.message ? err.error.message : message,
+            icon: 'error',
+            iconColor: 'var(--red)',
+            confirmButtonText: 'Aceptar',
+            customClass: { confirmButton: 'swal-button' }
         })
     }
 

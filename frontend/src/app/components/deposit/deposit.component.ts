@@ -7,6 +7,9 @@ import Swal from 'sweetalert2'
 import { MoneyService } from '../../services/money.service'
 import { FormsModule } from '@angular/forms'
 import { HtmlDeposit } from './html-deposit'
+import { UserService } from '../../services/user.service'
+import { DepositMoney } from '../../interfaces/money'
+import { AppComponent } from '../../app.component'
 
 @Component({
     selector: 'app-deposit',
@@ -17,13 +20,30 @@ import { HtmlDeposit } from './html-deposit'
 })
 export class DepositComponent {
     router = inject(Router)
-    money = inject(MoneyService)
+    moneyService = inject(MoneyService)
+    userService = inject(UserService)
+    appComponent = inject(AppComponent)
 
-    logOut() {
-        this.router.navigate(['/'])
+    ngOnInit() {
+        this.appComponent.obtainWallet()
     }
 
-    openDialog(): void {
+    logOut() {
+        this.userService.logOut()
+    }
+
+    depositMoney: DepositMoney = {
+        amount: 0,
+        type: ''
+    }
+
+    openDialog(event: SubmitEvent): void {
+        event.preventDefault()
+        const form = event.target as HTMLFormElement
+
+        const type = (form.elements.namedItem('type') as HTMLInputElement).value
+        const amount = parseFloat((form.elements.namedItem('amount') as HTMLInputElement).value)
+
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success',
@@ -46,16 +66,25 @@ export class DepositComponent {
             })
             .then((result) => {
                 if (result.isConfirmed) {
-                    swalWithBootstrapButtons
-                        .fire({
-                            icon: 'success',
-                            html: HtmlDeposit.depositTicket,
-                            confirmButtonText: 'Aceptar',
-                            background: 'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
-                        })
-                        .then((result) => {
-                            this.router.navigate(['/dashboard'])
-                        })
+                    const newDeposit: DepositMoney = { amount, type }
+                    this.moneyService.deposit(newDeposit).subscribe({
+                        next: (data) => {
+                            swalWithBootstrapButtons
+                                .fire({
+                                    icon: 'success',
+                                    html: HtmlDeposit.depositTicket,
+                                    confirmButtonText: 'Aceptar',
+                                    background:
+                                        'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
+                                })
+                                .then((result) => {
+                                    this.router.navigate(['/dashboard'])
+                                })
+                        },
+                        error: (err) => {
+                            this.appComponent.error(err, 'No se pudo realizar el depósito')
+                        }
+                    })
                 }
             })
     }
