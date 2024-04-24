@@ -113,12 +113,10 @@ export class BuySellComponent {
                         quantityFiat
                     }
 
-                    console.log('asdasd', this.operationBuy.cryptoQuantity)
-
-                    console.log('buycrypto', newBuyCryptoDto)
-
                     this.buySellService.buyCrypto(newBuyCryptoDto).subscribe({
                         next: (data) => {
+                            form.reset()
+                            this.appComponent.obtainWallet()
                             Swal.fire({
                                 title: '¡Compra realizada con éxito!',
                                 text: 'Tu saldo se actualizará en breve. ¡Gracias por confiar en nuestro servicio!',
@@ -153,10 +151,10 @@ export class BuySellComponent {
                         moneyType
                     }
 
-                    console.log('sellcrypto', newSellCryptoDto)
-
                     this.buySellService.sellCrypto(newSellCryptoDto).subscribe({
                         next: (data) => {
+                            form.reset()
+                            this.appComponent.obtainWallet()
                             Swal.fire({
                                 title: 'Venta realizada con éxito!',
                                 text: 'Tu saldo se actualizará en breve. ¡Gracias por confiar en nuestro servicio!',
