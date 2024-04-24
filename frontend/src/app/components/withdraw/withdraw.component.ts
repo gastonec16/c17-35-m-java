@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import Swal from 'sweetalert2'
-import { HtmlWithdraw } from './htmlWithdraw'
+import { HtmlWithdraw } from './html-withdraw'
 
 @Component({
     selector: 'app-withdraw',
