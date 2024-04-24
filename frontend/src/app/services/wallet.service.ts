@@ -12,4 +12,14 @@ export class WalletService {
         const userId = localStorage.getItem('id')
         return this.http.get<any>(`${environment.apiBaseUrl}/api/wallet/user/${userId}`)
     }
+
+    setCryptoQuantity(allWalletCoins: any[], walletCoins: any[]) {
+        allWalletCoins.forEach((originalCoin) => {
+            walletCoins.forEach((Coin) => {
+                if (originalCoin.coin.shortName === Coin.cryptoName) {
+                    originalCoin.quantity = Coin.quantity
+                }
+            })
+        })
+    }
 }

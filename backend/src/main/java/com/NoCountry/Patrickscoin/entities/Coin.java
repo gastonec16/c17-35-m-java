@@ -1,6 +1,7 @@
 package com.NoCountry.Patrickscoin.entities;
 
 import com.NoCountry.Patrickscoin.entities.enumeration.CryptoName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,6 +36,7 @@ public class Coin {
     @Enumerated(EnumType.STRING)
     private CryptoName cryptoName;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wallet_id")
     private Wallet wallet;

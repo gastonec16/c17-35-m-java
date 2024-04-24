@@ -135,13 +135,27 @@
     display: flex;
 }
 
+.empty-table {
+    width: 100%;
+    text-align: center;
+    height: 80px;
+
+    & span {
+        margin: 24px 0;
+        font-family: Germania One, sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        color: var(--green-5);
+    }
+}
+
 @media (max-width: 980px) {
     .account-container {
         flex-direction: column;
 
         & .crypto-container {
-            margin-right: 24px;
-            margin-left: 24px;
+            margin-right: 0px;
+            margin-left: 0px;
         }
     }
 }

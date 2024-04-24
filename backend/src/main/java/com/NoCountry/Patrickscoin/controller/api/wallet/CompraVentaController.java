@@ -1,7 +1,5 @@
 package com.NoCountry.Patrickscoin.controller.api.wallet;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,26 +15,21 @@ import com.NoCountry.Patrickscoin.exception.WalletException;
 import com.NoCountry.Patrickscoin.services.ICompraVentaService;
 
 @RestController
-// sugerencia de endpoint para que quede mas limpia la ruta
-// /api/wallet/{walletId}/{operacion}
-@RequestMapping("/apiCompraVenta")
+@RequestMapping("/api/wallet")
 public class CompraVentaController {
 
     @Autowired
     private ICompraVentaService compraVentaService;
 
-    @PostMapping("/compra/{walletId}")
-    // Create un dto para manejar mejor los datos
+    @PostMapping("/{walletId}/compra")
     public ResponseEntity<?> compraCripto(@PathVariable Long walletId, @RequestBody BuyCriptoDto dto) throws WalletException {
-
-        System.out.println("Controladora");
         compraVentaService.compra(walletId, dto);
-
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/{walletID}/sell")
-    public ResponseEntity<?> ventaCripto(@RequestBody Long walletId, SellCriptoDto sellCripto) {
+    @PostMapping("/{walletId}/venta")
+    public ResponseEntity<?> ventaCripto(@PathVariable Long walletId,@RequestBody SellCriptoDto sellCripto) throws WalletException {
+        compraVentaService.venta(walletId, sellCripto);
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 

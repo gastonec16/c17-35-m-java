@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core'
 import Swal from 'sweetalert2'
 import { CryptoService } from '../../services/crypto.service'
-import { DashboardComponent } from '../dashboard/dashboard.component'
-import { UserService } from '../../services/user.service'
+import { AppComponent } from '../../app.component'
 
 @Component({
     selector: 'app-all-crypto',
@@ -13,9 +12,9 @@ import { UserService } from '../../services/user.service'
 })
 export class AllCryptoComponent {
     cryptoService = inject(CryptoService)
-    dashboardComponent = inject(DashboardComponent)
+    appComponent = inject(AppComponent)
 
-    coinList = this.dashboardComponent.coinList
+    coinList = this.appComponent.coinList
 
     ngOnInit() {
         this.cryptoService.getCryptoPrices(this.coinList)

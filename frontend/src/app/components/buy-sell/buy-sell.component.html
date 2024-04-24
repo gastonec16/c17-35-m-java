@@ -29,7 +29,7 @@
             type="number"
             min="0.01"
             maxlength="20"
-            [max]="operationBuy.fiat == 'ARS' ? user.ars : operationBuy.fiat == 'USD' ? user.usd : 0"
+            [max]="operationBuy.fiat == 'ARS' ? wallet.ars : operationBuy.fiat == 'USD' ? wallet.usd : 0"
             required
             [(ngModel)]="operationBuy.fiatQuantity"
             #fiatQuantity="ngModel"
@@ -38,9 +38,9 @@
     </div>
 
     @if ( operationBuy.fiat != '' ) { @if ( operationBuy.fiat == 'ARS' ) {
-    <div class="form-information">Saldo: {{ user.ars }} ARS</div>
+    <div class="form-information">Saldo: {{ wallet.ars }} ARS</div>
     } @else if ( operationBuy.fiat == 'USD' ) {
-    <div class="form-information">Saldo: {{ user.usd }} USD</div>
+    <div class="form-information">Saldo: {{ wallet.usd }} USD</div>
 
     } @if (fiatQuantity.errors?.['max']) {
     <div class="form-error">Saldo insuficiente.</div>
@@ -76,7 +76,7 @@
             type="number"
             min="0.000000000000000001"
             maxlength="20"
-            [max]="operationSell.crypto > 0 ? user.crypto[operationSell.crypto - 1].quantity : 0"
+            [max]="operationSell.crypto > 0 ? wallet.coins[operationSell.crypto - 1].quantity : 0"
             required
             [(ngModel)]="operationSell.cryptoQuantity"
             #cryptoQuantity="ngModel"
@@ -86,8 +86,8 @@
 
     @if ( operationSell.crypto > 0 ) {
     <div class="form-information">
-        Saldo: {{ user.crypto[operationSell.crypto - 1].quantity }}
-        {{ user.crypto[operationSell.crypto - 1].coin.shortName }}
+        Saldo: {{ wallet.coins[operationSell.crypto - 1].quantity }}
+        {{ wallet.coins[operationSell.crypto - 1].coin.shortName }}
     </div>
 
     @if (cryptoQuantity.errors?.['max']) {
