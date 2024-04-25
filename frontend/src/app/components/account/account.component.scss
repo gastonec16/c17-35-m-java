@@ -118,6 +118,12 @@
                 height: 48px;
                 align-items: center;
 
+                & p {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
                 & img {
                     height: 32px;
                     width: 32px;
@@ -149,7 +155,7 @@
     }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1200px) {
     .account-container {
         flex-direction: column;
 

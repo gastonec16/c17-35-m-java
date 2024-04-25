@@ -33,9 +33,11 @@ import { WithdrawMoney } from '../../interfaces/money'
 export class WithdrawComponent {
     router = inject(Router)
     money = inject(MoneyService)
+    userService = inject(UserService)
     appComponent = inject(AppComponent)
+
     logOut() {
-        this.router.navigate(['/'])
+        this.userService.logOut()
     }
     //Franco
     wallet = this.appComponent.wallet
@@ -43,7 +45,6 @@ export class WithdrawComponent {
     //DATOS DEL FORM DE RETIRO
 
     openDialog(): void {
-
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success',
@@ -56,11 +57,11 @@ export class WithdrawComponent {
                 html: HtmlWithdraw.withdrawForm,
                 //RECUPERAR DATOS DEL FORM DE TARJETA
                 preConfirm: () => {
-                    const amount = parseFloat((<HTMLInputElement>document.getElementById('cantidad')).value);
-                    var type1 = document.querySelector('#selectMoney') as HTMLSelectElement;
+                    const amount = parseFloat((<HTMLInputElement>document.getElementById('cantidad')).value)
+                    var type1 = document.querySelector('#selectMoney') as HTMLSelectElement
                     const type = type1.options[type1.selectedIndex].value
-                    const keyTransfer= (<HTMLInputElement>document.getElementById('swal-input1')).value
-                    
+                    const keyTransfer = (<HTMLInputElement>document.getElementById('swal-input1')).value
+
                     const cuil = (<HTMLInputElement>document.getElementById('swal-input1')).value
 
                     const setFiatWallet: WithdrawMoney = {
@@ -68,8 +69,8 @@ export class WithdrawComponent {
                         type: type,
                         keyTransfer: keyTransfer,
                         cuil: cuil
-                    };
-                    this.money.withdraw(setFiatWallet).subscribe()
+                    }
+                    this.money.withdraw(setFiatWallet).subscribe({ next: (data) => console.log(data, 'dasd') })
                     //if(type === 'ARS') this.wallet.ars = this.wallet.ars - amount
                     //if(type === 'USD') this.wallet.usd = this.wallet.usd - amount
                 },
@@ -78,7 +79,6 @@ export class WithdrawComponent {
             })
             .then((result) => {
                 if (result.isConfirmed) {
-                    
                     swalWithBootstrapButtons
                         .fire({
                             html: HtmlWithdraw.withdrawConfirmation,
@@ -89,34 +89,20 @@ export class WithdrawComponent {
                             reverseButtons: true,
                             background: 'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
                         })
+
                         .then((result) => {
                             if (result.isConfirmed) {
                                 swalWithBootstrapButtons
                                     .fire({
-                                        html: `
-            <h4>Al aceptar la compra, estás aceptando todos los términos y condiciones de nuestra plataforma.</h4>
-            <h1 style="color: var(--yellow);">¡Gracias por tu confianza y por elegirnos!"</h1>
-            <h4>Te recomendamos revisar detenidamente nuestros términos y condiciones para comprender completamente nuestros servicios y tus responsabilidades como usuario.</h4> 
-            `,
-                                        icon: 'warning',
-                                        confirmButtonText: 'Aceptar'
+                                        icon: 'success',
+                                        html: HtmlWithdraw.withdrawTicket,
+                                        confirmButtonText: 'Aceptar',
+                                        background:
+                                            'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
                                     })
 
                                     .then((result) => {
-                                        if (result.isConfirmed) {
-                                            swalWithBootstrapButtons
-                                                .fire({
-                                                    icon: 'success',
-                                                    html: HtmlWithdraw.withdrawTicket,
-                                                    confirmButtonText: 'Aceptar',
-                                                    background:
-                                                        'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
-                                                })
-
-                                                .then((result) => {
-                                                this.router.navigate(['/dashboard'])
-                                            })
-                                        }
+                                        this.router.navigate(['/dashboard'])
                                     })
                             }
                         })
@@ -149,7 +135,7 @@ export class DialogOverviewExampleDialog {
     constructor(
         public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
         @Inject(MAT_DIALOG_DATA) public data: DialogData
-    ) { }
+    ) {}
 
     onNoClick(): void {
         this.dialogRef.close()

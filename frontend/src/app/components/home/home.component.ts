@@ -13,7 +13,7 @@ export class HomeComponent {
     router = inject(Router)
 
     access() {
-        this.router.navigate(['/log-in'])
+        localStorage.getItem('id') ? this.router.navigate(['/dashboard']) : this.router.navigate(['/log-in'])
     }
     start() {
         this.router.navigate(['/register'])
