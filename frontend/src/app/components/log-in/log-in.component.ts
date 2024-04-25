@@ -55,6 +55,7 @@ export class LogInComponent {
                 next: (data) => {
                     if (data.email) {
                         this.userService.setUserData(data)
+                        this.appComponent.obtainWallet()
                         this.router.navigate(['dashboard'])
                         form.reset()
                     }
