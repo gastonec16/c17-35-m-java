@@ -43,49 +43,69 @@ export class DepositComponent {
 
         const type = (form.elements.namedItem('type') as HTMLInputElement).value
         const amount = parseFloat((form.elements.namedItem('amount') as HTMLInputElement).value)
+        const paymentMethod = (form.elements.namedItem('payment-method') as HTMLInputElement).value
 
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-        })
-        swalWithBootstrapButtons
-            .fire({
-                html: HtmlDeposit.cardData,
-                preConfirm: () => {
-                    var inputValue1 = (<HTMLInputElement>document.getElementById('swal-input1')).value
-                    var inputValue2 = (<HTMLInputElement>document.getElementById('swal-input2')).value
-                    var inputValue3 = (<HTMLInputElement>document.getElementById('swal-input3')).value
-                    var inputValue4 = (<HTMLInputElement>document.getElementById('swal-input4')).value
-                    return [inputValue1, inputValue2, inputValue3, inputValue4]
+        if (paymentMethod === '') {
+            this.appComponent.error('Por favor, ingresa un método de pago')
+            return
+        }
+
+        if (paymentMethod === 'tarjeta') {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
                 },
-                confirmButtonText: 'Aceptar',
-                background: 'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
+                buttonsStyling: false
             })
-            .then((result) => {
-                if (result.isConfirmed) {
-                    const newDeposit: DepositMoney = { amount, type }
-                    this.moneyService.deposit(newDeposit).subscribe({
-                        next: (data) => {
-                            swalWithBootstrapButtons
-                                .fire({
-                                    icon: 'success',
-                                    html: HtmlDeposit.depositTicket,
-                                    confirmButtonText: 'Aceptar',
-                                    background:
-                                        'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
-                                })
-                                .then((result) => {
-                                    this.router.navigate(['/dashboard'])
-                                })
-                        },
-                        error: (err) => {
-                            this.appComponent.error('No se pudo realizar el depósito', err)
-                        }
-                    })
-                }
-            })
+            swalWithBootstrapButtons
+                .fire({
+                    html: HtmlDeposit.cardData,
+                    preConfirm: () => {
+                        var inputValue1 = (<HTMLInputElement>document.getElementById('swal-input1')).value
+                        var inputValue2 = (<HTMLInputElement>document.getElementById('swal-input2')).value
+                        var inputValue3 = (<HTMLInputElement>document.getElementById('swal-input3')).value
+                        var inputValue4 = (<HTMLInputElement>document.getElementById('swal-input4')).value
+                        return [inputValue1, inputValue2, inputValue3, inputValue4]
+                    },
+                    confirmButtonText: 'Aceptar',
+                    background: 'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        const newDeposit: DepositMoney = { amount, type }
+                        this.moneyService.deposit(newDeposit).subscribe({
+                            next: (data) => {
+                                swalWithBootstrapButtons
+                                    .fire({
+                                        icon: 'success',
+                                        html: HtmlDeposit.depositTicket,
+                                        confirmButtonText: 'Aceptar',
+                                        background:
+                                            'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
+                                    })
+                                    .then((result) => {
+                                        this.router.navigate(['/dashboard'])
+                                    })
+                            },
+                            error: (err) => {
+                                this.appComponent.error('No se pudo realizar el depósito', err)
+                            }
+                        })
+                    }
+                })
+        } else if (paymentMethod === 'transferencia') {
+            this.appComponent.error(
+                'Esta opción no está disponible momentáneamente, por favor elige otro medio de pago'
+            )
+        } else if (paymentMethod === 'mercado-pago') {
+            this.appComponent.error(
+                'Esta opción no está disponible momentáneamente, por favor elige otro medio de pago'
+            )
+        } else if (paymentMethod === 'paypal') {
+            this.appComponent.error(
+                'Esta opción no está disponible momentáneamente, por favor elige otro medio de pago'
+            )
+        }
     }
 }
