@@ -11,13 +11,11 @@ export const routes: Routes = [
     },
     {
         path: 'register',
-        loadComponent: () =>
-            import('./components/register/register.component').then((c) => c.RegisterComponent)
+        loadComponent: () => import('./components/register/register.component').then((c) => c.RegisterComponent)
     },
     {
         path: 'dashboard',
-        loadComponent: () =>
-            import('./components/dashboard/dashboard.component').then((c) => c.DashboardComponent)
+        loadComponent: () => import('./components/dashboard/dashboard.component').then((c) => c.DashboardComponent)
     },
     {
         path: 'deposit',
@@ -25,7 +23,6 @@ export const routes: Routes = [
     },
     {
         path: 'withdraw',
-        loadComponent: () =>
-            import('./components/withdraw/withdraw.component').then((c) => c.WithdrawComponent)
+        loadComponent: () => import('./components/withdraw/withdraw.component').then((c) => c.WithdrawComponent)
     }
 ]
