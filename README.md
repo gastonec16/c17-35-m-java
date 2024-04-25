@@ -25,11 +25,11 @@
 
  +  🖌 [Diseño en Figma](https://www.figma.com/file/EGKXod1KGBD1WF5LWibxnG/Patrick-coins--c17-35-m-java?type=design&node-id=0-1&mode=design&t=U55H1bggbGFTrVmb-0)
 
- +  ✅ [Swagger (En progreso)]()
+ +  ✅ [Swagger - Documentacion de la API](https://patrickscoins.up.railway.app/public/swagger-ui/index.html)
 
  +  📈 [Documentación de QA (En progreso)]()
 
- +  🎬 [Video de presentación](https://drive.google.com/file/d/13wwXflHHL6fHkLDY8cnsVBIplwaa-dSJ/view)
+ +  🎬 [Video de presentación](https://drive.google.com/file/d/1LoNwNb3nH6ijtI2meoNIPAGxbWGkr1RF/view)
 
 ## **Tecnologías utilizadas**
 

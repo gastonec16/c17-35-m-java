@@ -233,3 +233,8 @@ input[type='number'] {
     -moz-appearance: textfield;
     appearance: textfield;
 }
+
+select:hover,
+option:hover {
+    cursor: pointer;
+}

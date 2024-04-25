@@ -35,221 +35,6 @@
     background: linear-gradient(to right, var(--green-1), var(--green-5));
 }
 
-.account-container {
-    margin-top: 24px;
-    border-radius: 16px;
-    background-color: var(--green-2);
-    box-shadow: var(--shadow);
-    border: 2px var(--black) solid;
-    display: flex;
-    align-items: center;
-    max-width: 1280px;
-    width: 100%;
-    overflow-x: auto;
-
-    & .profile-container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        margin: 24px;
-
-        & .user-name,
-        .user-email {
-            border-radius: 1rem;
-            background-color: var(--green-5);
-            color: var(--white);
-            padding: 4px 12px;
-            text-align: center;
-            max-width: 10rem;
-            overflow-x: hidden;
-            margin: 16px 0;
-        }
-
-        .user-email {
-            font-size: smaller;
-        }
-
-        & .profile-picture {
-            border-radius: 64px;
-            height: 128px;
-            width: 128px;
-        }
-    }
-
-    & .money-container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        margin: 24px;
-
-        & h2 {
-            text-align: center;
-            font-family: Germania One, sans-serif;
-            font-size: 24pt;
-            color: var(--black);
-            margin: 16px 0;
-            white-space: nowrap;
-        }
-
-        .money {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-bottom: 32px;
-
-            & .ars,
-            & .usd {
-                font-family: Germania One, sans-serif;
-                font-size: 18pt;
-                border-radius: 1rem;
-                border: 2px var(--black) solid;
-                background-image: linear-gradient(to bottom, var(--green-1), var(--green-4));
-                color: var(--black);
-                padding: 4px 12px;
-                text-align: center;
-                max-width: 10rem;
-                overflow-x: hidden;
-                margin: 8px;
-                white-space: nowrap;
-            }
-        }
-
-        & button {
-            margin-bottom: 16px;
-        }
-    }
-
-    & .crypto-container {
-        max-height: 17rem;
-        overflow-y: auto;
-        width: 100%;
-        min-width: 20rem;
-        color: var(--black);
-        margin: 24px;
-    }
-
-    & .crypto-table {
-        width: 100%;
-
-        & th {
-            font-family: Germania One, sans-serif;
-            font-size: 20pt;
-            color: var(--black);
-        }
-
-        & td {
-            height: 40px;
-            background-color: var(--white);
-            color: var(--black);
-            vertical-align: middle;
-
-            & .crypto-name {
-                display: flex;
-                height: 40px;
-                align-items: center;
-
-                & img {
-                    height: 32px;
-                    width: 32px;
-                }
-            }
-
-            & img {
-                margin: 0 8px;
-            }
-        }
-    }
-}
-
-.bottom-container {
-    width: 100%;
-    max-width: 1280px;
-    display: flex;
-}
-
-.all-crypto-container {
-    width: 100%;
-    height: 37rem;
-    min-width: 20rem;
-    background-color: var(--black);
-    margin-top: 32px;
-    color: var(--white);
-    border-radius: 16px;
-    box-shadow: var(--shadow);
-    border: 2px var(--black) solid;
-    display: flex;
-    flex-direction: column;
-
-    & .all-crypto-title {
-        color: var(--white);
-        display: flex;
-        align-items: center;
-        margin: 0 24px;
-        justify-content: space-between;
-
-        & h2 {
-            font-family: Germania One, sans-serif;
-            font-size: 24pt;
-            white-space: nowrap;
-        }
-
-        & svg {
-            height: 32px;
-            width: 32px;
-
-            &:hover {
-                cursor: pointer;
-                filter: brightness(1.2);
-            }
-
-            &:active {
-                opacity: 0.8;
-            }
-        }
-    }
-
-    & .table-container {
-        margin: 0 24px;
-        overflow-y: auto;
-    }
-
-    & .all-crypto-table {
-        width: 100%;
-
-        white-space: nowrap;
-
-        & th {
-            font-family: Germania One, sans-serif;
-            font-size: 20pt;
-            color: var(--white);
-            border: 1px solid var(--white);
-        }
-
-        & td {
-            height: 40px;
-            background-color: var(--black);
-            color: var(--white);
-            vertical-align: middle;
-            border: 1px solid var(--white);
-
-            & .crypto-name {
-                display: flex;
-                height: 40px;
-                align-items: center;
-
-                & img {
-                    height: 32px;
-                    width: 32px;
-                }
-            }
-
-            & img {
-                margin: 0 8px;
-            }
-        }
-    }
-}
-
 .centrado {
     display: flex;
     justify-content: center;
@@ -291,20 +76,22 @@
 }
 .deposit-container {
     width: 70%;
+    min-width: 300px;
     max-width: 512px;
     background-color: var(--black);
-    margin-top: 32px;
-    margin-left: 32px;
     color: var(--white);
     border-radius: 16px;
     box-shadow: var(--shadow);
     border: 2px var(--black) solid;
     display: flex;
     flex-direction: column;
-    padding: 24px;
 
     & article {
         padding: 24px;
+
+        & p {
+            font-size: 18px;
+        }
     }
     & .title-container {
         display: flex;
@@ -322,6 +109,7 @@
         box-shadow: var(--shadow);
         display: flex;
         justify-content: center;
+        font-size: 32px;
 
         &:hover {
             cursor: unset;
@@ -332,12 +120,14 @@
     & .operation-container {
         width: 100%;
         display: flex;
-        justify-content: space-between;
-        background-color: --var(white);
+        margin-bottom: 32px;
+        background-color: var(--white);
         border-radius: 1rem;
         color: --var(black);
         padding: 0 24px;
-        margin: 0.5em;
+        & #amount {
+            margin-left: 8px;
+        }
     }
 
     & .accept-button {
@@ -345,6 +135,50 @@
         justify-content: center;
         margin-top: 32px;
         width: 250px;
+    }
+}
+
+h2 {
+    text-align: center;
+    font-family: Germania One, sans-serif;
+    font-size: 22pt;
+    color: var(--yellow);
+    margin: 16px 0;
+}
+
+input[type='radio'] {
+    width: 24px;
+    height: 24px;
+    margin: 0 16px;
+    box-shadow: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.radio-container {
+    display: flex;
+    background-color: var(--white);
+    margin: 8px 0;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    border-radius: 1rem;
+
+    & label {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    & img {
+        width: 48px;
+        margin-left: 16px;
+    }
+    & span {
+        font-size: 16px;
     }
 }
 

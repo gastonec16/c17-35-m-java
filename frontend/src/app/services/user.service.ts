@@ -26,7 +26,6 @@ export class UserService {
         await localStorage.clear()
         if (!localStorage.getItem('token')) {
             Swal.fire({
-                title: 'Éxito',
                 text: 'Se ha cerrado tu sesión',
                 icon: 'success',
                 iconColor: 'var(--green-3)',
