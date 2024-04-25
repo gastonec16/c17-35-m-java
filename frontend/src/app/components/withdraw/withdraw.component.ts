@@ -99,10 +99,14 @@ export class WithdrawComponent {
                                 iconColor: 'var(--green-3)',
                                 confirmButtonText: 'Aceptar',
                                 customClass: { confirmButton: 'swal-button' }
-                            }),
+                            }).then(()=>
+                                this.router.navigate(['/dashboard'])
+                            ),
+                            
                         error: (err) => {
                             this.appComponent.error('No se pudo hacer el retiro', err)
                         }
+                        
                     })
                 },
                 confirmButtonText: 'Aceptar',
