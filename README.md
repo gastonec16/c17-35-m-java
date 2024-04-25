@@ -29,7 +29,7 @@
 
  +  📈 [Documentación de QA (En progreso)]()
 
- +  🎬 [Video de presentación](https://drive.google.com/file/d/13wwXflHHL6fHkLDY8cnsVBIplwaa-dSJ/view)
+ +  🎬 [Video de presentación](https://drive.google.com/file/d/1LoNwNb3nH6ijtI2meoNIPAGxbWGkr1RF/view)
 
 ## **Tecnologías utilizadas**
 
