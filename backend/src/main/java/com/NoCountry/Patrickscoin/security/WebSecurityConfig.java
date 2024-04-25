@@ -26,6 +26,7 @@ public class WebSecurityConfig {
     private final JWTAuthenticationFilter jwtAuthenticationFilter;
     private final AuthenticationProvider authProvider;
 
+    //TODO: ARREGLAR SECURITY
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
