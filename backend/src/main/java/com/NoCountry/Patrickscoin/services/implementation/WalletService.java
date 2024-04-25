@@ -79,7 +79,6 @@ public class WalletService implements IWalletService{
         Wallet wallet = walletRepository.findById(walletId).orElseThrow(()-> new WalletException("Wallet no encontrada"));
         wallet.setCoins(wallet.getCoins().stream()
             .sorted((a,b) -> a.getCryptoName().name().compareTo(b.getCryptoName().name()))
-            .filter(c -> c.getQuantity() > 0)
             .collect(Collectors.toSet()));
         return wallet;
     }

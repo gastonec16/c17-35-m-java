@@ -30,25 +30,25 @@ public class CompraVentaService implements ICompraVentaService{
     private CoinRepository coinRepository;
 
     @Override
+    @Transactional
     public void compra(Long walletId, BuyCriptoDto dto) throws WalletException {
         Wallet wallet = walletService.findById(walletId);
 
+        if(!validFounds(wallet, dto) || dto.quiantity() <= 0)
+            throw new WalletException("monto invalido!");
 
-        System.out.println(dto);
-        // if(!validFounds(wallet, dto) || dto.quiantity() <= 0)
-        //     throw new WalletException("monto invalido!");
-                        
 
         if(dto.moneyType().equals(MoneyType.USD)) wallet.setGlobalMoney(wallet.getGlobalMoney()-dto.quantityFiat());
         if(dto.moneyType().equals(MoneyType.ARS)) wallet.setLocalMoney(wallet.getLocalMoney()-dto.quantityFiat());
-        
+
+
+
         //CRIPTO EN WALLET. ACTUALIZAR
         Set<Coin> coins = wallet.getCoins();
         boolean coinExists = false;
         for(Coin existingCoing: coins){
             if(dto.cripto().name().equals(existingCoing.getCryptoName().name())){
                 existingCoing.setQuantity(existingCoing.getQuantity()+dto.quiantity());
-                System.out.println(dto.quiantity());
                 coinExists = true;
             }
         }
@@ -62,8 +62,6 @@ public class CompraVentaService implements ICompraVentaService{
                 .build();
                 coins.add(newCoin);
                 coinRepository.save(newCoin);
-                System.out.println(dto.quiantity());
-                System.out.println(dto.cripto());
         }
 
         wallet.setCoins(coins);
@@ -100,8 +98,9 @@ public class CompraVentaService implements ICompraVentaService{
             wallet.setLocalMoney(wallet.getLocalMoney() + sellCripto.quantityFiat());
 
         coin.setQuantity(coin.getQuantity() - sellCripto.quantityCrypto());
-    }
 
-    
+        if( coin.getQuantity() == 0f )
+            coinRepository.delete(coin);
+    }
     
 }
