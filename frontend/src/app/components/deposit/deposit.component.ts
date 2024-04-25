@@ -32,8 +32,8 @@ export class DepositComponent {
         this.userService.logOut()
     }
 
-    depositMoney: DepositMoney = {
-        amount: 0,
+    depositMoney = {
+        amount: null,
         type: ''
     }
 
