@@ -32,7 +32,7 @@
 
                 <h2>Métodos de pago</h2>
 
-                @if (depositMoney.type!=='') {
+                @if (depositMoney.type !== '') {
                 <div class="radio-container">
                     <img src="/assets/img/icon-creditcard.png" alt="Tarjeta" required />
                     <label for="tarjeta">
@@ -49,16 +49,16 @@
                     </label>
                 </div>
 
-                } @if (depositMoney.type==='ARS') {
+                } @if (depositMoney.type === 'ARS') {
                 <div class="radio-container">
                     <img src="/assets/img/icon-mercadopago.png" alt="MercadoPago" />
-                    <label for="mercadoPago">
+                    <label for="mercado-pago">
                         <input disabled type="radio" id="mercado-pago" name="payment-method" value="mercadoPago" />
                         <span>MercadoPago</span>
                     </label>
                 </div>
 
-                } @if (depositMoney.type==='USD') {
+                } @if (depositMoney.type === 'USD') {
                 <div class="radio-container">
                     <img src="/assets/img/icon-paypal.png" alt="Paypal" />
                     <label for="paypal">

@@ -336,12 +336,14 @@
     & .operation-container {
         width: 100%;
         display: flex;
-        justify-content: space-between;
-        background-color: white;
+        margin-bottom: 32px;
+        background-color: var(--white);
         border-radius: 1rem;
-        color: black;
+        color: --var(black);
         padding: 0 24px;
-        margin: 0.5em;
+        & #amount {
+            margin-left: 8px;
+        }
     }
 
     & .accept-button {
@@ -349,6 +351,54 @@
         justify-content: center;
         margin-top: 32px;
         width: 250px;
+    }
+}
+
+h2 {
+    text-align: center;
+    font-family: Germania One, sans-serif;
+    font-size: 22pt;
+    color: var(--yellow);
+    margin: 16px 0;
+}
+
+input[type='radio'] {
+    width: 24px;
+    height: 24px;
+    margin: 0 16px;
+    box-shadow: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.radio-container {
+    display: flex;
+    background-color: var(--white);
+    margin: 8px 0;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    border-radius: 1rem;
+
+    & label {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 16px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    & img {
+        width: 48px;
+        margin-left: 16px;
+    }
+    & span {
+        font-size: 16px;
     }
 }
 

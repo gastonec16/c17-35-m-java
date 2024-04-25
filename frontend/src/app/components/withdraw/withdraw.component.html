@@ -6,9 +6,9 @@
     <div class="gradient-line"></div>
 
     <section class="centrado flex-row">
-        <div class="deposit-container bg-gradient-green">
+        <form #form="ngForm" class="deposit-container bg-gradient-green" (submit)="openDialog($event)">
             <div class="title-container">
-                <button class="text">RETIRAR</button>
+                <button type="button" class="text">Retirar</button>
             </div>
             <div class="money-container">
                 <h2>Monedas adquiridas</h2>
@@ -20,50 +20,76 @@
             </div>
 
             <article class="centrado flex-column">
-                <p>Ingrese la cantidad que desea retirar</p>
+                <p>Ingresa la cantidad que deseas retirar</p>
                 <div class="operation-container centrado flex-row">
-                    <h4>Total:</h4>
-                    <input type="number" min="0" id="cantidad"/>
-                    <select name="" id="selectMoney">
-                        <option value="ARS" selected>ARS</option>
+                    <label for="withdraw">Total:</label>
+                    <input
+                        name="amount"
+                        id="amount"
+                        type="number"
+                        min="0.01"
+                        maxlength="20"
+                        required
+                        [(ngModel)]="withdrawMoney.amount"
+                        #amount="ngModel"
+                    />
+                    <select name="type" id="type" required [(ngModel)]="withdrawMoney.type" #type="ngModel">
+                        <option value="ARS">ARS</option>
                         <option value="USD">USD</option>
                     </select>
                 </div>
 
-                <H2>Métodos de retiro</H2>
-                <div class="operation-container centrado flex-row">
-                    <img src="/assets/img/icon-creditcard.png" alt="" width="40px" height="40px" />
-                    <h3>Tarjeta de crédito o debito</h3>
-                    <input type="checkbox" name="" id="" size="24px" />
-                </div>
-                <div class="operation-container centrado flex-row">
-                    <img src="/assets/img/icon-mercadopago.png" alt="" width="40px" height="40px" />
-                    <h3>Mercado Pago</h3>
-                    <input type="checkbox" name="" id="" size="24px" />
-                </div>
-                <div class="operation-container centrado flex-row">
-                    <img src="/assets/img/icon-paypal.png" alt="" width="40px" height="40px" />
-                    <h3>Paypal</h3>
-                    <input type="checkbox" name="" id="" size="24px" />
-                </div>
-                <div class="operation-container centrado flex-row">
-                    <img src="/assets/img/icon-bank.png" alt="" width="40px" height="40px" />
-                    <h3>Cuenta bancaria en USD</h3>
-                    <input type="checkbox" name="" id="" size="24px" />
+                <h2>Métodos de retiro</h2>
+
+                @if (withdrawMoney.type!=='') {
+
+                <div class="radio-container">
+                    <img src="/assets/img/icon-bank.png" alt="Transferencia" required />
+                    <label for="transferencia">
+                        <input type="radio" id="transferencia" name="payment-method" value="transferencia" />
+                        <span>Transferencia bancaria</span>
+                    </label>
                 </div>
 
-                <button type="button" class="accept-button" (click)="openDialog()">Aceptar</button>
+                <div class="radio-container">
+                    <img src="/assets/img/icon-creditcard.png" alt="Tarjeta" />
+                    <label for="tarjeta">
+                        <input disabled type="radio" id="tarjeta" name="payment-method" value="tarjeta" />
+                        <span>Tarjeta de crédito o débito</span>
+                    </label>
+                </div>
+
+                } @if (withdrawMoney.type==='ARS') {
+                <div class="radio-container">
+                    <img src="/assets/img/icon-mercadopago.png" alt="MercadoPago" />
+                    <label for="mercado-pago">
+                        <input disabled type="radio" id="mercado-pago" name="payment-method" value="mercadoPago" />
+                        <span>MercadoPago</span>
+                    </label>
+                </div>
+
+                } @if (withdrawMoney.type==='USD') {
+                <div class="radio-container">
+                    <img src="/assets/img/icon-paypal.png" alt="Paypal" />
+                    <label for="paypal">
+                        <input disabled type="radio" id="paypal" name="payment-method" value="paypal" />
+                        <span>Paypal</span></label
+                    >
+                </div>
+                }
+
+                <button type="submit" class="accept-button" [disabled]="!form.form.valid">Aceptar</button>
             </article>
-        </div>
+        </form>
 
         <aside class="centrado flex-column">
             <img src="/assets/img/seniorcito2.png" class="seniorcito" width="240px" alt="" />
             <div class="gb-white-transparent br-1">
                 <h3>¡Retira tus fondos de forma conveniente y segura!</h3>
                 <h3>
-                    Si deseas retirar en dólares, podrás hacerlo mediante transferencia a una cuenta bancaria
-                    en dólares o a través de PayPal. Si prefieres retirar en tu moneda local, tienes la opción
-                    de hacerlo utilizando billeteras virtuales o mediante transferencia bancaria local.
+                    Si deseas retirar en dólares, podrás hacerlo mediante transferencia a una cuenta bancaria en dólares
+                    o a través de PayPal. Si prefieres retirar en tu moneda local, tienes la opción de hacerlo
+                    utilizando billeteras virtuales o mediante transferencia bancaria local.
                 </h3>
                 <h3>¡Tu elección, tu comodidad, tu control financiero!</h3>
             </div>
