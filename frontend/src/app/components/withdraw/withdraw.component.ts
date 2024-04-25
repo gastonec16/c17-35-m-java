@@ -56,8 +56,8 @@ export class WithdrawComponent {
         event.preventDefault()
         const form = event.target as HTMLFormElement
 
-        // const type = (form.elements.namedItem('type') as HTMLInputElement).value
-        // const amount = parseFloat((form.elements.namedItem('amount') as HTMLInputElement).value)
+        const type = (form.elements.namedItem('type') as HTMLInputElement).value
+        const amount = parseFloat((form.elements.namedItem('amount') as HTMLInputElement).value)
         const paymentMethod = (form.elements.namedItem('payment-method') as HTMLInputElement).value
 
         if (paymentMethod === '') {
@@ -77,9 +77,9 @@ export class WithdrawComponent {
                 html: HtmlWithdraw.withdrawForm,
                 //RECUPERAR DATOS DEL FORM DE TARJETA
                 preConfirm: () => {
-                    const amount = parseFloat((<HTMLInputElement>document.getElementById('cantidad')).value)
-                    var type1 = document.querySelector('#selectMoney') as HTMLSelectElement
-                    const type = type1.options[type1.selectedIndex].value
+                    // const amount = parseFloat((<HTMLInputElement>document.getElementById('cantidad')).value)
+                    // var type1 = document.querySelector('#selectMoney') as HTMLSelectElement
+                    // const type = type1.options[type1.selectedIndex].value
                     const keyTransfer = (<HTMLInputElement>document.getElementById('swal-input1')).value
 
                     const cuil = (<HTMLInputElement>document.getElementById('swal-input1')).value
