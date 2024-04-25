@@ -393,9 +393,15 @@ input[type='radio'] {
             cursor: pointer;
         }
     }
-    & img {
-        width: 48px;
-        margin-left: 16px;
+    & .img-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        & img {
+            height: 44px;
+            margin-left: 16px;
+        }
     }
     & span {
         font-size: 16px;

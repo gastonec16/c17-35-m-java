@@ -34,7 +34,9 @@
 
                 @if (depositMoney.type !== '') {
                 <div class="radio-container">
-                    <img src="/assets/img/icon-creditcard.png" alt="Tarjeta" required />
+                    <div class="img-container">
+                        <img src="/assets/img/icon-creditcard.png" alt="Tarjeta" required />
+                    </div>
                     <label for="tarjeta">
                         <input type="radio" id="tarjeta" name="payment-method" value="tarjeta" />
                         <span>Tarjeta de crédito o débito</span>
@@ -42,7 +44,9 @@
                 </div>
 
                 <div class="radio-container">
-                    <img src="/assets/img/icon-bank.png" alt="Transferencia" />
+                    <div class="img-container">
+                        <img src="/assets/img/icon-bank.png" alt="Transferencia" />
+                    </div>
                     <label for="transferencia">
                         <input disabled type="radio" id="transferencia" name="payment-method" value="transferencia" />
                         <span>Transferencia bancaria</span>
@@ -51,7 +55,9 @@
 
                 } @if (depositMoney.type === 'ARS') {
                 <div class="radio-container">
-                    <img src="/assets/img/icon-mercadopago.png" alt="MercadoPago" />
+                    <div class="img-container">
+                        <img src="/assets/img/icon-mercadopago.png" alt="MercadoPago" />
+                    </div>
                     <label for="mercado-pago">
                         <input disabled type="radio" id="mercado-pago" name="payment-method" value="mercadoPago" />
                         <span>MercadoPago</span>
@@ -60,7 +66,9 @@
 
                 } @if (depositMoney.type === 'USD') {
                 <div class="radio-container">
-                    <img src="/assets/img/icon-paypal.png" alt="Paypal" />
+                    <div class="img-container">
+                        <img src="/assets/img/icon-paypal.png" alt="Paypal" />
+                    </div>
                     <label for="paypal">
                         <input disabled type="radio" id="paypal" name="payment-method" value="paypal" />
                         <span>Paypal</span></label
