@@ -37,6 +37,10 @@ export class AppComponent {
     walletCoins = []
 
     ngOnInit() {
+        this.getUserData()
+    }
+
+    getUserData() {
         let user = this.userService.getUserData()
 
         this.user.id = user.id

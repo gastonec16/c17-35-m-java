@@ -21,6 +21,7 @@ export class DashboardComponent {
 
     ngOnInit() {
         this.appComponent.obtainWallet()
+        this.appComponent.getUserData()
     }
 
     logOut() {
