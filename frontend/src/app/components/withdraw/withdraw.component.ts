@@ -42,6 +42,9 @@ export class WithdrawComponent {
     //Franco
     wallet = this.appComponent.wallet
 
+    ngOnInit() {
+        this.appComponent.obtainWallet()
+    }
     //DATOS DEL FORM DE RETIRO
 
     openDialog(): void {
@@ -52,62 +55,78 @@ export class WithdrawComponent {
             },
             buttonsStyling: false
         })
-        swalWithBootstrapButtons
-            .fire({
-                html: HtmlWithdraw.withdrawForm,
-                //RECUPERAR DATOS DEL FORM DE TARJETA
-                preConfirm: () => {
-                    const amount = parseFloat((<HTMLInputElement>document.getElementById('cantidad')).value)
-                    var type1 = document.querySelector('#selectMoney') as HTMLSelectElement
-                    const type = type1.options[type1.selectedIndex].value
-                    const keyTransfer = (<HTMLInputElement>document.getElementById('swal-input1')).value
+        // Swal.fire({
+        //     title: '¡Gracias por tu confianza y por elegirnos!',
+        //     text: `Al aceptar la ${
+        //         this.isBuying ? 'compra' : 'venta'
+        //     }, estás aceptando todos los términos y condiciones de nuestra plataforma.`,
+        //     icon: 'warning',
+        //     iconColor: 'var(--yellow)',
+        //     confirmButtonText: 'Aceptar',
+        //     showCancelButton: true,
+        //     cancelButtonText: 'Cancelar',
+        //     customClass: { confirmButton: 'swal-button', cancelButton: 'swal-button' }
+        // })
+        Swal.fire({
+            html: HtmlWithdraw.withdrawForm,
+            //RECUPERAR DATOS DEL FORM DE TARJETA
+            preConfirm: () => {
+                const amount = parseFloat((<HTMLInputElement>document.getElementById('cantidad')).value)
+                var type1 = document.querySelector('#selectMoney') as HTMLSelectElement
+                const type = type1.options[type1.selectedIndex].value
+                const keyTransfer = (<HTMLInputElement>document.getElementById('swal-input1')).value
 
-                    const cuil = (<HTMLInputElement>document.getElementById('swal-input1')).value
+                const cuil = (<HTMLInputElement>document.getElementById('swal-input1')).value
 
-                    const setFiatWallet: WithdrawMoney = {
-                        amount: amount,
-                        type: type,
-                        keyTransfer: keyTransfer,
-                        cuil: cuil
-                    }
-                    this.money.withdraw(setFiatWallet).subscribe({ next: (data) => console.log(data, 'dasd') })
-                    //if(type === 'ARS') this.wallet.ars = this.wallet.ars - amount
-                    //if(type === 'USD') this.wallet.usd = this.wallet.usd - amount
-                },
-                confirmButtonText: 'Aceptar',
-                background: 'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
-            })
-            .then((result) => {
-                if (result.isConfirmed) {
-                    swalWithBootstrapButtons
-                        .fire({
-                            html: HtmlWithdraw.withdrawConfirmation,
-                            focusConfirm: false,
-                            showCancelButton: true,
-                            confirmButtonText: 'Aceptar',
-                            cancelButtonText: 'Cancelar',
-                            reverseButtons: true,
-                            background: 'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
-                        })
-
-                        .then((result) => {
-                            if (result.isConfirmed) {
-                                swalWithBootstrapButtons
-                                    .fire({
-                                        icon: 'success',
-                                        html: HtmlWithdraw.withdrawTicket,
-                                        confirmButtonText: 'Aceptar',
-                                        background:
-                                            'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
-                                    })
-
-                                    .then((result) => {
-                                        this.router.navigate(['/dashboard'])
-                                    })
-                            }
-                        })
+                const setFiatWallet: WithdrawMoney = {
+                    amount: amount,
+                    type: type,
+                    keyTransfer: keyTransfer,
+                    cuil: cuil
                 }
-            })
+                this.money.withdraw(setFiatWallet).subscribe({
+                    next: (data) => console.log(data, 'dasd'),
+                    error: (err) => {
+                        this.appComponent.error('No se pudo hacer el retiro', err)
+                    }
+                })
+                //if(type === 'ARS') this.wallet.ars = this.wallet.ars - amount
+                //if(type === 'USD') this.wallet.usd = this.wallet.usd - amount
+            },
+            confirmButtonText: 'Aceptar',
+            customClass: { confirmButton: 'swal-button', cancelButton: 'swal-button' },
+            background: 'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons
+                    .fire({
+                        html: HtmlWithdraw.withdrawConfirmation,
+                        focusConfirm: false,
+                        showCancelButton: true,
+                        confirmButtonText: 'Aceptar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true,
+                        background: 'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
+                    })
+
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            swalWithBootstrapButtons
+                                .fire({
+                                    icon: 'success',
+                                    html: HtmlWithdraw.withdrawTicket,
+                                    confirmButtonText: 'Aceptar',
+                                    background:
+                                        'linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%)'
+                                })
+
+                                .then((result) => {
+                                    this.router.navigate(['/dashboard'])
+                                })
+                        }
+                    })
+            }
+        })
     }
 }
 

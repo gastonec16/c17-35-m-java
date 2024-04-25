@@ -19,6 +19,10 @@ export class BuySellComponent {
     isBuying = true
     buySellService = inject(BuySellService)
 
+    ngOnInit() {
+        this.appComponent.obtainWallet()
+    }
+
     wallet = this.appComponent.wallet
     coinList = this.appComponent.coinList
 

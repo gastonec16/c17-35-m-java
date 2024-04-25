@@ -256,16 +256,16 @@
     align-items: center;
 }
 
-.flex-column{
+.flex-column {
     flex-direction: column;
 }
-.flex-row{
+.flex-row {
     flex-direction: row;
 }
-.space-around{
+.space-around {
     justify-content: space-around;
 }
-.d-flex{
+.d-flex {
     display: flex;
 }
 
@@ -273,10 +273,10 @@
     background: rgb(40, 118, 53);
     background: linear-gradient(0deg, rgba(40, 118, 53, 1) 0%, rgba(23, 77, 32, 1) 100%);
 }
-.seniorcito{
+.seniorcito {
     position: absolute;
 }
-.gb-white-transparent{
+.gb-white-transparent {
     background-color: rgba(255, 255, 255, 0.75);
     padding: 1rem;
     padding-left: 10rem;
@@ -286,7 +286,7 @@
     margin-top: 70px;
     margin-bottom: 70px;
 }
-.br-1{
+.br-1 {
     border-radius: 1rem;
 }
 .deposit-container {
@@ -303,13 +303,12 @@
     flex-direction: column;
     padding: 24px;
 
-    & article{
+    & article {
         padding: 24px;
     }
     & .title-container {
         display: flex;
         justify-content: center;
-        
     }
 
     & .text {
@@ -330,16 +329,14 @@
         }
     }
 
-
-
     & .operation-container {
         width: 100%;
         display: flex;
         justify-content: space-between;
-        background-color: white;
+        background-color: --var(white);
         border-radius: 1rem;
-        color: black;
-        padding:0 24px;
+        color: --var(black);
+        padding: 0 24px;
         margin: 0.5em;
     }
 
@@ -351,25 +348,31 @@
     }
 }
 
-
 .bg-deposit {
-    background-image: url("/assets/img/bg-deposit.png");
+    background-image: url('/assets/img/bg-deposit.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-
-input[type=checkbox] {
+input[type='checkbox'] {
     position: relative;
-      cursor: pointer;
+    cursor: pointer;
 
-      box-shadow:none;
-      
-      width: 24px;
-      height: 24px;
-      top: 0;
-      left: 0;
-      border: 2px solid #555555;
-      border-radius: 3px;
-      background-color: white;
+    box-shadow: none;
+
+    width: 24px;
+    height: 24px;
+    top: 0;
+    left: 0;
+    border: 2px solid #555555;
+    border-radius: 3px;
+    background-color: --var(white);
+}
+
+select,
+option {
+    width: 10rem;
+    margin-left: 10px;
+    font-family: Germania One, sans-serif;
+    font-weight: 400;
 }

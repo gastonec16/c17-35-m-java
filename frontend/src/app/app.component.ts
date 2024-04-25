@@ -55,6 +55,7 @@ export class AppComponent {
                     this.wallet.usd = data.globalMoney
                     this.walletCoins = data.coins
                     this.walletService.setCryptoQuantity(this.allWalletCoins, this.walletCoins)
+                    this.wallet.coins = this.allWalletCoins
                 },
                 error: (err) => {
                     this.userService.logOut()
