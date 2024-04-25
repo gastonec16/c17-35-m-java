@@ -25,10 +25,6 @@ export class AccountComponent {
         this.userService.logOut()
     }
 
-    ngOnInit() {
-        this.appComponent.obtainWallet()
-    }
-
     coinList = this.appComponent.coinList
 
     goToDeposit() {

@@ -1,5 +1,5 @@
 <div class="bg-deposit">
-    <img class="patrick-logo" src="assets/img/patrick-logo.png" alt="logo" routerLink="/" />
+    <img class="patrick-logo" src="assets/img/patrick-logo.png" alt="logo" routerLink="/dashboard" />
     <div class="header">
         <button type="button" (click)="logOut()">Cerrar Sesión</button>
     </div>
@@ -28,6 +28,7 @@
                         id="amount"
                         type="number"
                         min="0.01"
+                        [max]="withdrawMoney.type === 'ARS' ? wallet.ars : wallet.usd"
                         maxlength="20"
                         required
                         [(ngModel)]="withdrawMoney.amount"

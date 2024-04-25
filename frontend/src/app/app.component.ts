@@ -62,8 +62,7 @@ export class AppComponent {
                     this.wallet.coins = this.allWalletCoins
                 },
                 error: (err) => {
-                    this.userService.logOut()
-                    this.error(err, 'No se pudo obtener tu billetera')
+                    this.error(err, 'No se pudieron obtener los datos de tu billetera')
                 }
             })
         }
