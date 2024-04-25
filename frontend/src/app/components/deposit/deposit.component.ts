@@ -24,10 +24,6 @@ export class DepositComponent {
     userService = inject(UserService)
     appComponent = inject(AppComponent)
 
-    ngOnInit() {
-        this.appComponent.obtainWallet()
-    }
-
     logOut() {
         this.userService.logOut()
     }
