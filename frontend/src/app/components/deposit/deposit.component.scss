@@ -172,6 +172,9 @@ input[type='radio'] {
         align-items: center;
         margin-bottom: 10px;
         font-size: 16px;
+        &:hover {
+            cursor: pointer;
+        }
     }
     & img {
         width: 48px;

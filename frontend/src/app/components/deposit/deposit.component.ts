@@ -66,6 +66,7 @@ export class DepositComponent {
                         var inputValue2 = (<HTMLInputElement>document.getElementById('swal-input2')).value
                         var inputValue3 = (<HTMLInputElement>document.getElementById('swal-input3')).value
                         var inputValue4 = (<HTMLInputElement>document.getElementById('swal-input4')).value
+
                         return [inputValue1, inputValue2, inputValue3, inputValue4]
                     },
                     confirmButtonText: 'Aceptar',

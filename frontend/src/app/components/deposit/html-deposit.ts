@@ -1,70 +1,97 @@
 export class HtmlDeposit {
-    static cardData = `
-    <h2 style="color: var(--yellow);">Ingrese los datos de su tarjeta</h2>
-    <img src="/assets/img/img-creditcard.png"  width="300px" alt=""> <br>
-    <div style="text-align: left; color: #ffffff;">
-    <label>Número de tarjeta:</label>
-    <input id="swal-input1" type="number" 
-    style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;
-    width:-webkit-fill-available;
-    ">
+    static cardData = ` 
 
-    <div style="display: flex;
-            justify-content: space-between; align-items: center;">
-              <div style="display: flex;
-              flex-direction: column;">
-                <label>Vence el:</label>
-                <input id="swal-input2" type="number" 
-                style="background-color: white;
-                color: black;
-                padding: 10px 20px;
-                border-radius: 1rem;
-                font-size: larger;
-                width:70%;">
-                <small style="color: grey">EJEMPLO: 05-27</small>
-                </div>
-                <div style="display: flex;
-                flex-direction: column; ">
-                <label>CVV:</label>
-                <input id="swal-input3" type="number" 
-                style="background-color: white;
-                color: black;
-                padding: 10px 20px;
-                border-radius: 1rem;
-                font-size: larger;
-                width:70%;">
-                <small style="color: grey">EJEMPLO: 123</small>
-              </div>
+<h2 style="color: var(--yellow)">Ingrese los datos de su tarjeta</h2>
+<img src="/assets/img/img-creditcard.png" width="300px" alt="" /> <br />
+<div style="margin-top: 24px; text-align: left; color: #ffffff">
+    <label style="margin-top: 24px">Número de tarjeta:</label>
+    <input
+        id="swal-input1"
+        type="number"
+        style="
+            background-color: white;
+            color: var(--black);
+            padding: 10px 20px;
+            border-radius: 1rem;
+            font-size: larger;
+            width: -webkit-fill-available;
+            height: 16px;
+        "
+        placeholder="1234567890123456"
+        maxlength="16"
+    />
 
-            </div>
-    
+    <div style="margin: 12px 0; display: flex; justify-content: space-between; align-items: center">
+        <div style="display: flex; flex-direction: column; max-height: 64px">
+            <label>Vence el:</label>
+            <input
+                id="swal-input2"
+                type="text"
+                style="
+                    background-color: white;
+                    color: black;
+                    padding: 10px 20px;
+                    border-radius: 1rem;
+                    font-size: larger;
+                    width: 70%;
+                "
+                placeholder="MM/AA"
+            />
+        </div>
+        <div style="display: flex; flex-direction: column; max-height: 64px">
+            <label>CVV:</label>
+            <input
+            style="margin-right: 0"
+                id="swal-input3"
+                type="number"
+                style="
+                    background-color: white;
+                    color: var(--black);
+                    padding: 10px 20px;
+                    border-radius: 1rem;
+                    font-size: larger;
+                    width: 70%;
+                "
+                placeholder="123"
+                maxlength="3"
+            />
+        </div>
+    </div>
+
     <label>Nombre del titular:</label>
-    <input id="swal-input4" type="text" 
-    style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;
-    width:-webkit-fill-available;">
-   </div>
+    <input
+        id="swal-input4"
+        type="text"
+        style="
+            background-color: white;
+            color: var(--black);
+            padding: 10px 20px;
+            border-radius: 1rem;
+            font-size: larger;
+            width: -webkit-fill-available;
+            height: 16px;
+        "
+        placeholder="PÉREZ JUAN"
+        maxlength="50"
+        oninput="this.value = this.value.replace(/[^a-zA-Z\u00C0-\u024F]/g, '').toUpperCase()"
+        required
+    />
+</div>
+
   `
 
     static depositTicket = `
-  <h2 style="color:white"><span  style="color: var(--yellow);">¡Pago realizado </span>con éxito!</h2>
-  <h3 style="color:white">COMPROBANTE DE DEPÓSITO:</h3>
-  <div style="color:white; text-align:left;">
-  <div style="display: flex;
-  justify-content: space-between;">
-    <div style="display: flex;
-    flex-direction: column;">
+    <h2 style="color:white"><span  style="color: var(--yellow);">¡Pago realizado </span>con éxito!</h2>
+    <h3 style="color:white">COMPROBANTE DE DEPÓSITO:</h3>
+    <div style="color:white; text-align:left;">
+      <div style="display: flex;
+      justify-content: space-between;">
+      <div style="display: flex;
+      flex-direction: column;">
       <label>Monto depositado:</label>
       <div style="background-color: white;
-  color: black;
-  padding: 10px 20px;
+      color: black;
+      padding: 10px 20px;
   border-radius: 1rem;
   font-size: larger;">
   <span>500.000</span>
