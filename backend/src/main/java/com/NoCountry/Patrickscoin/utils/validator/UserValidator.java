@@ -27,7 +27,7 @@ public class UserValidator {
 
     public void validateRegister(UserDto userDto) throws UserException{
         if (!emailIsValid(userDto.getEmail()))
-            throw new UserException("email no valido");
+            throw new UserException("El email no es válido");
         if (!nameIsValid(userDto.getName()))
             throw new UserException("nombre debe tener minimo 3 caracteres alfabeticos");
         if (!lastNameIsValid(userDto.getLastName()))
@@ -35,7 +35,7 @@ public class UserValidator {
         if (!passwordIsValid(userDto.getPassword()))
             throw new UserException("contraseña debe tener como mínimo una mayúsculas, minúsculas, números y 8 caracteres");
         if(!emailNotExist(userDto.getEmail(), userService.findAllEmail()))
-            throw new UserException("email ya esta registrado");
+            throw new UserException("El email ya está registrado");
     }
 
     private static boolean emailIsValid(String email) {
