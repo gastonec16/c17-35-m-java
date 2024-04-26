@@ -354,12 +354,17 @@
     }
 }
 
+.form-error {
+    color: var(--yellow);
+    width: 100%;
+}
+
 h2 {
     text-align: center;
     font-family: Germania One, sans-serif;
     font-size: 22pt;
     color: var(--yellow);
-    margin: 16px 0;
+    margin: 48px 0 16px 0;
 }
 
 input[type='radio'] {

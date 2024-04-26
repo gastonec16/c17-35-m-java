@@ -39,6 +39,13 @@
                         <option value="USD">USD</option>
                     </select>
                 </div>
+                @if (withdrawMoney.type === 'ARS' && withdrawMoney.amount && withdrawMoney.amount >
+                appComponent.wallet.ars) {
+                <div class="form-error">Saldo insuficiente.</div>
+                }@if (withdrawMoney.type === 'USD' && withdrawMoney.amount && withdrawMoney.amount >
+                appComponent.wallet.usd) {
+                <div class="form-error">Saldo insuficiente.</div>
+                }
 
                 <h2>Métodos de retiro</h2>
 

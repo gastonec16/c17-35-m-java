@@ -18,17 +18,24 @@
                         name="amount"
                         id="amount"
                         type="number"
-                        min="0.01"
+                        [min]="depositMoney.type === 'ARS' ? 1000 : 1"
                         maxlength="20"
                         required
                         [(ngModel)]="depositMoney.amount"
                         #amount="ngModel"
                     />
+
                     <select name="type" id="type" required [(ngModel)]="depositMoney.type" #type="ngModel">
                         <option value="ARS">ARS</option>
                         <option value="USD">USD</option>
                     </select>
                 </div>
+
+                @if(depositMoney.type === 'ARS' && depositMoney.amount && depositMoney.amount < 1000){
+                <div class="form-error">La cantidad mínima a depositar es 1000 ARS.</div>
+                } @if(depositMoney.type === 'USD' && depositMoney.amount && depositMoney.amount < 1){
+                <div class="form-error">La cantidad mínima a depositar es 1 USD.</div>
+                }
 
                 <h2>Métodos de pago</h2>
 

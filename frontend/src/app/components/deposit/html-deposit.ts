@@ -23,7 +23,7 @@ export class HtmlDeposit {
 
     <div style="margin: 12px 0; display: flex; justify-content: space-between; align-items: center">
         <div style="display: flex; flex-direction: column; max-height: 64px">
-            <label>Vence el:</label>
+            <label>Vencimiento:</label>
             <input
                 id="swal-input2"
                 type="text"
@@ -81,82 +81,89 @@ export class HtmlDeposit {
   `
 
     static depositTicket = `
-    <h2 style="color:white"><span  style="color: var(--yellow);">¡Pago realizado </span>con éxito!</h2>
-    <h3 style="color:white">COMPROBANTE DE DEPÓSITO:</h3>
-    <div style="color:white; text-align:left;">
-      <div style="display: flex;
-      justify-content: space-between;">
-      <div style="display: flex;
-      flex-direction: column;">
-      <label>Monto depositado:</label>
-      <div style="background-color: white;
-      color: black;
-      padding: 10px 20px;
-  border-radius: 1rem;
-  font-size: larger;">
-  <span>500.000</span>
-  </div>
+    <h2 style="color: white"><span style="color: var(--yellow)">¡Pago realizado </span>con éxito!</h2>
+<h3 style="color: white">Comprobante de depósito:</h3>
+<div style="color: white; text-align: left">
+    <div style="display: flex; justify-content: space-between">
+        <div style="display: flex; flex-direction: column">
+            <label>Monto depositado:</label>
+            <div
+                style="
+                    background-color: white;
+                    color: var(--black);
+                    padding: 10px 20px;
+                    border-radius: 1rem;
+                    font-size: larger;
+                "
+            >
+                <span>500.000</span>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <label>Moneda:</label>
+            <div
+                style="
+                    background-color: white;
+                    color: var(--black);
+                    padding: 10px 20px;
+                    border-radius: 1rem;
+                    font-size: larger;
+                "
+            >
+                <span>ARS</span>
+            </div>
+        </div>
     </div>
-    <div style="display: flex;
-    flex-direction: column; ">
-      <label>Moneda:</label>
-      <div style="background-color: white;
-  color: black;
-  padding: 10px 20px;
-  border-radius: 1rem;
-  font-size: larger;">
-      <span>ARS</span>
-      </div>
+    <label>Desde:</label>
+    <div
+        style="background-color: white; color: var(--black); padding: 10px 20px; border-radius: 1rem; font-size: larger"
+    >
+        <span id="entidad-value">Banco Macro S.A.</span>
     </div>
-  </div>
-  <label>Desde:</label>
-  <div style="background-color: white;
-  color: black;
-  padding: 10px 20px;
-  border-radius: 1rem;
-  font-size: larger;">
-  <span id="entidad-value">entidad-value</span>
-  </div>
-  <label>Nombre / Alias:</label>
-  <div style="background-color: white;
-  color: black;
-  padding: 10px 20px;
-  border-radius: 1rem;
-  font-size: larger;">
-  <span id="alias-value">alias-value</span>
-  </div>
-  <div style="display: flex;
-  justify-content: space-between;">
-    
-    <div style="display: flex;
-    flex-direction: column;">
-      <label>Fecha:</label>
-      <div style="background-color: white;
-  color: black;
-  padding: 10px 20px;
-  border-radius: 1rem;
-  font-size: larger;">
-  <span>07 / 07 / 2024</span>
-  </div>
+    <label>Nombre:</label>
+    <div
+        style="background-color: white; color: var(--black); padding: 10px 20px; border-radius: 1rem; font-size: larger"
+    >
+        <span id="alias-value">Kennedy Alan</span>
     </div>
-    
-    <div style="display: flex;
-    flex-direction: column;">
-      <label>Hora:</label>
-      <div style="background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 1rem;
-    font-size: larger;">
-      <span>11:11 am</span>
-      </div>
-    </div>
-      </div>
-      </div>
+    <div style="display: flex; justify-content: space-between">
+        <div style="display: flex; flex-direction: column">
+            <label>Fecha:</label>
+            <div
+                style="
+                    background-color: white;
+                    color: var(--black);
+                    padding: 10px 20px;
+                    border-radius: 1rem;
+                    font-size: larger;
+                "
+            >
+                <span>26/04/2024</span>
+            </div>
+        </div>
 
-      <h3 style="color:white">¡Gracias por confiar en nuestro servicio! </h3>
-      <h4>
-          <a  style="color: var(--yellow);">Compartir comprobante. <img src="/assets/img/icon-share.png" alt="" width="24px" height="24px"></a>
-      </h4>
+        <div style="display: flex; flex-direction: column">
+            <label>Hora:</label>
+            <div
+                style="
+                    background-color: white;
+                    color: var(--black);
+                    padding: 10px 20px;
+                    border-radius: 1rem;
+                    font-size: larger;
+                "
+            >
+                <span>10:17 AM</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 style="color: white">¡Gracias por confiar en nuestro servicio!</h3>
+<h4>
+    <a style="color: var(--yellow)"
+        >Compartir comprobante. <img src="/assets/img/icon-share.png" alt="" width="24px" height="24px"
+    /></a>
+</h4>
 `
 }
