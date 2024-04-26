@@ -1,4 +1,4 @@
-# Título (c17-35-m-java) Patrick Coins
+# Patrick Coins (c17-35-m-java)
 
     Plataforma (Webapp) de inversión en Criptomonedas, realizada
     como simulación en No Country. Diseñado tanto para inversores
@@ -9,7 +9,7 @@
 
 | Nombre | LinkedIn | GitHub | Rol |
 | :---:  |  :---:   | :---:  | :---:  |
-| Gaston Cuello |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gastonec16/) | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/gastonec16) | Frontend |
+| Gastón Cuello |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gastonec16/) | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/gastonec16) | Frontend |
 | David Reyes |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/davidirs/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/Davidirs) | Frontend |
 | Franco Nordinelli |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/franco-nordinelli/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/FrancoNordinelli) | Backend |
 | Alan Kennedy |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](http://linkedin.com/in/alankennedyy/)   |[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/Alankke) | Backend |
