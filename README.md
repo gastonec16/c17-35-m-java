@@ -1,4 +1,4 @@
-# Patrick Coins (c17-35-m-java)
+# Patrick Coins
 
     Plataforma (Webapp) de inversión en Criptomonedas, realizada
     como simulación en No Country. Diseñado tanto para inversores
